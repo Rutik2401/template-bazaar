@@ -45,9 +45,9 @@ export default function Footer() {
   return (
     <footer className="mt-auto border-t border-slate-200/70 bg-white/70 backdrop-blur-xl">
       <div className="container-page py-12 sm:py-16">
-        <div className="grid gap-10 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-12 lg:gap-8">
+        <div className="grid gap-10 text-center sm:grid-cols-3 sm:text-left lg:grid-cols-12 lg:gap-8">
           {/* Brand + tagline */}
-          <div className="sm:col-span-2 lg:col-span-5">
+          <div className="sm:col-span-3 lg:col-span-6">
             <div className="flex justify-center sm:justify-start">
               <Brand />
             </div>
@@ -77,19 +77,17 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-
-          {/* Made with love */}
-          <div className="sm:col-span-2 lg:col-span-1 lg:text-right">
-            <p className="text-[15px] font-medium text-ink-soft">
-              {t('footer.madeWithLove', 'Made with ❤️ in India')}
-            </p>
-          </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 border-t border-slate-200/70 pt-6 text-center text-sm text-ink-muted">
-          © {year} {t('common.appName', 'Template Bazaar')} ·{' '}
-          {t('footer.rights', 'All rights reserved.')}
+        <div className="mt-12 flex flex-col items-center gap-2 border-t border-slate-200/70 pt-6 text-center text-sm text-ink-muted sm:flex-row sm:justify-between sm:gap-4 sm:text-left">
+          <p>
+            © {year} {t('common.appName', 'Template Bazaar')} ·{' '}
+            {t('footer.rights', 'All rights reserved.')}
+          </p>
+          <p className="font-medium text-ink-soft">
+            {t('footer.madeWithLove', 'Made with ❤️ in India')}
+          </p>
         </div>
       </div>
     </footer>

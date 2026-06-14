@@ -50,6 +50,13 @@ export const en = {
     trust3Text: 'Sharp, high-resolution PDFs that look just as good on paper as on screen.',
     trust4Title: 'No sign-up, no fuss',
     trust4Text: 'Open a template, fill it in and download. Nothing to install, nothing to learn.',
+    statDesigns: 'Premium designs',
+    statCategories: 'Categories',
+    statLanguages: 'Languages',
+    statFree: 'Free to use',
+    finalTitle: 'Your celebration is one template away',
+    finalText:
+      'Pick a stall, fill in your details, and download a print-ready PDF or HD image in minutes — no design skills, no sign-up.',
     footer: 'Made with ❤️ in India · Template Bazaar',
   },
 

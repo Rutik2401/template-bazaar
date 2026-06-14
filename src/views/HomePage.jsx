@@ -19,6 +19,13 @@ const TRUST = [
   { icon: '⚡', titleKey: 'home.trust4Title', textKey: 'home.trust4Text' },
 ]
 
+const STATS = [
+  { value: '50+', labelKey: 'home.statDesigns' },
+  { value: '10', labelKey: 'home.statCategories' },
+  { value: '3', labelKey: 'home.statLanguages' },
+  { value: '₹0', labelKey: 'home.statFree' },
+]
+
 export default function HomePage() {
   const { t } = useI18n()
 
@@ -32,36 +39,60 @@ export default function HomePage() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="container-page text-center">
-        <span className="chip animate-fade-in">{t('home.badge')}</span>
+      <section className="relative overflow-hidden">
+        {/* soft, premium decorative backdrop */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute left-1/2 top-[-7rem] h-72 w-72 -translate-x-1/2 rounded-full bg-gold-300/30 blur-[110px]" />
+          <div className="absolute right-[-5rem] top-2 h-64 w-64 rounded-full bg-maroon-400/20 blur-[120px]" />
+          <div className="absolute left-[-5rem] top-24 h-56 w-56 rounded-full bg-rose-300/20 blur-[120px]" />
+        </div>
 
-        <h1 className="mx-auto mt-7 max-w-3xl text-balance font-display text-4xl font-bold leading-[1.1] text-ink sm:text-6xl animate-fade-up">
-          {heroHead}
-          {heroAccent && (
-            <>
-              {' '}
-              <span className="gradient-text">{heroAccent}</span>
-            </>
-          )}
-        </h1>
+        <div className="container-page pt-2 text-center sm:pt-6">
+          <span className="chip animate-fade-in">{t('home.badge')}</span>
 
-        <p
-          className="mx-auto mt-5 max-w-xl text-balance text-lg text-ink-muted animate-fade-up"
-          style={{ animationDelay: '80ms' }}
-        >
-          {t('home.heroSubtitle')}
-        </p>
+          <h1 className="mx-auto mt-7 max-w-3xl text-balance font-display text-[2.1rem] font-bold leading-[1.1] text-ink sm:text-6xl animate-fade-up">
+            {heroHead}
+            {heroAccent && (
+              <>
+                {' '}
+                <span className="gradient-text">{heroAccent}</span>
+              </>
+            )}
+          </h1>
 
-        <div
-          className="mt-9 flex flex-col items-center justify-center gap-3 animate-fade-up sm:flex-row"
-          style={{ animationDelay: '140ms' }}
-        >
-          <Link href="/category/wedding" className="btn-gold btn-lg">
-            {t('home.ctaPrimary')}
-          </Link>
-          <a href="#how-it-works" className="btn-ghost btn-lg">
-            {t('home.ctaSecondary', 'See how it works')}
-          </a>
+          <p
+            className="mx-auto mt-5 max-w-xl text-balance text-base text-ink-muted sm:text-lg animate-fade-up"
+            style={{ animationDelay: '80ms' }}
+          >
+            {t('home.heroSubtitle')}
+          </p>
+
+          <div
+            className="mx-auto mt-9 flex max-w-md flex-col items-center justify-center gap-3 animate-fade-up sm:max-w-none sm:flex-row"
+            style={{ animationDelay: '140ms' }}
+          >
+            <Link href="/category/wedding" className="btn-gold btn-lg w-full sm:w-auto">
+              {t('home.ctaPrimary')}
+            </Link>
+            <a href="#how-it-works" className="btn-ghost btn-lg w-full sm:w-auto">
+              {t('home.ctaSecondary', 'See how it works')}
+            </a>
+          </div>
+
+          {/* Quick stats */}
+          <dl
+            className="mx-auto mt-12 grid max-w-md grid-cols-2 gap-x-6 gap-y-7 animate-fade-up sm:flex sm:max-w-none sm:justify-center sm:gap-x-14"
+            style={{ animationDelay: '220ms' }}
+          >
+            {STATS.map((s) => (
+              <div key={s.labelKey} className="text-center">
+                <dt className="gradient-text font-display text-3xl font-bold sm:text-4xl">{s.value}</dt>
+                <dd className="mt-1 text-xs font-semibold uppercase tracking-wide text-ink-muted">
+                  {t(s.labelKey)}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -107,6 +138,31 @@ export default function HomePage() {
               <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{t(f.textKey)}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Closing call-to-action */}
+      <section className="container-page mt-24">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-maroon-500 via-maroon-500 to-gold-500 px-6 py-14 text-center shadow-lift sm:px-16 sm:py-20">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-25 [background:radial-gradient(circle_at_25%_20%,white,transparent_55%)]"
+          />
+          <h2 className="relative mx-auto max-w-2xl text-balance font-display text-3xl font-bold text-white sm:text-4xl">
+            {t('home.finalTitle', 'Your celebration is one template away')}
+          </h2>
+          <p className="relative mx-auto mt-4 max-w-xl text-balance text-base text-white/85 sm:text-lg">
+            {t('home.finalText')}
+          </p>
+          <Link
+            href="/category/wedding"
+            className="relative mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-lg font-bold text-maroon-600 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift active:translate-y-0"
+          >
+            {t('home.ctaPrimary')}
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2">
+              <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
         </div>
       </section>
     </Layout>

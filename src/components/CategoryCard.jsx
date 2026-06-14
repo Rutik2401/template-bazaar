@@ -3,11 +3,29 @@
 import Link from 'next/link'
 import { getTemplatesByCategory } from '@/templates'
 import { useI18n } from '@/i18n/I18nProvider'
+import CategoryDecor from './CategoryDecor.jsx'
 
 /**
  * Premium category card for the homepage.
- * Not a generic box — a gradient hero band, floating glyph, and live count.
+ * Not a generic box — a gradient hero band, a meaningful animated motif, a
+ * floating glyph, and a live count. Each card also gets its OWN hover motion
+ * (see HOVER_FX) so no two cards feel the same.
  */
+
+// Unique hover transform per category — a distinct lift / tilt / zoom for each.
+const HOVER_FX = {
+  wedding: 'hover:-translate-y-2 hover:rotate-[0.5deg]',
+  engagement: 'hover:-translate-y-1.5 hover:scale-[1.025]',
+  birthday: 'hover:-translate-y-2.5',
+  baras: 'hover:-translate-y-1.5 hover:scale-[1.02]',
+  religious: 'hover:-translate-y-2',
+  funeral: 'hover:-translate-y-1',
+  resume: 'hover:-translate-y-1.5 hover:-rotate-[0.5deg]',
+  biodata: 'hover:-translate-y-2 hover:scale-[1.015]',
+  festival: 'hover:-translate-y-2.5 hover:rotate-[0.6deg]',
+  business: 'hover:-translate-y-1.5 hover:scale-[1.01]',
+}
+
 export default function CategoryCard({ category, index = 0 }) {
   const { t } = useI18n()
   const count = getTemplatesByCategory(category.id).length
@@ -15,12 +33,14 @@ export default function CategoryCard({ category, index = 0 }) {
   return (
     <Link
       href={`/category/${category.id}`}
-      className="group relative flex flex-col overflow-hidden rounded-2.5xl border border-slate-200/80 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-slate-300/80 hover:shadow-lift animate-fade-up"
+      className={`group relative flex flex-col overflow-hidden rounded-2.5xl border border-slate-200/80 bg-white shadow-soft transition-all duration-300 hover:border-slate-300/80 hover:shadow-lift animate-fade-up ${HOVER_FX[category.id] ?? 'hover:-translate-y-1.5'}`}
       style={{ animationDelay: `${index * 90}ms` }}
     >
       {/* Gradient hero band */}
       <div className={`relative h-36 bg-gradient-to-br ${category.accent}`}>
         <div className="absolute inset-0 opacity-30 [background:radial-gradient(circle_at_30%_30%,white,transparent_60%)]" />
+        {/* Meaningful animated motif (rising hearts, confetti, diya flame…) */}
+        <CategoryDecor id={category.id} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <span className="absolute -bottom-5 left-6 grid h-16 w-16 place-items-center rounded-2xl border border-white/40 bg-white/15 text-3xl shadow-soft backdrop-blur-md transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
           {category.icon}
