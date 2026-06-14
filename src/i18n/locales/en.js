@@ -257,6 +257,8 @@ export const en = {
       weds: 'weds',
       and: '&',
       withBestCompliments: 'With best compliments from',
+      inviteToCelebration: 'Invite you to their wedding celebration',
+      receptionToFollow: 'Reception to follow',
       ringCeremony: 'Ring Ceremony',
       engagementOf: 'at the engagement of',
       sakharpuda: 'Sakharpuda',

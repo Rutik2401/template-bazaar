@@ -8,6 +8,7 @@ export default {
         display: ['var(--font-playfair)', 'Georgia', 'serif'],
         serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
         party: ['var(--font-poppins)', 'Inter', 'sans-serif'],
+        script: ['var(--font-script)', 'Snell Roundhand', 'cursive'],
       },
       colors: {
         ink: {

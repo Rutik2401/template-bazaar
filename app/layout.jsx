@@ -22,6 +22,10 @@ const poppins = Poppins({
   display: 'swap',
   weight: ['400', '500', '600', '700', '800'],
 })
+// Great Vibes (calligraphy / --font-script) is self-hosted via @font-face in
+// globals.css. next/font is intentionally avoided for it — bundling a 5th
+// Google font through next/font triggered an out-of-memory crash during the
+// static-generation build step.
 
 export const metadata = {
   title: 'Template Bazaar · India\'s Bazaar of Beautiful Templates',

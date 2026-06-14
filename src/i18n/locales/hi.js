@@ -252,6 +252,8 @@ export const hi = {
       weds: 'विवाह',
       and: 'और',
       withBestCompliments: 'सादर आमंत्रण',
+      inviteToCelebration: 'आपको अपने विवाह समारोह में आमंत्रित करते हैं',
+      receptionToFollow: 'रिसेप्शन तत्पश्चात',
       ringCeremony: 'रिंग सेरेमनी',
       engagementOf: 'की सगाई के अवसर पर',
       sakharpuda: 'सगाई',

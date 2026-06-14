@@ -252,6 +252,8 @@ export const mr = {
       weds: 'विवाहबद्ध',
       and: 'आणि',
       withBestCompliments: 'सप्रेम आमंत्रण',
+      inviteToCelebration: 'आपणास त्यांच्या विवाह सोहळ्यास आमंत्रित करतात',
+      receptionToFollow: 'स्वागत समारंभ नंतर',
       ringCeremony: 'अंगठी समारंभ',
       engagementOf: 'यांच्या साखरपुड्यानिमित्त',
       sakharpuda: 'साखरपुडा',

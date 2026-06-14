@@ -2,10 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Great Vibes calligraphy — self-hosted (see app/layout.jsx for why not next/font). */
+@font-face {
+  font-family: 'Great Vibes';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/great-vibes-latin.woff2') format('woff2');
+}
+
 @layer base {
   :root {
     color-scheme: light;
     --ring-gold: 212 175 55;
+    --font-script: 'Great Vibes', 'Snell Roundhand', cursive;
   }
 
   html {

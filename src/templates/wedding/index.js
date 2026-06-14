@@ -13,6 +13,44 @@ import MarathiWedding from './MarathiWedding.jsx'
 import FloralWedding from './FloralWedding.jsx'
 import MinimalWedding from './MinimalWedding.jsx'
 import LuxuryWedding from './LuxuryWedding.jsx'
+import BohoPampasWedding from './BohoPampasWedding.jsx'
+
+/**
+ * Boho Pampas wedding — warm beige card with an off-white arch, cream/white
+ * florals and golden dried palm leaves, calligraphy names. Its own field set
+ * seeds the reference sample (Samira & Richard); field names match the shared
+ * wedding fields so their localised labels are reused.
+ */
+const bohoFields = [
+  { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Samira', defaultValue: 'Samira' },
+  { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Richard', defaultValue: 'Richard' },
+  { name: 'weddingDate', label: 'Wedding Date', type: 'date', defaultValue: '2024-02-25' },
+  { name: 'time', label: 'Time', type: 'time', defaultValue: '09:00' },
+  {
+    name: 'venue',
+    label: 'Venue',
+    type: 'text',
+    placeholder: '123 Anywhere St., Any City, ST 12345',
+    defaultValue: '123 Anywhere St., Any City, ST 12345',
+  },
+]
+
+const weddingBohoTemplate = {
+  id: 'wedding-boho',
+  category: 'wedding',
+  name: 'Boho Pampas Wedding',
+  description: 'Warm beige arch invite with cream florals, golden dried palm leaves and calligraphy names.',
+  i18n: {
+    mr: { name: 'बोहो पँपास लग्न', description: 'उबदार बेज कमान, क्रीम फुले, सोनेरी वाळलेली पाने आणि सुलेखन नावे असलेली लग्नपत्रिका.' },
+    hi: { name: 'बोहो पैम्पास विवाह', description: 'गर्म बेज आर्च, क्रीम फूल, सुनहरी सूखी पत्तियों और सुलेख नामों वाला विवाह निमंत्रण.' },
+  },
+  width: 640,
+  height: 900,
+  fields: bohoFields,
+  Preview: BohoPampasWedding,
+  colors: { primary: '#8B5A2B', secondary: '#b88a3a', bg: '#dcc9a4', accent: '#f5efe1' },
+  fonts: { heading: 'script', body: 'serif' },
+}
 
 /** Traditional Marathi wedding — paithani green, gold & purple. */
 const weddingMarathiTemplate = {
@@ -88,6 +126,7 @@ const weddingLuxuryTemplate = {
 
 export const weddingTemplates = [
   weddingRoyalTemplate,
+  weddingBohoTemplate,
   weddingMarathiTemplate,
   weddingFloralTemplate,
   weddingMinimalTemplate,
