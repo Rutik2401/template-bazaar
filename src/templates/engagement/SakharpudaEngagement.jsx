@@ -59,7 +59,7 @@ function SunMotif({ className = '' }) {
  */
 export default function SakharpudaEngagement({ values }) {
   const { t } = useI18n()
-  const couple = values.coupleName?.trim() || 'Laksh & Anushka'
+  const couple = values.coupleName?.trim() || 'Lokesh & Anushka'
   const date = formatDate(values.date, 'Date to be announced')
   const time = formatTime(values.time, '')
   const venue = values.venue?.trim() || 'Hotel Grand, Pune'

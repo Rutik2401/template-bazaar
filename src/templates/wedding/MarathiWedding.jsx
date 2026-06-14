@@ -58,7 +58,7 @@ function ToranBorder({ className = '' }) {
 export default function MarathiWedding({ values }) {
   const { t } = useI18n()
   const bride = values.brideName?.trim() || 'Anushka'
-  const groom = values.groomName?.trim() || 'Laksh'
+  const groom = values.groomName?.trim() || 'Lokesh'
   const date = formatDate(values.weddingDate, 'Date to be announced')
   const time = formatTime(values.time, '')
   const venue = values.venue?.trim() || 'The Grand Palace, Jaipur'
