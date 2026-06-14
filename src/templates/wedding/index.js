@@ -13,7 +13,7 @@ import MarathiWedding from './MarathiWedding.jsx'
 import FloralWedding from './FloralWedding.jsx'
 import MinimalWedding from './MinimalWedding.jsx'
 import LuxuryWedding from './LuxuryWedding.jsx'
-import BohoPampasWedding from './BohoPampasWedding.jsx'
+import BohoPampasWedding, { bohoStyleSlots } from './BohoPampasWedding.jsx'
 
 /**
  * Boho Pampas wedding — warm beige card with an off-white arch, cream/white
@@ -47,6 +47,8 @@ const weddingBohoTemplate = {
   width: 640,
   height: 900,
   fields: bohoFields,
+  // Option A pilot — these name slots get in-form font/size/colour/B-I/align controls.
+  styleSlots: bohoStyleSlots,
   Preview: BohoPampasWedding,
   colors: { primary: '#8B5A2B', secondary: '#b88a3a', bg: '#dcc9a4', accent: '#f5efe1' },
   fonts: { heading: 'script', body: 'serif' },

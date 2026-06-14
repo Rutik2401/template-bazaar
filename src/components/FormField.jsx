@@ -1,18 +1,25 @@
 'use client'
 
 import { useI18n } from '@/i18n/I18nProvider'
+import TextStyleControls from '@/components/TextStyleControls.jsx'
 
 /**
  * Renders a single form input from a template field config.
  * Big, high-contrast, touch-friendly controls — usable by non-technical and
  * older users on a phone.
  *
+ * When `styleable` is set (the template declares a style slot for this field),
+ * a compact text-style toolbar is shown beneath the input (Option A pilot).
+ *
  * @param {object}   props
  * @param {object}   props.field   Field config from a template.
  * @param {string}   props.value
  * @param {(name: string, value: string) => void} props.onChange
+ * @param {boolean}  [props.styleable]
+ * @param {object}   [props.style]            Current slot style.
+ * @param {(patch: object) => void} [props.onStyleChange]
  */
-export default function FormField({ field, value, onChange }) {
+export default function FormField({ field, value, onChange, styleable, style, onStyleChange }) {
   const { t } = useI18n()
   const { name, type = 'text', placeholder } = field
   const id = `field-${name}`
@@ -45,6 +52,8 @@ export default function FormField({ field, value, onChange }) {
       )}
 
       {hint && <p className="mt-1.5 text-[13px] leading-snug text-ink-muted">{hint}</p>}
+
+      {styleable && <TextStyleControls value={style} onChange={onStyleChange} />}
     </div>
   )
 }

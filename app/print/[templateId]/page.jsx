@@ -20,19 +20,29 @@ import { getTemplateById } from '@/templates'
  */
 export default function PrintPage({ params }) {
   const template = getTemplateById(params.templateId)
-  const [state, setState] = useState(null) // { values, locale } — resolved after mount
+  const [state, setState] = useState(null) // { values, styles, locale } — resolved after mount
 
-  // Decode values from the hash + locale from the query (client-only).
+  // Decode values (+ optional per-slot styles) from the hash + locale from query.
+  // Hash shape: { values, styles }. Legacy callers sent the bare values object.
   useEffect(() => {
     let values = {}
+    let styles = {}
     try {
       const raw = window.location.hash.slice(1)
-      if (raw) values = JSON.parse(decodeURIComponent(raw))
+      if (raw) {
+        const parsed = JSON.parse(decodeURIComponent(raw))
+        if (parsed && typeof parsed === 'object' && 'values' in parsed) {
+          values = parsed.values || {}
+          styles = parsed.styles || {}
+        } else {
+          values = parsed || {}
+        }
+      }
     } catch {
       values = {}
     }
     const locale = new URLSearchParams(window.location.search).get('locale') || 'en'
-    setState({ values, locale })
+    setState({ values, styles, locale })
   }, [])
 
   // Signal "ready to capture" once values are applied AND web fonts have painted.
@@ -84,7 +94,7 @@ export default function PrintPage({ params }) {
     <I18nProvider initialLocale={state.locale}>
       {reset}
       <div data-export-capture style={{ width, height, background: '#fff', overflow: 'hidden' }}>
-        <Preview values={state.values} />
+        <Preview values={state.values} styles={state.styles} />
       </div>
     </I18nProvider>
   )

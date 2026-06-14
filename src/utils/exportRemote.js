@@ -8,6 +8,7 @@
  * @param {object} opts
  * @param {string} opts.templateId
  * @param {Record<string,string>} opts.values
+ * @param {object} [opts.styles]     Per-slot text styling (Option A), if any.
  * @param {string} opts.locale       Active UI locale, so text exports in-language.
  * @param {'pdf'|'png'} opts.format
  * @param {number} opts.width        Template natural width (px).
@@ -15,11 +16,11 @@
  * @param {string} [opts.fileName]
  * @returns {Promise<void>}
  */
-export async function exportViaServer({ templateId, values, locale, format, width, height, fileName }) {
+export async function exportViaServer({ templateId, values, styles, locale, format, width, height, fileName }) {
   const res = await fetch('/api/export', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ templateId, values, locale, format, width, height, fileName }),
+    body: JSON.stringify({ templateId, values, styles, locale, format, width, height, fileName }),
   })
 
   if (!res.ok) {

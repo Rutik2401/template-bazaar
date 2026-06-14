@@ -73,10 +73,16 @@ export default function HomePage() {
             className="mx-auto mt-9 flex max-w-md flex-col items-center justify-center gap-3 animate-fade-up sm:max-w-none sm:flex-row"
             style={{ animationDelay: '140ms' }}
           >
-            <Link href="/category/wedding" className="btn-gold btn-lg w-full sm:w-auto">
+            <Link
+              href="/category/wedding"
+              className="btn-gold btn-lg w-full rounded-full sm:w-auto"
+            >
               {t('home.ctaPrimary')}
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
-            <a href="#how-it-works" className="btn-ghost btn-lg w-full sm:w-auto">
+            <a href="#how-it-works" className="btn-ghost btn-lg w-full rounded-full sm:w-auto">
               {t('home.ctaSecondary', 'See how it works')}
             </a>
           </div>
@@ -164,7 +170,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/category/wedding"
-            className="relative mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-lg font-bold text-maroon-600 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift active:translate-y-0"
+            className="relative mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-lg font-bold text-maroon-600 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift active:translate-y-0"
           >
             {t('home.ctaPrimary')}
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2">

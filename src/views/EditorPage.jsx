@@ -21,7 +21,7 @@ export default function EditorPage({ templateId }) {
   const template = getTemplateById(templateId)
 
   // Hooks must run unconditionally — safe because `template` is stable per route.
-  const { values, update, reset } = useTemplateForm(template)
+  const { values, update, styles, updateStyle, reset } = useTemplateForm(template)
   const captureRef = useRef(null)
   const [busyFormat, setBusyFormat] = useState(null) // 'pdf' | 'png' | null
   const [toast, setToast] = useState('')
@@ -55,6 +55,7 @@ export default function EditorPage({ templateId }) {
       await exportViaServer({
         templateId,
         values,
+        styles,
         locale,
         format,
         width: template.width,
@@ -170,14 +171,22 @@ export default function EditorPage({ templateId }) {
             >
               <div className="mx-auto max-w-md space-y-5 animate-fade-in">
                 <p className="text-sm text-ink-muted">{t('editor.fillPrompt')}</p>
-                {template.fields.map((field) => (
-                  <FormField
-                    key={field.name}
-                    field={field}
-                    value={values[field.name]}
-                    onChange={update}
-                  />
-                ))}
+                {template.fields.map((field) => {
+                  const styleable = !!template.styleSlots?.[field.name]
+                  return (
+                    <FormField
+                      key={field.name}
+                      field={field}
+                      value={values[field.name]}
+                      onChange={update}
+                      styleable={styleable}
+                      style={styleable ? styles[field.name] : undefined}
+                      onStyleChange={
+                        styleable ? (patch) => updateStyle(field.name, patch) : undefined
+                      }
+                    />
+                  )
+                })}
                 <button
                   type="button"
                   onClick={reset}
@@ -197,7 +206,7 @@ export default function EditorPage({ templateId }) {
             >
               <div className="flex min-h-full items-start justify-center p-5 sm:p-8">
                 <div className="w-full max-w-[460px]">
-                  <TemplateStage template={template} values={values} captureRef={captureRef} />
+                  <TemplateStage template={template} values={values} styles={styles} captureRef={captureRef} />
                 </div>
               </div>
             </div>

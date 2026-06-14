@@ -43,6 +43,7 @@ export async function POST(request) {
     const {
       templateId,
       values = {},
+      styles = {},
       locale = 'en',
       format = 'pdf',
       width,
@@ -59,7 +60,7 @@ export async function POST(request) {
     // Self-navigate to the headless render page on this same deployment.
     const proto = request.headers.get('x-forwarded-proto') || 'https'
     const host = request.headers.get('host')
-    const hash = encodeURIComponent(JSON.stringify(values))
+    const hash = encodeURIComponent(JSON.stringify({ values, styles }))
     const url =
       `${proto}://${host}/print/${encodeURIComponent(templateId)}` +
       `?locale=${encodeURIComponent(locale)}#${hash}`

@@ -45,7 +45,7 @@ export default function Navbar() {
 
           <Link
             href="/category/wedding"
-            className="btn-gold hidden whitespace-nowrap px-4 py-2 text-sm sm:inline-flex"
+            className="btn-gold hidden whitespace-nowrap rounded-full px-4 py-2 text-sm sm:inline-flex"
           >
             {t('home.ctaPrimary', 'Explore the bazaar')}
           </Link>

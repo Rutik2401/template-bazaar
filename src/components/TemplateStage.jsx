@@ -18,7 +18,7 @@ import { useElementSize } from '@/hooks/useElementSize'
  * @param {number}   [props.maxScale=1]
  * @param {string}   [props.className]
  */
-export default function TemplateStage({ template, values, captureRef, maxScale = 1, className = '' }) {
+export default function TemplateStage({ template, values, styles, captureRef, maxScale = 1, className = '' }) {
   const { width, height, Preview } = template
   const [containerRef, size] = useElementSize()
 
@@ -37,7 +37,7 @@ export default function TemplateStage({ template, values, captureRef, maxScale =
             transformOrigin: 'top left',
           }}
         >
-          <Preview values={values} />
+          <Preview values={values} styles={styles} />
         </div>
       </div>
     </div>

@@ -32,7 +32,7 @@ export const en = {
     heroTitle: 'Beautiful templates for every celebration',
     heroSubtitle:
       'From shaadi invites and baras cards to festive wishes, biodatas and job-ready resumes — browse a vibrant bazaar of designer templates, make it yours, and download in minutes.',
-    ctaPrimary: 'Explore the bazaar',
+    ctaPrimary: 'Explore Templates',
     ctaSecondary: 'See how it works',
     howItWorks: 'Three steps, start to download',
     step1Title: 'Wander the stalls',
