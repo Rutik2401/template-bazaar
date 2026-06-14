@@ -2,21 +2,17 @@
 
 import { useState } from 'react'
 import { useI18n } from '@/i18n/I18nProvider'
+import { FAQ_ITEMS } from '@/data/faq'
 
 /**
  * Single-open FAQ accordion. Smooth height reveal via the grid-rows 0fr→1fr
  * trick (no JS measuring), an animated chevron, and a friendly "still have a
  * question?" prompt below. All copy is i18n-driven.
+ *
+ * The Q&A list lives in `src/data/faq.js` so this visible accordion and the
+ * FAQPage JSON-LD (rendered on the home page) stay in lockstep.
  */
-
-const ITEMS = [
-  { q: 'faq.q1', a: 'faq.a1' },
-  { q: 'faq.q2', a: 'faq.a2' },
-  { q: 'faq.q3', a: 'faq.a3' },
-  { q: 'faq.q4', a: 'faq.a4' },
-  { q: 'faq.q5', a: 'faq.a5' },
-  { q: 'faq.q6', a: 'faq.a6' },
-]
+const ITEMS = FAQ_ITEMS
 
 export default function Faq() {
   const { t } = useI18n()

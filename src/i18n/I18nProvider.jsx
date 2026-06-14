@@ -21,13 +21,28 @@ function resolve(dict, path) {
 export function I18nProvider({ children, initialLocale }) {
   const [locale, setLocaleState] = useState(initialLocale || DEFAULT_LOCALE)
 
-  // Restore saved preference on the client only. When `initialLocale` is forced
-  // (e.g. the headless /print route during export) we honour it and skip storage.
+  // Resolve the active locale on the client only. When `initialLocale` is forced
+  // (e.g. the headless /print route during export) we honour it and skip this.
+  //
+  // Precedence: a `?lang=` query param (the hreflang strategy — lets crawlers and
+  // shared links land directly in a language) wins over the saved preference, so
+  // an hreflang URL like `/?lang=mr` renders Marathi. Otherwise fall back to the
+  // visitor's last choice in localStorage.
   useEffect(() => {
     if (initialLocale) return
+    const isValid = (code) => code && LOCALES.some((l) => l.code === code)
+    try {
+      const fromUrl = new URLSearchParams(window.location.search).get('lang')
+      if (isValid(fromUrl)) {
+        setLocaleState(fromUrl)
+        return
+      }
+    } catch {
+      /* URL unavailable — fall through to storage */
+    }
     try {
       const saved = window.localStorage.getItem(STORAGE_KEY)
-      if (saved && LOCALES.some((l) => l.code === saved)) setLocaleState(saved)
+      if (isValid(saved)) setLocaleState(saved)
     } catch {
       /* localStorage unavailable — ignore */
     }
