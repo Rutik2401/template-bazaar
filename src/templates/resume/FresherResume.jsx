@@ -131,7 +131,7 @@ export default function FresherResume({ values }) {
       </section>
 
       <div className="mt-auto pt-8 text-center text-[11px] uppercase tracking-[0.3em] text-teal-300">
-        {t('template.resume.madeWith', 'Made with Laksh')}
+        {t('template.resume.madeWith', 'Made with Template Bazaar')}
       </div>
     </div>
   )

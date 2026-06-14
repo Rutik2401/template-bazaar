@@ -36,7 +36,7 @@ export async function exportViaServer({ templateId, values, locale, format, widt
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = fileName || `laksh.${format === 'png' ? 'png' : 'pdf'}`
+  a.download = fileName || `template-bazaar.${format === 'png' ? 'png' : 'pdf'}`
   document.body.appendChild(a)
   a.click()
   a.remove()

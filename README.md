@@ -1,9 +1,9 @@
-# Laksh
+# Template Bazaar
 
-> Create beautiful invitations & documents from premium templates — in under 2 minutes.
+> A vibrant marketplace of premium templates — invitations, resumes & business — ready to download in minutes.
 
-Pick a template → fill a simple form → watch the live preview → download a PDF.
-No drag-and-drop, no design skills. Mobile-first, built for everyone.
+Pick a template → fill a simple form → watch the live preview → download a crisp
+PDF or HD image. No drag-and-drop, no design skills. Mobile-first, built for everyone.
 
 Built with **Next.js (App Router)** so the frontend and backend deploy together
 on **Vercel**.
@@ -27,7 +27,9 @@ config needed). Frontend pages and the `/api/*` backend deploy as one project.
 - **Next.js 14 (App Router) + React 18** · **Tailwind CSS**
 - Routing: file-based App Router · Fonts: `next/font` (self-hosted, no layout shift)
 - State: `useState` / custom hooks only (no global store)
-- PDF export: **html2canvas + jsPDF** (lazy-loaded on demand)
+- Export: **server-side headless Chrome** (`/api/export` → `puppeteer-core` +
+  `@sparticuz/chromium`) renders a **vector PDF** (selectable text) or **HD PNG**
+  (3× DPI). Falls back to client `html2canvas + jsPDF` if the server is unreachable.
 - Backend: Next.js Route Handlers under `app/api/` (template data served as JSON)
 
 ## Project structure

@@ -50,7 +50,7 @@ export default function EditorPage({ templateId }) {
     setBusyFormat(format)
     const ext = format === 'png' ? 'png' : 'pdf'
     const title = values[template.fields[0]?.name] || template.name
-    const fileName = `${slugify(title)}-laksh.${ext}`
+    const fileName = `${slugify(title)}-template-bazaar.${ext}`
     try {
       await exportViaServer({
         templateId,
@@ -82,8 +82,8 @@ export default function EditorPage({ templateId }) {
 
   const handleShare = async () => {
     const shareData = {
-      title: 'Made with Laksh',
-      text: 'Check out what I created on Laksh!',
+      title: 'Made with Template Bazaar',
+      text: 'Check out what I created on Template Bazaar!',
       url: window.location.href,
     }
     if (navigator.share) {

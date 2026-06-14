@@ -12,11 +12,11 @@
  *
  * @param {HTMLElement} node            Element to capture (the template canvas).
  * @param {object}      [options]
- * @param {string}      [options.fileName='laksh-document.pdf']
+ * @param {string}      [options.fileName='template-bazaar-document.pdf']
  * @param {number}      [options.scale=2] Pixel density multiplier for sharpness.
  * @returns {Promise<void>}
  */
-export async function exportNodeToPdf(node, { fileName = 'laksh-document.pdf', scale = 2 } = {}) {
+export async function exportNodeToPdf(node, { fileName = 'template-bazaar-document.pdf', scale = 2 } = {}) {
   if (!node) throw new Error('exportNodeToPdf: target node is missing')
 
   // Load the heavy rasterisation libs only when the user actually exports.

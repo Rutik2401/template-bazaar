@@ -27,7 +27,7 @@ export default function MemorialInvitation({ values }) {
 
       {/* Header — large Om motif */}
       <header className="relative flex flex-col items-center">
-        <div className="font-display text-[52px] leading-none text-[#c4a86a]" data-pdf-color>
+        <div className="font-display text-[52px] leading-none text-[#c4a86a]" data-pdf-color="#c4a86a">
           {t('template.common.om', 'ॐ')}
         </div>
         <p className="mt-6 text-[12px] uppercase tracking-[0.5em] text-[#9b9b9b]">

@@ -1,9 +1,9 @@
 {
-  "name": "laksh",
+  "name": "template-bazaar",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Create beautiful invitations and documents from premium templates in under 2 minutes.",
+  "description": "Template Bazaar — a vibrant marketplace of premium templates for invitations, resumes & business, ready to download in minutes.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,7 +13,6 @@
     "@sparticuz/chromium": "^149.0.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.2",
-    "laksh": "file:",
     "next": "^14.2.15",
     "puppeteer-core": "^25.1.0",
     "react": "^18.3.1",

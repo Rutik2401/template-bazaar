@@ -24,9 +24,19 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: 'Laksh · Create Beautiful Templates In Minutes',
+  title: 'Template Bazaar · India\'s Bazaar of Beautiful Templates',
   description:
-    'Laksh — create beautiful wedding & birthday invitations and resumes from premium templates in under 2 minutes.',
+    'Template Bazaar is India\'s handcrafted marketplace of designer templates — wedding & baras invites, festival greetings, marriage biodatas and job-ready resumes. Pick a design, fill a simple form in English, मराठी or हिंदी, and download a print-ready PDF in minutes. No sign-up.',
+  keywords: [
+    'wedding invitation template',
+    'marriage biodata',
+    'resume template',
+    'festival greetings',
+    'birthday invitation',
+    'Indian templates',
+    'Marathi',
+    'Hindi',
+  ],
   icons: { icon: '/favicon.svg' },
 }
 

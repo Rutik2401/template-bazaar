@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic'
 export function GET() {
   return Response.json({
     status: 'ok',
-    service: 'laksh-api',
+    service: 'template-bazaar-api',
     timestamp: new Date().toISOString(),
   })
 }

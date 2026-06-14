@@ -4,7 +4,7 @@
  */
 export const en = {
   common: {
-    appName: 'Laksh',
+    appName: 'Template Bazaar',
     share: 'Share',
     download: 'Download PDF',
     downloading: 'Preparing…',
@@ -19,6 +19,8 @@ export const en = {
 
   nav: {
     tagline: 'Beautiful templates in minutes',
+    templates: 'Templates',
+    howItWorks: 'How it works',
   },
 
   language: {
@@ -26,19 +28,50 @@ export const en = {
   },
 
   home: {
-    badge: '✨ Premium templates, ready in 2 minutes',
-    heroTitle: 'Create Beautiful Templates In Minutes',
+    badge: '🪔 India\'s handcrafted template marketplace',
+    heroTitle: 'Every celebration deserves the Bazaar',
     heroSubtitle:
-      "Wedding invites, birthday cards and resumes — pick a design, fill a simple form, and download. That's it.",
-    ctaPrimary: 'Browse templates',
+      'From shaadi invites and baras cards to festive wishes, biodatas and job-ready resumes — browse a vibrant bazaar of designer templates, make it yours, and download in minutes.',
+    ctaPrimary: 'Explore the bazaar',
+    ctaSecondary: 'See how it works',
+    howItWorks: 'Three steps, start to download',
+    step1Title: 'Wander the stalls',
+    step1Text: 'Pick from a curated bazaar of premium, India-first designs.',
+    step2Title: 'Make it yours',
+    step2Text: 'Type your details and watch the preview update live — no design skills, no apps.',
+    step3Title: 'Carry it home',
+    step3Text: 'Download a crisp, print-ready PDF or image in a single tap.',
+    trustTitle: 'Why families and professionals choose us',
+    trust1Title: 'Truly India-first',
+    trust1Text: 'Designs and wording made for our weddings, festivals and customs — in your language.',
+    trust2Title: 'Three languages',
+    trust2Text: 'Create in English, मराठी or हिंदी — switch anytime, your content stays intact.',
+    trust3Title: 'Print-perfect output',
+    trust3Text: 'Sharp, high-resolution PDFs that look just as good on paper as on screen.',
+    trust4Title: 'No sign-up, no fuss',
+    trust4Text: 'Open a template, fill it in and download. Nothing to install, nothing to learn.',
+    footer: 'Made with ❤️ in India · Template Bazaar',
+  },
+
+  footer: {
+    tagline: 'India\'s handcrafted bazaar of beautiful templates — for every celebration and every milestone.',
+    templatesHeading: 'Templates',
+    wedding: 'Wedding Invitations',
+    birthday: 'Birthday Invitations',
+    resume: 'Resume',
+    biodata: 'Marriage Biodata',
+    festival: 'Festival Greetings',
+    companyHeading: 'Company',
+    about: 'About us',
     howItWorks: 'How it works',
-    step1Title: 'Pick a template',
-    step1Text: 'Choose from premium, ready-made designs.',
-    step2Title: 'Fill the form',
-    step2Text: 'Just type your details — no design skills needed.',
-    step3Title: 'Download & share',
-    step3Text: 'Export a crisp PDF in one tap.',
-    footer: 'Made with ❤️ in India · Laksh',
+    contact: 'Contact',
+    blog: 'Blog',
+    legalHeading: 'Legal',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
+    refund: 'Refund Policy',
+    madeWithLove: 'Made with ❤️ in India',
+    rights: 'All rights reserved.',
   },
 
   categoryPage: {
@@ -160,7 +193,7 @@ export const en = {
       skills: 'Skills',
       experience: 'Experience',
       education: 'Education',
-      madeWith: 'Made with Laksh',
+      madeWith: 'Made with Template Bazaar',
       addSkills: 'Add your key skills…',
       addExperience: 'Add your work experience…',
       addEducation: 'Add your education…',

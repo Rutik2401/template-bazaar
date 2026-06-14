@@ -12,6 +12,13 @@ const STEPS = [
   { n: '3', titleKey: 'home.step3Title', textKey: 'home.step3Text' },
 ]
 
+const TRUST = [
+  { icon: '🪔', titleKey: 'home.trust1Title', textKey: 'home.trust1Text' },
+  { icon: '🌐', titleKey: 'home.trust2Title', textKey: 'home.trust2Text' },
+  { icon: '🖨️', titleKey: 'home.trust3Title', textKey: 'home.trust3Text' },
+  { icon: '⚡', titleKey: 'home.trust4Title', textKey: 'home.trust4Text' },
+]
+
 export default function HomePage() {
   const { t } = useI18n()
 
@@ -45,10 +52,16 @@ export default function HomePage() {
           {t('home.heroSubtitle')}
         </p>
 
-        <div className="mt-9 flex justify-center animate-fade-up" style={{ animationDelay: '140ms' }}>
+        <div
+          className="mt-9 flex flex-col items-center justify-center gap-3 animate-fade-up sm:flex-row"
+          style={{ animationDelay: '140ms' }}
+        >
           <Link href="/category/wedding" className="btn-gold btn-lg">
             {t('home.ctaPrimary')}
           </Link>
+          <a href="#how-it-works" className="btn-ghost btn-lg">
+            {t('home.ctaSecondary', 'See how it works')}
+          </a>
         </div>
       </section>
 
@@ -62,7 +75,7 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="container-page mt-24">
+      <section id="how-it-works" className="container-page mt-24 scroll-mt-24">
         <h2 className="text-center font-display text-2xl font-bold text-ink sm:text-3xl">
           {t('home.howItWorks')}
         </h2>
@@ -79,9 +92,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="container-page mt-24 pb-12 text-center text-sm text-ink-muted">
-        {t('home.footer')}
-      </footer>
+      {/* Why choose us — trust strip */}
+      <section className="container-page mt-24">
+        <h2 className="text-center font-display text-2xl font-bold text-ink sm:text-3xl">
+          {t('home.trustTitle', 'Why families and professionals choose us')}
+        </h2>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {TRUST.map((f) => (
+            <div key={f.titleKey} className="card p-6">
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-gold-100 to-gold-200 text-2xl">
+                {f.icon}
+              </span>
+              <h3 className="mt-4 text-base font-semibold text-ink">{t(f.titleKey)}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{t(f.textKey)}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </Layout>
   )
 }

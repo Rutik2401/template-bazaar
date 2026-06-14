@@ -113,7 +113,7 @@ export default function ModernBiodata({ values }) {
         </section>
 
         <footer className="mt-auto pt-8 text-[11px] uppercase tracking-[0.3em] text-slate-300">
-          {t('common.appName', 'Laksh')}
+          {t('common.appName', 'Template Bazaar')}
         </footer>
       </main>
     </div>

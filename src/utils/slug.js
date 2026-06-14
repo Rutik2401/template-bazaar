@@ -3,10 +3,10 @@
  * Used to name exported PDF files (e.g. "priya-weds-arjun").
  *
  * @param {string} text
- * @param {string} [fallback='laksh']
+ * @param {string} [fallback='template-bazaar']
  * @returns {string}
  */
-export function slugify(text, fallback = 'laksh') {
+export function slugify(text, fallback = 'template-bazaar') {
   const slug = String(text || '')
     .toLowerCase()
     .normalize('NFKD')

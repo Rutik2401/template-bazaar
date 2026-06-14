@@ -51,7 +51,7 @@ export default function AtsResumeTemplate({ values }) {
   return (
     <div
       data-export-root
-      className="flex h-[1123px] w-[794px] flex-col bg-white px-16 py-14 font-sans text-slate-700"
+      className="flex h-[1123px] w-[794px] flex-col overflow-hidden bg-white px-16 py-14 font-sans text-slate-700"
     >
       {/* Header */}
       <header className="border-b border-slate-200 pb-5">
@@ -66,7 +66,7 @@ export default function AtsResumeTemplate({ values }) {
       </header>
 
       {/* Skills */}
-      <Section title={t('template.resume.skills')}>
+      <Section title={t('template.resume.skills', 'Skills')}>
         {skills.length ? (
           <div className="flex flex-wrap gap-2">
             {skills.map((skill, i) => (
@@ -79,12 +79,12 @@ export default function AtsResumeTemplate({ values }) {
             ))}
           </div>
         ) : (
-          <p className="text-[14px] text-slate-400">{t('template.resume.addSkills')}</p>
+          <p className="text-[14px] text-slate-400">{t('template.resume.addSkills', 'Add your key skills…')}</p>
         )}
       </Section>
 
       {/* Experience */}
-      <Section title={t('template.resume.experience')}>
+      <Section title={t('template.resume.experience', 'Experience')}>
         <div className="space-y-4">
           {experience.length ? (
             experience.map((job, i) => (
@@ -108,13 +108,13 @@ export default function AtsResumeTemplate({ values }) {
               </div>
             ))
           ) : (
-            <p className="text-[14px] text-slate-400">{t('template.resume.addExperience')}</p>
+            <p className="text-[14px] text-slate-400">{t('template.resume.addExperience', 'Add your work experience…')}</p>
           )}
         </div>
       </Section>
 
       {/* Education */}
-      <Section title={t('template.resume.education')}>
+      <Section title={t('template.resume.education', 'Education')}>
         <div className="space-y-2.5">
           {education.length ? (
             education.map((line, i) => {
@@ -127,13 +127,13 @@ export default function AtsResumeTemplate({ values }) {
               )
             })
           ) : (
-            <p className="text-[14px] text-slate-400">{t('template.resume.addEducation')}</p>
+            <p className="text-[14px] text-slate-400">{t('template.resume.addEducation', 'Add your education…')}</p>
           )}
         </div>
       </Section>
 
       <div className="mt-auto pt-8 text-center text-[11px] uppercase tracking-[0.3em] text-slate-300">
-        {t('template.resume.madeWith')}
+        {t('template.resume.madeWith', 'Made with Template Bazaar')}
       </div>
     </div>
   )

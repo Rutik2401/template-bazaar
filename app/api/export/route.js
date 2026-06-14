@@ -100,7 +100,8 @@ export async function POST(request) {
     }
 
     const safe =
-      (fileName && String(fileName).replace(/[^\w.\-]+/g, '-').replace(/-+/g, '-')) || `laksh.${ext}`
+      (fileName && String(fileName).replace(/[^\w.\-]+/g, '-').replace(/-+/g, '-')) ||
+      `template-bazaar.${ext}`
     const finalName = safe.toLowerCase().endsWith(`.${ext}`) ? safe : `${safe}.${ext}`
 
     return new Response(body, {
