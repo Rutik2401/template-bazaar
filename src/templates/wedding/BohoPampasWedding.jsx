@@ -1,17 +1,6 @@
 'use client'
 
 import { useI18n } from '@/i18n/I18nProvider'
-import { slotInlineStyle } from '@/templates/_shared/textStyles'
-
-/**
- * Default text styling for this template's styleable slots (Option A pilot).
- * The editor seeds its style controls from here; thumbnails (no styles prop)
- * fall back to these too, so the design is unchanged until a user edits it.
- */
-export const bohoStyleSlots = {
-  brideName: { font: 'script', size: 68, color: '#8B5A2B', align: 'center', bold: false, italic: false },
-  groomName: { font: 'script', size: 68, color: '#8B5A2B', align: 'center', bold: false, italic: false },
-}
 
 /**
  * Boho Pampas wedding invitation — warm beige card, off-white arch panel, and
@@ -253,12 +242,10 @@ function PinIcon({ className = '' }) {
 
 /* ── Template ────────────────────────────────────────────────────────────── */
 
-export default function BohoPampasWedding({ values, styles }) {
+export default function BohoPampasWedding({ values }) {
   const { t } = useI18n()
   const bride = values.brideName?.trim() || 'Anushka'
   const groom = values.groomName?.trim() || 'Lokesh'
-  const brideStyle = slotInlineStyle({ ...bohoStyleSlots.brideName, ...styles?.brideName })
-  const groomStyle = slotInlineStyle({ ...bohoStyleSlots.groomName, ...styles?.groomName })
   const date = fancyDate(values.weddingDate, 'Date to be announced')
   const time = fancyTime(values.time, '')
   const venue = values.venue?.trim() || '123 Anywhere St., Any City, ST 12345'
@@ -287,10 +274,10 @@ export default function BohoPampasWedding({ values, styles }) {
             {t('template.common.togetherWithFamilies', 'Together with their families')}
           </p>
 
-          <div className="mt-6 w-full leading-none">
-            <h1 className="w-full leading-[0.9]" style={brideStyle}>{bride}</h1>
+          <div className="mt-6 leading-none">
+            <h1 className="font-script text-[68px] leading-[0.9]">{bride}</h1>
             <p className="font-script text-[40px] leading-[0.7] text-[#a9824c]">&amp;</p>
-            <h1 className="w-full leading-[0.9]" style={groomStyle}>{groom}</h1>
+            <h1 className="font-script text-[68px] leading-[0.9]">{groom}</h1>
           </div>
 
           <p className="mt-7 max-w-[16rem] text-[19px] leading-snug">
