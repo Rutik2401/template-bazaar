@@ -32,6 +32,12 @@ export default function Navbar() {
           >
             {t('nav.howItWorks', 'How it works')}
           </Link>
+          <Link
+            href="/#faq"
+            className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-ink-soft transition-colors hover:bg-slate-100 hover:text-ink md:inline-flex"
+          >
+            {t('faq.badge', 'FAQ')}
+          </Link>
 
           <span aria-hidden className="mx-1 hidden h-5 w-px bg-slate-200 sm:block" />
 

@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import Layout from '@/components/Layout.jsx'
 import CategoryCard from '@/components/CategoryCard.jsx'
+import FeatureShowcase from '@/components/FeatureShowcase.jsx'
+import Faq from '@/components/Faq.jsx'
 import { categories } from '@/data/categories'
 import { useI18n } from '@/i18n/I18nProvider'
 
@@ -105,6 +107,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Feature showcase — how the editor feels */}
+      <FeatureShowcase />
+
       {/* How it works */}
       <section id="how-it-works" className="container-page mt-24 scroll-mt-24">
         <h2 className="text-center font-display text-2xl font-bold text-ink sm:text-3xl">
@@ -140,6 +145,9 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* FAQ */}
+      <Faq />
 
       {/* Closing call-to-action */}
       <section className="container-page mt-24">
