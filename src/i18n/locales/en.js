@@ -29,7 +29,7 @@ export const en = {
 
   home: {
     badge: '🪔 India\'s handcrafted template marketplace',
-    heroTitle: 'Every celebration deserves the Bazaar',
+    heroTitle: 'Beautiful templates for every celebration',
     heroSubtitle:
       'From shaadi invites and baras cards to festive wishes, biodatas and job-ready resumes — browse a vibrant bazaar of designer templates, make it yours, and download in minutes.',
     ctaPrimary: 'Explore the bazaar',
