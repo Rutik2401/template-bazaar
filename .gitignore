@@ -28,4 +28,6 @@ Thumbs.db
 next-env.d.ts
 .vercel
 
-.vercel
+# local scratch / dev tooling (screenshots etc.)
+_shot.mjs
+_shots/
