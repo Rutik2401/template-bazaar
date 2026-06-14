@@ -41,7 +41,7 @@ function Sparkle({ className = '' }) {
  */
 export default function RingEngagement({ values }) {
   const { t } = useI18n()
-  const couple = values.coupleName?.trim() || 'Priya & Arjun'
+  const couple = values.coupleName?.trim() || 'Laksh & Anushka'
   const date = formatDate(values.date, 'Date to be announced')
   const time = formatTime(values.time, '')
   const venue = values.venue?.trim() || 'Hotel Grand, Pune'

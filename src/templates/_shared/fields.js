@@ -14,8 +14,8 @@
  */
 
 export const weddingFields = [
-  { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Priya', defaultValue: 'Priya' },
-  { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Arjun', defaultValue: 'Arjun' },
+  { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Anushka', defaultValue: 'Anushka' },
+  { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Laksh', defaultValue: 'Laksh' },
   { name: 'weddingDate', label: 'Wedding Date', type: 'date', defaultValue: '2025-12-15' },
   { name: 'time', label: 'Time', type: 'time', defaultValue: '11:00' },
   { name: 'venue', label: 'Venue', type: 'text', placeholder: 'The Grand Palace, Jaipur', defaultValue: 'The Grand Palace, Jaipur' },
@@ -23,7 +23,7 @@ export const weddingFields = [
 ]
 
 export const engagementFields = [
-  { name: 'coupleName', label: 'Couple Name', type: 'text', placeholder: 'Priya & Arjun', defaultValue: 'Priya & Arjun' },
+  { name: 'coupleName', label: 'Couple Name', type: 'text', placeholder: 'Laksh & Anushka', defaultValue: 'Laksh & Anushka' },
   { name: 'date', label: 'Date', type: 'date', defaultValue: '2025-11-20' },
   { name: 'time', label: 'Time', type: 'time', defaultValue: '18:00' },
   { name: 'venue', label: 'Venue', type: 'text', placeholder: 'Hotel Grand, Pune', defaultValue: 'Hotel Grand, Pune' },

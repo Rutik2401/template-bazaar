@@ -30,8 +30,8 @@ export const weddingRoyalTemplate = {
   height: 900,
   Preview: RoyalWeddingTemplate,
   fields: [
-    { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Priya', defaultValue: 'Priya' },
-    { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Arjun', defaultValue: 'Arjun' },
+    { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Anushka', defaultValue: 'Anushka' },
+    { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Laksh', defaultValue: 'Laksh' },
     { name: 'weddingDate', label: 'Wedding Date', type: 'date', defaultValue: '2025-12-15' },
     {
       name: 'venue',

@@ -47,8 +47,8 @@ function Divider({ className = '' }) {
  */
 export default function RoyalWeddingTemplate({ values }) {
   const { t } = useI18n()
-  const brideName = values.brideName?.trim() || 'Priya'
-  const groomName = values.groomName?.trim() || 'Arjun'
+  const brideName = values.brideName?.trim() || 'Anushka'
+  const groomName = values.groomName?.trim() || 'Laksh'
   const weddingDate = formatDate(values.weddingDate, 'Date to be announced')
   const venue = values.venue?.trim() || 'The Grand Palace, Jaipur'
   const familyName = values.familyName?.trim() || 'The Sharma Family'

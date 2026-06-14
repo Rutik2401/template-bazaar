@@ -51,8 +51,8 @@ function DecoRule({ className = '' }) {
  */
 export default function LuxuryWedding({ values }) {
   const { t } = useI18n()
-  const bride = values.brideName?.trim() || 'Priya'
-  const groom = values.groomName?.trim() || 'Arjun'
+  const bride = values.brideName?.trim() || 'Anushka'
+  const groom = values.groomName?.trim() || 'Laksh'
   const date = formatDate(values.weddingDate, 'Date to be announced')
   const time = formatTime(values.time, '')
   const venue = values.venue?.trim() || 'The Grand Palace, Jaipur'

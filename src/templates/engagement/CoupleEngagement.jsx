@@ -31,7 +31,7 @@ function Crest({ className = '' }) {
  */
 export default function CoupleEngagement({ values }) {
   const { t } = useI18n()
-  const couple = values.coupleName?.trim() || 'Priya & Arjun'
+  const couple = values.coupleName?.trim() || 'Laksh & Anushka'
   const date = formatDate(values.date, 'Date to be announced')
   const time = formatTime(values.time, '')
   const venue = values.venue?.trim() || 'Hotel Grand, Pune'
