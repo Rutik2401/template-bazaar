@@ -244,7 +244,7 @@ function PinIcon({ className = '' }) {
 
 export default function BohoPampasWedding({ values }) {
   const { t } = useI18n()
-  const bride = values.brideName?.trim() || 'Anushka'
+  const bride = values.brideName?.trim() || 'Sanika'
   const groom = values.groomName?.trim() || 'Lokesh'
   const date = fancyDate(values.weddingDate, 'Date to be announced')
   const time = fancyTime(values.time, '')

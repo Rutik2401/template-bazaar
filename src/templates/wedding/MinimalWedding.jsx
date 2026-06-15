@@ -10,7 +10,7 @@ import { useI18n } from '@/i18n/I18nProvider'
  */
 export default function MinimalWedding({ values }) {
   const { t } = useI18n()
-  const bride = values.brideName?.trim() || 'Anushka'
+  const bride = values.brideName?.trim() || 'Sanika'
   const groom = values.groomName?.trim() || 'Lokesh'
   const date = formatDate(values.weddingDate, 'Date to be announced')
   const time = formatTime(values.time, '')
