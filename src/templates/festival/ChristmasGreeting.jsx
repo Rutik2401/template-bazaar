@@ -8,20 +8,25 @@ import { useI18n } from '@/i18n/I18nProvider'
 function ChristmasTree({ className = '' }) {
   return (
     <svg viewBox="0 0 140 200" className={className} fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round">
+      {/* glow behind the star */}
+      <circle cx="70" cy="16" r="22" fill="#fde68a" fillOpacity="0.3" stroke="none" />
       {/* star topper */}
       <path d="M70 6l5 13 14 .7-11 9 4 14-12-8-12 8 4-14-11-9 14-.7 5-13Z" fill="#fcd34d" stroke="#f59e0b" />
       {/* tiers */}
-      <path d="M70 36l34 46H36l34-46Z" fill="currentColor" fillOpacity="0.85" />
-      <path d="M70 64l40 52H30l40-52Z" fill="currentColor" fillOpacity="0.85" />
-      <path d="M70 96l46 60H24l46-60Z" fill="currentColor" fillOpacity="0.85" />
+      <path d="M70 36l34 46H36l34-46Z" fill="currentColor" fillOpacity="0.88" />
+      <path d="M70 64l40 52H30l40-52Z" fill="currentColor" fillOpacity="0.88" />
+      <path d="M70 96l46 60H24l46-60Z" fill="currentColor" fillOpacity="0.88" />
+      {/* tinsel garlands */}
+      <path d="M48 76c10 6 24 6 36 0M40 108c14 8 32 8 46 0M32 144c18 9 40 9 58 0" stroke="#fde68a" strokeWidth="1" opacity="0.55" />
       {/* trunk */}
       <path d="M60 156h20v22H60Z" fill="#7c4a1e" stroke="none" />
       {/* baubles */}
-      <circle cx="58" cy="78" r="3.4" fill="#dc2626" stroke="none" />
-      <circle cx="84" cy="106" r="3.4" fill="#fcd34d" stroke="none" />
-      <circle cx="56" cy="120" r="3.4" fill="#fcd34d" stroke="none" />
-      <circle cx="88" cy="138" r="3.4" fill="#dc2626" stroke="none" />
-      <circle cx="60" cy="146" r="3.4" fill="#fcd34d" stroke="none" />
+      <circle cx="58" cy="78" r="3.6" fill="#dc2626" stroke="none" />
+      <circle cx="84" cy="106" r="3.6" fill="#fcd34d" stroke="none" />
+      <circle cx="56" cy="120" r="3.6" fill="#fcd34d" stroke="none" />
+      <circle cx="88" cy="138" r="3.6" fill="#dc2626" stroke="none" />
+      <circle cx="60" cy="146" r="3.6" fill="#fcd34d" stroke="none" />
+      <circle cx="78" cy="150" r="3" fill="#dc2626" stroke="none" />
     </svg>
   )
 }
@@ -73,17 +78,21 @@ export default function ChristmasGreeting({ values }) {
       className="relative flex h-[900px] w-[720px] flex-col items-center justify-between overflow-hidden bg-[#0a2e22] px-16 py-16 text-center font-serif text-emerald-50"
     >
       {/* forest gradient + warm hearth glow */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0f3d2e] via-[#0a2e22] to-[#071f18]" />
-      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_50%_82%,rgba(220,38,38,0.22),transparent_48%)]" />
-      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_50%_26%,rgba(252,211,77,0.22),transparent_48%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#124a37] via-[#0a2e22] to-[#061a14]" />
+      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_50%_58%,rgba(252,211,77,0.26),transparent_42%)]" />
+      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_50%_88%,rgba(220,38,38,0.24),transparent_48%)]" />
+      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_50%_22%,rgba(252,211,77,0.22),transparent_48%)]" />
 
       {/* falling snow */}
-      <Snowflake className="pointer-events-none absolute left-14 top-28 h-8 w-8 text-white/70" />
+      <Snowflake className="pointer-events-none absolute left-14 top-28 h-8 w-8 text-white/75" />
       <Snowflake className="pointer-events-none absolute right-16 top-20 h-6 w-6 text-white/55" />
       <Snowflake className="pointer-events-none absolute left-1/3 top-12 h-5 w-5 text-white/50" />
       <Snowflake className="pointer-events-none absolute right-24 top-52 h-7 w-7 text-white/45" />
+      <Snowflake className="pointer-events-none absolute left-20 top-[420px] h-5 w-5 text-white/40" />
+      <Snowflake className="pointer-events-none absolute right-20 top-[480px] h-6 w-6 text-white/35" />
       <div className="pointer-events-none absolute left-24 top-44 text-white/60">·</div>
       <div className="pointer-events-none absolute right-1/3 top-36 text-lg text-white/50">·</div>
+      <div className="pointer-events-none absolute left-1/2 top-64 text-white/45">·</div>
 
       {/* gold frame */}
       <div className="pointer-events-none absolute inset-6 rounded-md border border-gold-300/55" />
@@ -107,18 +116,18 @@ export default function ChristmasGreeting({ values }) {
           </span>
         </h1>
         <div className="mt-4 flex items-center gap-3 text-rose-300">
-          <span className="h-px w-12 bg-rose-300/70" />
+          <span className="h-px w-12 bg-gradient-to-r from-transparent to-rose-300/70" />
           <span className="text-lg">❄</span>
-          <span className="h-px w-12 bg-rose-300/70" />
+          <span className="h-px w-12 bg-gradient-to-l from-transparent to-rose-300/70" />
         </div>
       </header>
 
       {/* Tree */}
-      <ChristmasTree className="relative h-52 w-40 text-emerald-300" />
+      <ChristmasTree className="relative h-52 w-40 text-emerald-300 [filter:drop-shadow(0_4px_18px_rgba(252,211,77,0.3))]" />
 
       {/* Message */}
       <main className="relative max-w-[27rem]">
-        <p className="text-[19px] italic leading-relaxed text-emerald-50/95">{message}</p>
+        <p className="text-[20px] italic leading-relaxed text-emerald-50/95">{message}</p>
       </main>
 
       {/* Footer */}

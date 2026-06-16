@@ -5,15 +5,17 @@ import { formatDate, formatTime, toList } from '@/utils/format'
 
 /* Deterministic star field — fixed positions so the live preview never jumps. */
 const STARS = [
-  { x: 12, y: 14, s: 18, o: 0.9 },
-  { x: 86, y: 10, s: 24, o: 0.95 },
-  { x: 50, y: 6, s: 14, o: 0.7 },
-  { x: 24, y: 30, s: 12, o: 0.6 },
-  { x: 78, y: 34, s: 16, o: 0.8 },
-  { x: 8, y: 46, s: 14, o: 0.65 },
-  { x: 92, y: 54, s: 18, o: 0.85 },
-  { x: 18, y: 68, s: 12, o: 0.6 },
-  { x: 70, y: 18, s: 11, o: 0.55 },
+  { x: 12, y: 13, s: 20, o: 0.95 },
+  { x: 86, y: 9, s: 26, o: 1 },
+  { x: 50, y: 5, s: 15, o: 0.75 },
+  { x: 24, y: 29, s: 13, o: 0.6 },
+  { x: 78, y: 33, s: 17, o: 0.85 },
+  { x: 7, y: 45, s: 14, o: 0.65 },
+  { x: 93, y: 53, s: 19, o: 0.9 },
+  { x: 17, y: 67, s: 12, o: 0.6 },
+  { x: 70, y: 17, s: 11, o: 0.55 },
+  { x: 38, y: 20, s: 10, o: 0.5 },
+  { x: 62, y: 44, s: 12, o: 0.55 },
 ]
 
 function Star({ size = 16, color = '#fde047' }) {
@@ -24,26 +26,66 @@ function Star({ size = 16, color = '#fde047' }) {
   )
 }
 
-function GradCap({ className = '' }) {
+function Sparkle({ className = '', color = '#ffffff' }) {
   return (
-    <svg viewBox="0 0 120 90" className={className} fill="none">
-      <path d="M60 8 6 30l54 22 54-22L60 8Z" fill="#1d4ed8" />
-      <path d="M60 8 6 30l54 22 54-22L60 8Z" fill="#3b82f6" fillOpacity="0.35" />
-      <path d="M30 40v20c0 7 13 13 30 13s30-6 30-13V40L60 56 30 40Z" fill="#1e40af" />
-      <line x1="114" y1="30" x2="114" y2="58" stroke="#fde047" strokeWidth="3" strokeLinecap="round" />
-      <circle cx="114" cy="60" r="6" fill="#fde047" />
+    <svg viewBox="0 0 24 24" className={className} fill={color}>
+      <path d="M12 0c.8 5.8 5.4 10.4 11.2 11.2C17.4 12 12.8 16.6 12 22.4 11.2 16.6 6.6 12 0.8 11.2 6.6 10.4 11.2 5.8 12 0Z" />
     </svg>
   )
 }
 
-function Book({ className = '', spine = '#f59e0b', cover = '#fbbf24' }) {
+function GradCap({ className = '' }) {
   return (
-    <svg viewBox="0 0 90 70" className={className} fill="none">
-      <rect x="6" y="10" width="78" height="52" rx="5" fill={cover} />
-      <rect x="6" y="10" width="14" height="52" rx="5" fill={spine} />
-      <line x1="30" y1="24" x2="74" y2="24" stroke="#fff" strokeOpacity="0.7" strokeWidth="3" strokeLinecap="round" />
-      <line x1="30" y1="36" x2="74" y2="36" stroke="#fff" strokeOpacity="0.55" strokeWidth="3" strokeLinecap="round" />
-      <line x1="30" y1="48" x2="62" y2="48" stroke="#fff" strokeOpacity="0.45" strokeWidth="3" strokeLinecap="round" />
+    <svg viewBox="0 0 130 100" className={className} fill="none">
+      <defs>
+        <linearGradient id="sf-cap" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#3b82f6" />
+          <stop offset="1" stopColor="#1d4ed8" />
+        </linearGradient>
+        <linearGradient id="sf-tassel" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#fde047" />
+          <stop offset="1" stopColor="#f59e0b" />
+        </linearGradient>
+      </defs>
+      {/* mortarboard */}
+      <path d="M65 12 8 36l57 24 57-24L65 12Z" fill="url(#sf-cap)" />
+      <path d="M65 12 8 36l57 24 57-24L65 12Z" fill="#60a5fa" fillOpacity="0.3" />
+      <path d="M65 12 8 36l11 4.6L65 22l46-4.4L65 12Z" fill="#ffffff" fillOpacity="0.18" />
+      {/* cap base */}
+      <path d="M33 46v22c0 8 14 14 32 14s32-6 32-14V46L65 60 33 46Z" fill="#1e40af" />
+      <path d="M33 46v22c0 8 14 14 32 14s32-6 32-14V46" stroke="#1d4ed8" strokeOpacity="0.6" strokeWidth="1.5" />
+      {/* button */}
+      <circle cx="65" cy="34" r="4.5" fill="#fde047" />
+      {/* tassel */}
+      <path d="M65 34c20 0 53 0 53 2v22" stroke="url(#sf-tassel)" strokeWidth="3" strokeLinecap="round" />
+      <path d="M118 58l-4 14M118 58l0 14M118 58l4 14" stroke="url(#sf-tassel)" strokeWidth="2.4" strokeLinecap="round" />
+      <circle cx="118" cy="56" r="5.5" fill="#fde047" />
+      <circle cx="116" cy="54" r="1.6" fill="#fffbeb" />
+    </svg>
+  )
+}
+
+function Book({ className = '', spine = '#f59e0b', cover = '#fbbf24', edge = '#fff7ed' }) {
+  return (
+    <svg viewBox="0 0 96 74" className={className} fill="none">
+      <rect x="8" y="12" width="80" height="54" rx="6" fill={cover} />
+      <rect x="8" y="12" width="80" height="54" rx="6" fill="#000000" fillOpacity="0.05" />
+      <rect x="8" y="12" width="15" height="54" rx="6" fill={spine} />
+      <rect x="80" y="14" width="8" height="50" rx="3" fill={edge} fillOpacity="0.9" />
+      <line x1="33" y1="26" x2="76" y2="26" stroke="#fff" strokeOpacity="0.8" strokeWidth="3" strokeLinecap="round" />
+      <line x1="33" y1="39" x2="76" y2="39" stroke="#fff" strokeOpacity="0.6" strokeWidth="3" strokeLinecap="round" />
+      <line x1="33" y1="52" x2="64" y2="52" stroke="#fff" strokeOpacity="0.5" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function Pencil({ className = '' }) {
+  return (
+    <svg viewBox="0 0 90 24" className={className} fill="none">
+      <path d="M4 12h66" stroke="#f59e0b" strokeWidth="16" strokeLinecap="round" />
+      <path d="M70 4l16 8-16 8V4Z" fill="#fbbf24" />
+      <path d="M78 8l8 4-8 4V8Z" fill="#1f2937" />
+      <rect x="2" y="4" width="14" height="16" rx="5" fill="#f472b6" />
     </svg>
   )
 }
@@ -64,38 +106,63 @@ export default function SchoolFarewell({ values }) {
   return (
     <div
       data-export-root
-      className="relative h-[900px] w-[640px] overflow-hidden bg-gradient-to-b from-sky-400 via-sky-300 to-amber-100 font-sans text-sky-950"
+      className="relative h-[900px] w-[640px] overflow-hidden bg-gradient-to-b from-sky-500 via-sky-300 to-amber-100 font-sans text-sky-950"
     >
       {/* sky glow + sun */}
-      <div className="absolute -right-16 -top-16 h-72 w-72 rounded-full bg-yellow-300/60 blur-3xl" />
-      <div className="absolute -left-20 top-32 h-64 w-64 rounded-full bg-white/40 blur-3xl" />
+      <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-yellow-300/70 blur-3xl" />
+      <div className="absolute -left-24 top-28 h-64 w-64 rounded-full bg-white/50 blur-3xl" />
+      <div className="absolute bottom-0 left-1/2 h-72 w-[120%] -translate-x-1/2 rounded-[50%] bg-amber-50/60 blur-2xl" />
+
+      {/* rolling hill at the base */}
+      <svg viewBox="0 0 640 200" preserveAspectRatio="none" className="pointer-events-none absolute bottom-0 left-0 h-44 w-full" fill="none">
+        <path d="M0 120C140 70 240 150 360 110S560 60 640 120V200H0V120Z" fill="#bef264" fillOpacity="0.55" />
+        <path d="M0 150C160 110 260 180 400 140S580 110 640 160V200H0V150Z" fill="#86efac" fillOpacity="0.6" />
+      </svg>
+
+      {/* soft cloud */}
+      <svg viewBox="0 0 160 60" className="pointer-events-none absolute left-10 top-40 h-12 w-32 opacity-80" fill="#ffffff">
+        <ellipse cx="48" cy="38" rx="40" ry="20" />
+        <ellipse cx="90" cy="30" rx="34" ry="24" />
+        <ellipse cx="120" cy="40" rx="30" ry="18" />
+      </svg>
 
       {/* scattered stars */}
       {STARS.map((p, i) => (
-        <span key={i} className="absolute block" style={{ left: `${p.x}%`, top: `${p.y}%`, opacity: p.o }}>
+        <span key={i} className="absolute block drop-shadow-[0_1px_2px_rgba(245,158,11,0.4)]" style={{ left: `${p.x}%`, top: `${p.y}%`, opacity: p.o }}>
           <Star size={p.s} color="#fde047" />
         </span>
       ))}
+      <Sparkle className="absolute left-[30%] top-[12%] h-5 w-5 opacity-80" color="#ffffff" />
+      <Sparkle className="absolute right-[14%] top-[40%] h-4 w-4 opacity-70" color="#fffbeb" />
 
-      {/* floating books */}
-      <Book className="absolute left-6 top-[58%] h-16 w-20 -rotate-12 drop-shadow-md" spine="#ea580c" cover="#fb923c" />
-      <Book className="absolute right-4 top-[50%] h-14 w-[72px] rotate-12 drop-shadow-md" spine="#0369a1" cover="#38bdf8" />
+      {/* floating school motifs */}
+      <Book className="absolute left-4 top-[60%] h-16 w-20 -rotate-12 drop-shadow-lg" spine="#ea580c" cover="#fb923c" edge="#fff7ed" />
+      <Book className="absolute right-3 top-[52%] h-14 w-[74px] rotate-12 drop-shadow-lg" spine="#0369a1" cover="#38bdf8" edge="#e0f2fe" />
+      <Pencil className="absolute right-7 top-[70%] h-8 w-28 rotate-[8deg] drop-shadow-md" />
 
       <div className="relative flex h-full flex-col items-center justify-between px-12 py-14 text-center">
         <header className="mt-2">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-5 py-2 text-xs font-bold uppercase tracking-[0.35em] text-sky-700 shadow-sm">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-6 py-2 text-xs font-extrabold uppercase tracking-[0.35em] text-sky-700 shadow-md ring-1 ring-inset ring-sky-200">
             <span aria-hidden>📚</span> {organizerName}
           </span>
         </header>
 
         {/* hero cap + title */}
         <main className="flex flex-col items-center">
-          <GradCap className="h-28 w-36 drop-shadow-lg" />
-          <p className="mt-6 text-lg font-semibold text-sky-700">{t('common.youreInvited') || "You're invited to"}</p>
-          <h1 className="mt-2 font-display text-[68px] font-black leading-[0.9] text-sky-900 drop-shadow-sm">
+          <div className="relative">
+            <div className="absolute inset-0 -z-10 m-auto h-32 w-32 rounded-full bg-white/40 blur-2xl" />
+            <GradCap className="h-32 w-40 drop-shadow-[0_14px_22px_rgba(29,78,216,0.35)]" />
+          </div>
+          <p className="mt-7 text-base font-bold uppercase tracking-[0.3em] text-sky-700/90">{t('common.youreInvited') || "You're invited to"}</p>
+          <h1 className="mt-3 font-display text-[72px] font-black leading-[0.9] tracking-tight text-sky-900 drop-shadow-[0_2px_6px_rgba(255,255,255,0.6)]">
             {eventName}
           </h1>
-          <p className="mt-5 max-w-sm text-base font-medium text-sky-700">
+          <span className="mt-5 flex items-center gap-2">
+            <span className="h-1 w-8 rounded-full bg-amber-400" />
+            <Star size={14} color="#f59e0b" />
+            <span className="h-1 w-8 rounded-full bg-amber-400" />
+          </span>
+          <p className="mt-5 max-w-sm text-base font-medium leading-relaxed text-sky-800">
             A heartfelt send-off filled with memories, laughter and a few happy tears.
           </p>
         </main>
@@ -106,8 +173,8 @@ export default function SchoolFarewell({ values }) {
             <Detail icon="📅" label="When" value={`${date} · ${time}`} />
             <Detail icon="📍" label="Where" value={venue} />
           </div>
-          <p className="mt-7 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-[0.3em] text-amber-600">
-            <span aria-hidden>⭐</span> Goodbye & Good Luck <span aria-hidden>⭐</span>
+          <p className="mt-7 flex items-center justify-center gap-2.5 text-sm font-extrabold uppercase tracking-[0.3em] text-amber-600">
+            <span aria-hidden>⭐</span> Goodbye &amp; Good Luck <span aria-hidden>⭐</span>
           </p>
         </footer>
       </div>
@@ -117,12 +184,12 @@ export default function SchoolFarewell({ values }) {
 
 function Detail({ icon, label, value }) {
   return (
-    <div className="flex items-center gap-4 rounded-2xl bg-white/80 px-5 py-4 text-left shadow-sm backdrop-blur-sm">
-      <span className="text-2xl" aria-hidden>
+    <div className="flex items-center gap-4 rounded-2xl bg-white/85 px-5 py-4 text-left shadow-[0_10px_28px_-14px_rgba(2,132,199,0.55)] ring-1 ring-inset ring-white/80 backdrop-blur-sm">
+      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-sky-100 to-amber-100 text-2xl ring-1 ring-inset ring-sky-200" aria-hidden>
         {icon}
       </span>
       <div>
-        <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-sky-500">{label}</p>
+        <p className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-sky-500">{label}</p>
         <p className="text-lg font-bold leading-snug text-sky-900">{value}</p>
       </div>
     </div>

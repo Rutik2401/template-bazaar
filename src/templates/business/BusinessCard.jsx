@@ -29,15 +29,21 @@ export default function BusinessCard({ values }) {
         <div className="absolute -bottom-20 -right-10 h-56 w-56 rounded-full bg-cyan-400/20 blur-3xl" />
         {/* fine grid lines */}
         <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] [background-size:34px_34px]" />
+        {/* faint concentric corner arcs */}
+        <svg viewBox="0 0 120 120" className="absolute -bottom-6 -left-6 h-40 w-40 text-cyan-400/10" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="0" cy="120" r="44" />
+          <circle cx="0" cy="120" r="74" />
+          <circle cx="0" cy="120" r="104" />
+        </svg>
 
         <div className="relative flex flex-col items-center">
-          <div className="grid h-28 w-28 place-items-center rounded-3xl bg-white/10 ring-1 ring-white/25 backdrop-blur-sm">
-            <span className="font-display text-6xl font-bold text-white">{monogram}</span>
+          <div className="grid h-28 w-28 place-items-center rounded-3xl bg-white/10 ring-1 ring-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-sm">
+            <span className="font-display text-6xl font-bold leading-none text-white">{monogram}</span>
           </div>
-          <p className="mt-6 px-8 text-center font-display text-[28px] font-semibold leading-tight tracking-wide">
+          <p className="mt-7 px-8 text-center font-display text-[27px] font-semibold leading-tight tracking-[0.01em]">
             {company}
           </p>
-          <span className="mt-4 h-[3px] w-14 rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400" />
+          <span className="mt-5 h-[3px] w-16 rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400" />
         </div>
       </div>
 
@@ -46,15 +52,18 @@ export default function BusinessCard({ values }) {
 
       {/* ── Right content ───────────────────────────────────────────────── */}
       <div className="relative flex flex-1 flex-col justify-center px-16">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.4em] text-indigo-500">
-          {t('template.common.contactUs', 'Contact')}
-        </p>
-        <h1 className="mt-3 text-[46px] font-extrabold leading-none text-slate-900">{name}</h1>
-        <p className="mt-3 text-[16px] font-semibold uppercase tracking-[0.22em] text-slate-500">
+        <div className="flex items-center gap-3">
+          <span className="h-[2px] w-7 rounded-full bg-gradient-to-r from-cyan-400 to-indigo-500" />
+          <p className="text-[12px] font-semibold uppercase tracking-[0.4em] text-indigo-500">
+            {t('template.common.contactUs', 'Contact')}
+          </p>
+        </div>
+        <h1 className="mt-4 text-[46px] font-extrabold leading-[1.02] tracking-[-0.01em] text-slate-900">{name}</h1>
+        <p className="mt-3 text-[15px] font-semibold uppercase tracking-[0.24em] text-slate-500">
           {designation}
         </p>
 
-        <div className="mt-9 h-px w-full bg-slate-200" />
+        <div className="mt-9 h-px w-full bg-gradient-to-r from-slate-200 via-slate-200 to-transparent" />
 
         <div className="mt-9 space-y-4 text-[16px] text-slate-600">
           <div className="flex items-center gap-4">

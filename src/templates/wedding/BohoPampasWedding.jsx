@@ -261,8 +261,10 @@ export default function BohoPampasWedding({ values }) {
         <GoldDust className="pointer-events-none absolute -left-2 -top-2 h-44 w-44" />
         <GoldDust className="pointer-events-none absolute -bottom-2 -right-2 h-44 w-44 [transform:rotate(180deg)]" />
 
-        {/* Off-white arch panel */}
+        {/* Off-white arch panel + fine gilt keyline */}
         <div className="absolute inset-x-[44px] inset-y-[42px] rounded-t-[210px] rounded-b-[20px] bg-[#f5efe1] shadow-[0_2px_18px_rgba(120,90,40,0.10)]" />
+        <div className="pointer-events-none absolute inset-x-[54px] inset-y-[52px] rounded-t-[200px] rounded-b-[16px] border border-[#c8a24a]/45" />
+        <div className="pointer-events-none absolute inset-x-[60px] inset-y-[58px] rounded-t-[194px] rounded-b-[14px] border border-[#cba45a]/25" />
 
         {/* Florals over the arch (top-right + mirrored bottom-left) */}
         <BohoBouquet className="pointer-events-none absolute right-[6px] top-[44px] h-[280px] w-[280px]" />
@@ -270,14 +272,16 @@ export default function BohoPampasWedding({ values }) {
 
         {/* Content */}
         <div className="absolute inset-x-[64px] inset-y-[42px] z-10 flex flex-col items-center justify-center text-center">
-          <p className="max-w-[15rem] text-[13px] font-medium uppercase leading-relaxed tracking-[0.22em]">
+          <p className="max-w-[15rem] text-[12px] font-medium uppercase leading-relaxed tracking-[0.32em]">
             {t('template.common.togetherWithFamilies', 'Together with their families')}
           </p>
 
-          <div className="mt-6 leading-none">
-            <h1 className="font-script text-[68px] leading-[0.9]">{bride}</h1>
-            <p className="font-script text-[40px] leading-[0.7] text-[#a9824c]">&amp;</p>
-            <h1 className="font-script text-[68px] leading-[0.9]">{groom}</h1>
+          <span aria-hidden className="mt-3 text-[14px] tracking-[0.5em] text-[#bb9450]">• ❦ •</span>
+
+          <div className="mt-4 leading-none">
+            <h1 className="font-script text-[70px] leading-[0.88]">{bride}</h1>
+            <p className="my-0.5 font-script text-[42px] leading-[0.7] text-[#a9824c]">&amp;</p>
+            <h1 className="font-script text-[70px] leading-[0.88]">{groom}</h1>
           </div>
 
           <p className="mt-7 max-w-[16rem] text-[19px] leading-snug">

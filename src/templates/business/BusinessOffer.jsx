@@ -43,14 +43,18 @@ export default function BusinessOffer({ values }) {
       <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full border-[16px] border-dashed border-white/20" />
       <div className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full border-[16px] border-dashed border-white/20" />
 
+      {/* soft top/bottom vignette for legibility */}
+      <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-black/25 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-black/30 to-transparent" />
+
       {/* ── Content ─────────────────────────────────────────────────────── */}
       <div className="relative flex h-full flex-col items-center px-14 py-16 text-center">
         {/* header pill */}
-        <p className="rounded-full bg-black/25 px-7 py-2.5 text-[14px] font-extrabold uppercase tracking-[0.4em] text-white backdrop-blur-sm">
+        <p className="rounded-full bg-black/30 px-7 py-2.5 text-[14px] font-extrabold uppercase tracking-[0.42em] text-white ring-1 ring-white/20 backdrop-blur-sm">
           {t('template.common.specialOffer', 'Special Offer')}
         </p>
 
-        <p className="mt-6 font-display text-[30px] font-bold tracking-wide text-white/95">{business}</p>
+        <p className="mt-7 font-display text-[30px] font-bold tracking-[0.01em] text-white/95 drop-shadow-sm">{business}</p>
 
         {/* the big offer badge */}
         <div className="relative mt-10 flex h-[340px] w-[340px] items-center justify-center">
@@ -69,7 +73,7 @@ export default function BusinessOffer({ values }) {
             <circle cx="100" cy="100" r="74" fill="none" stroke="#ffb800" strokeWidth="3" strokeDasharray="4 6" />
           </svg>
           <div className="relative flex flex-col items-center">
-            <span className="font-display text-[88px] font-black uppercase leading-[0.9] tracking-tighter">
+            <span className="font-display text-[88px] font-black uppercase leading-[0.88] tracking-tighter drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
               <span
                 data-pdf-color="#ffd24d"
                 className="bg-gradient-to-b from-amber-200 via-amber-300 to-orange-400 bg-clip-text text-transparent"
@@ -81,7 +85,7 @@ export default function BusinessOffer({ values }) {
         </div>
 
         {/* details */}
-        <p className="mt-10 max-w-[26rem] text-[19px] font-medium leading-snug text-white/95">
+        <p className="mt-10 max-w-[24rem] text-[19px] font-medium leading-relaxed text-white drop-shadow-sm">
           {offerDetails}
         </p>
 

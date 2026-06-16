@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Layout from '@/components/Layout.jsx'
 import CategoryCard from '@/components/CategoryCard.jsx'
+import PremiumCollection from '@/components/PremiumCollection.jsx'
 import FeatureShowcase from '@/components/FeatureShowcase.jsx'
 import Faq from '@/components/Faq.jsx'
 import { categories } from '@/data/categories'
@@ -104,9 +105,15 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Premium Collection — flagship Wedding & Engagement showcase */}
+      <PremiumCollection />
+
       {/* Category cards */}
       <section className="container-page mt-16 sm:mt-20">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <h2 className="text-center font-display text-2xl font-bold text-ink sm:text-3xl">
+          {t('home.allCategories', 'Browse all categories')}
+        </h2>
+        <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category, i) => (
             <CategoryCard key={category.id} category={category} index={i} />
           ))}

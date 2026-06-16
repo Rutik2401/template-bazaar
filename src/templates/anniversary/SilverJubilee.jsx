@@ -18,16 +18,26 @@ function Wreath({ className = '' }) {
     <svg viewBox="0 0 200 120" className={className} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
       <path d="M100 116C58 116 28 92 24 54" />
       <path d="M100 116c42 0 72-24 76-62" />
-      {Array.from({ length: 7 }).map((_, i) => {
-        const t = i / 6
-        const lx = 24 + (76 - 24) * t * 0.0 // anchor reference (unused offset)
-        return (
-          <g key={i} opacity={0.85}>
-            <ellipse cx={26 + i * 12} cy={92 - i * 12} rx="7" ry="3.4" fill="currentColor" fillOpacity="0.3" transform={`rotate(${-40 - i * 6} ${26 + i * 12} ${92 - i * 12})`} />
-            <ellipse cx={174 - i * 12} cy={92 - i * 12} rx="7" ry="3.4" fill="currentColor" fillOpacity="0.3" transform={`rotate(${40 + i * 6} ${174 - i * 12} ${92 - i * 12})`} />
-          </g>
-        )
-      })}
+      {Array.from({ length: 7 }).map((_, i) => (
+        <g key={i} opacity={0.85}>
+          <ellipse cx={26 + i * 12} cy={92 - i * 12} rx="7" ry="3.4" fill="currentColor" fillOpacity="0.3" transform={`rotate(${-40 - i * 6} ${26 + i * 12} ${92 - i * 12})`} />
+          <ellipse cx={174 - i * 12} cy={92 - i * 12} rx="7" ry="3.4" fill="currentColor" fillOpacity="0.3" transform={`rotate(${40 + i * 6} ${174 - i * 12} ${92 - i * 12})`} />
+        </g>
+      ))}
+      <circle cx="100" cy="114" r="3" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function CornerFiligree({ className = '' }) {
+  // fine platinum corner scroll
+  return (
+    <svg viewBox="0 0 110 110" className={className} fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+      <path d="M8 8h40M8 8v40" opacity="0.9" />
+      <path d="M8 26c30 0 48 18 48 48" opacity="0.7" />
+      <path d="M26 8c0 30 18 48 48 48" opacity="0.45" />
+      <circle cx="14" cy="14" r="2.6" fill="currentColor" stroke="none" />
+      <path d="M52 70c10 0 18-8 18-18" opacity="0.5" />
     </svg>
   )
 }
@@ -49,64 +59,84 @@ export default function SilverJubilee({ values }) {
       className="relative h-[900px] w-[640px] overflow-hidden bg-[#14181f] font-display text-slate-200"
     >
       {/* Charcoal gradient base with a cool silver sheen */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1c222c] via-[#14181f] to-[#0c0f14]" />
-      <div className="absolute inset-x-0 top-0 h-[55%] bg-[radial-gradient(ellipse_at_top,rgba(226,232,240,0.16),transparent_60%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#222936] via-[#14181f] to-[#0a0d12]" />
+      <div className="absolute inset-x-0 top-0 h-[58%] bg-[radial-gradient(ellipse_at_top,rgba(226,232,240,0.2),transparent_62%)]" />
+      <div className="absolute left-1/2 top-[40%] h-72 w-[28rem] -translate-x-1/2 bg-[radial-gradient(ellipse,rgba(203,213,225,0.12),transparent_70%)]" />
 
       {/* Platinum top & bottom bands */}
-      <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-r from-[#6b7280] via-[#e5e7eb] to-[#6b7280]" />
-      <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-r from-[#6b7280] via-[#e5e7eb] to-[#6b7280]" />
+      <div className="absolute inset-x-0 top-0 h-7 bg-gradient-to-r from-[#5b626d] via-[#f1f5f9] to-[#5b626d]" />
+      <div className="absolute inset-x-0 top-7 h-px bg-slate-100/40" />
+      <div className="absolute inset-x-0 bottom-0 h-7 bg-gradient-to-r from-[#5b626d] via-[#f1f5f9] to-[#5b626d]" />
+      <div className="absolute inset-x-0 bottom-7 h-px bg-slate-100/40" />
 
       {/* Thin silver double frame */}
-      <div className="absolute inset-x-7 inset-y-12 rounded-lg border border-slate-300/60" />
-      <div className="absolute inset-x-[38px] inset-y-[58px] rounded-md border border-slate-400/30" />
+      <div className="absolute inset-x-7 inset-y-12 rounded-lg border border-slate-300/55" />
+      <div className="absolute inset-x-[38px] inset-y-[58px] rounded-md border border-slate-400/25" />
+
+      {/* Corner filigree */}
+      <CornerFiligree className="absolute left-9 top-[58px] h-12 w-12 text-slate-300/70" />
+      <CornerFiligree className="absolute right-9 top-[58px] h-12 w-12 text-slate-300/70 [transform:scaleX(-1)]" />
+      <CornerFiligree className="absolute bottom-[58px] left-9 h-12 w-12 text-slate-300/70 [transform:scaleY(-1)]" />
+      <CornerFiligree className="absolute bottom-[58px] right-9 h-12 w-12 text-slate-300/70 [transform:scale(-1)]" />
 
       {/* Scattered sparkles */}
-      <Sparkle className="absolute left-14 top-28 h-5 w-5 text-slate-200/70" />
-      <Sparkle className="absolute right-16 top-40 h-3 w-3 text-slate-300/60" />
-      <Sparkle className="absolute left-20 bottom-44 h-4 w-4 text-slate-300/50" />
-      <Sparkle className="absolute right-20 bottom-32 h-5 w-5 text-slate-200/60" />
+      <Sparkle className="absolute left-14 top-32 h-5 w-5 text-slate-200/70" />
+      <Sparkle className="absolute right-16 top-44 h-3 w-3 text-slate-300/60" />
+      <Sparkle className="absolute right-24 top-28 h-2 w-2 text-slate-200/50" />
+      <Sparkle className="absolute left-20 bottom-48 h-4 w-4 text-slate-300/50" />
+      <Sparkle className="absolute right-20 bottom-36 h-5 w-5 text-slate-200/60" />
 
       {/* Content */}
-      <div className="relative flex h-full flex-col items-center justify-between px-16 pb-20 pt-20 text-center">
+      <div className="relative flex h-full flex-col items-center justify-between px-16 pb-20 pt-[76px] text-center">
         <header className="flex flex-col items-center">
-          <p className="text-[12px] uppercase tracking-[0.5em] text-slate-400">Silver Jubilee</p>
+          <p className="text-[12px] font-medium uppercase tracking-[0.52em] text-slate-300/90">Silver Jubilee</p>
           <div className="mt-4 flex items-center gap-3">
-            <span className="h-px w-12 bg-slate-400/60" />
-            <Sparkle className="h-4 w-4 text-slate-200" />
-            <span className="h-px w-12 bg-slate-400/60" />
+            <span className="h-px w-14 bg-gradient-to-r from-transparent to-slate-400/70" />
+            <Sparkle className="h-4 w-4 text-slate-100" />
+            <span className="h-px w-14 bg-gradient-to-l from-transparent to-slate-400/70" />
           </div>
         </header>
 
         <main className="flex flex-col items-center">
           {/* Grand metallic numeral */}
           <div className="relative flex flex-col items-center">
+            <span className="pointer-events-none absolute -top-4 h-48 w-72 bg-[radial-gradient(ellipse,rgba(226,232,240,0.22),transparent_70%)]" />
             <span
-              data-pdf-color="#d7dce3"
-              className="bg-gradient-to-b from-white via-slate-300 to-slate-500 bg-clip-text font-display text-[200px] font-semibold leading-[0.82] text-transparent drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]"
+              data-pdf-color="#e2e8f0"
+              className="bg-gradient-to-b from-white via-slate-200 to-slate-500 bg-clip-text font-display text-[212px] font-semibold leading-[0.8] tracking-tight text-transparent drop-shadow-[0_3px_10px_rgba(0,0,0,0.5)]"
             >
               {years}
             </span>
-            <p className="mt-2 text-[15px] uppercase tracking-[0.42em] text-slate-300">
-              Years of Togetherness
-            </p>
+            <div className="mt-3 flex items-center gap-3">
+              <span className="h-px w-8 bg-slate-400/60" />
+              <p className="text-[15px] font-medium uppercase tracking-[0.44em] text-slate-200">
+                Years of Togetherness
+              </p>
+              <span className="h-px w-8 bg-slate-400/60" />
+            </div>
           </div>
 
-          <div className="mt-10 h-px w-40 bg-gradient-to-r from-transparent via-slate-300/70 to-transparent" />
+          <div className="mt-10 h-px w-44 bg-gradient-to-r from-transparent via-slate-200/75 to-transparent" />
 
-          <h1 className="mt-7 text-[44px] font-medium leading-tight tracking-wide text-slate-100">
-            {couple}
+          <h1 className="mt-7 text-[46px] font-medium leading-tight tracking-wide">
+            <span
+              data-pdf-color="#eef2f7"
+              className="bg-gradient-to-b from-white via-slate-100 to-slate-400 bg-clip-text text-transparent"
+            >
+              {couple}
+            </span>
           </h1>
         </main>
 
         <footer className="flex w-full flex-col items-center gap-4">
-          <Wreath className="h-12 w-44 text-slate-300/70" />
-          <div className="rounded-lg border border-slate-400/40 bg-white/5 px-8 py-3">
-            <p className="text-[11px] uppercase tracking-[0.4em] text-slate-400">Celebrated On</p>
-            <p className="mt-1 text-2xl text-slate-100">{date}</p>
+          <Wreath className="h-12 w-44 text-slate-300/75" />
+          <div className="rounded-lg border border-slate-400/40 bg-white/5 px-9 py-3.5 shadow-[0_10px_30px_-15px_rgba(226,232,240,0.4)] backdrop-blur-sm">
+            <p className="text-[11px] font-medium uppercase tracking-[0.42em] text-slate-400">Celebrated On</p>
+            <p className="mt-1 text-2xl tracking-wide text-slate-50">{date}</p>
           </div>
           <div className="flex flex-col items-center gap-1">
-            <p className="text-[11px] uppercase tracking-[0.36em] text-slate-400">Venue</p>
-            <p className="max-w-[20rem] text-[16px] font-serif leading-snug text-slate-200">{venue}</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.38em] text-slate-400">Venue</p>
+            <p className="max-w-[20rem] font-serif text-[16px] leading-snug text-slate-200">{venue}</p>
           </div>
         </footer>
       </div>

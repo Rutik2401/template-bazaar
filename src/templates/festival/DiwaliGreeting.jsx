@@ -120,9 +120,9 @@ export default function DiwaliGreeting({ values }) {
           </span>
         </h1>
         <div className="mt-4 flex items-center gap-3 text-gold-400">
-          <span className="h-px w-12 bg-gold-400/70" />
+          <span className="h-px w-12 bg-gradient-to-r from-transparent to-gold-400/70" />
           <span className="text-lg">✦</span>
-          <span className="h-px w-12 bg-gold-400/70" />
+          <span className="h-px w-12 bg-gradient-to-l from-transparent to-gold-400/70" />
         </div>
       </header>
 
@@ -132,7 +132,7 @@ export default function DiwaliGreeting({ values }) {
       </main>
 
       {/* Row of diyas */}
-      <div className="relative flex items-end justify-center gap-6">
+      <div className="relative flex items-end justify-center gap-6 [filter:drop-shadow(0_3px_12px_rgba(251,191,36,0.4))]">
         <Diya className="h-12 w-16 -translate-y-1 text-gold-500" />
         <Diya className="h-16 w-20 text-gold-400" />
         <Diya className="h-12 w-16 -translate-y-1 text-gold-500" />

@@ -78,18 +78,22 @@ export default function NewYearGreeting({ values }) {
       className="relative flex h-[900px] w-[720px] flex-col items-center justify-between overflow-hidden bg-[#050813] px-16 py-16 text-center font-serif text-amber-50"
     >
       {/* midnight gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0b1430] via-[#070b1c] to-[#02040b]" />
-      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_50%_22%,rgba(212,164,55,0.30),transparent_50%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#101c44] via-[#070b1c] to-[#02040b]" />
+      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_50%_20%,rgba(212,164,55,0.38),transparent_50%)]" />
+      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_50%_60%,rgba(99,102,241,0.18),transparent_45%)]" />
 
       {/* fireworks across the sky */}
       <Firework className="absolute left-6 top-10 h-28 w-28 text-gold-300/80" />
       <Firework className="absolute right-4 top-24 h-20 w-20 text-amber-200/65" />
       <Firework className="absolute right-24 top-6 h-14 w-14 text-gold-200/55" />
+      <Firework className="absolute left-24 top-32 h-12 w-12 text-rose-200/45" />
 
       {/* sparkle dust */}
       <Sparkle className="pointer-events-none absolute left-20 top-48 h-4 w-4 text-gold-200/70" />
       <Sparkle className="pointer-events-none absolute right-16 top-52 h-3 w-3 text-gold-200/60" />
       <Sparkle className="pointer-events-none absolute left-1/3 top-36 h-2.5 w-2.5 text-amber-100/60" />
+      <Sparkle className="pointer-events-none absolute right-1/3 top-16 h-2 w-2 text-gold-100/50" />
+      <Sparkle className="pointer-events-none absolute left-12 top-72 h-2.5 w-2.5 text-amber-200/50" />
 
       {/* gold frame */}
       <div className="pointer-events-none absolute inset-6 rounded-md border border-gold-400/55" />
@@ -109,11 +113,11 @@ export default function NewYearGreeting({ values }) {
           </span>
         </h1>
         {/* big year numeral */}
-        <p className="mt-2 font-display text-[88px] leading-none tracking-[0.06em] text-gold-200/90">2026</p>
+        <p className="mt-2 font-display text-[88px] leading-none tracking-[0.06em] text-gold-200/95 [text-shadow:0_2px_24px_rgba(212,164,55,0.5)]">2026</p>
       </header>
 
       {/* Toast */}
-      <ChampagneToast className="relative h-36 w-40 text-gold-300" />
+      <ChampagneToast className="relative h-36 w-40 text-gold-300 [filter:drop-shadow(0_3px_14px_rgba(212,164,55,0.4))]" />
 
       {/* Message */}
       <main className="relative max-w-[27rem]">

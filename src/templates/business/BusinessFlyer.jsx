@@ -64,8 +64,8 @@ export default function BusinessFlyer({ values }) {
         {/* feature list */}
         <ul className="mt-12 space-y-5">
           {points.slice(0, 5).map((p, i) => (
-            <li key={i} className="flex items-center gap-4 text-[22px] font-semibold text-slate-100">
-              <span className="grid h-9 w-9 shrink-0 place-items-center bg-lime-400 text-[#0b0f17]">
+            <li key={i} className="flex items-center gap-4 text-[22px] font-semibold leading-tight text-slate-100">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-lime-400 text-[#0b0f17] shadow-[0_4px_14px_rgba(163,230,53,0.25)]">
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20 6 9 17l-5-5" />
                 </svg>

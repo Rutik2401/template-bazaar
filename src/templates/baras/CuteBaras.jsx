@@ -16,6 +16,8 @@ function Teddy({ className = '' }) {
       <circle cx="86" cy="30" r="7" fill="#c89976" />
       {/* head */}
       <circle cx="60" cy="58" r="34" fill="#e8c59c" />
+      {/* soft head highlight */}
+      <ellipse cx="50" cy="44" rx="12" ry="9" fill="#f4dcbc" fillOpacity="0.7" />
       {/* muzzle */}
       <ellipse cx="60" cy="68" rx="18" ry="14" fill="#f7e6cf" />
       {/* eyes */}
@@ -29,6 +31,9 @@ function Teddy({ className = '' }) {
       {/* cheeks */}
       <circle cx="40" cy="64" r="5" fill="#f9b9b0" fillOpacity="0.7" />
       <circle cx="80" cy="64" r="5" fill="#f9b9b0" fillOpacity="0.7" />
+      {/* little bow */}
+      <path d="M52 92c-6-4-12-2-12 3 0 4 6 6 12 2ZM68 92c6-4 12-2 12 3 0 4-6 6-12 2Z" fill="#f6a98a" />
+      <circle cx="60" cy="94" r="3" fill="#f0876a" />
     </svg>
   )
 }
@@ -47,6 +52,24 @@ function Star({ className = '', fill = '#fcd34d' }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill={fill}>
       <path d="M12 2l2.6 6.4L21 9.3l-4.9 4.3L17.6 21 12 17.3 6.4 21l1.5-7.4L3 9.3l6.4-.9L12 2Z" />
+    </svg>
+  )
+}
+
+/** Gentle hanging cradle (jhula) — the signature Bārsā motif. */
+function Cradle({ className = '' }) {
+  return (
+    <svg viewBox="0 0 160 90" className={className} fill="none" stroke="#86c7a8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      {/* suspension ropes */}
+      <path d="M44 2 56 34M116 2 104 34" opacity="0.8" />
+      <circle cx="44" cy="2" r="2.6" fill="#86c7a8" stroke="none" />
+      <circle cx="116" cy="2" r="2.6" fill="#86c7a8" stroke="none" />
+      {/* cradle bowl */}
+      <path d="M40 34h80c-1 28-19 46-40 46s-39-18-40-46Z" fill="#d6f0e3" fillOpacity="0.8" stroke="#86c7a8" />
+      <path d="M40 34h80" />
+      <path d="M54 52c7 6 16 9 26 9s19-3 26-9" stroke="#7ec8a4" strokeWidth="1.6" strokeOpacity="0.6" />
+      {/* peach blanket peek */}
+      <path d="M58 80c6 4 36 4 44 0" stroke="#f6a98a" strokeWidth="3" strokeOpacity="0.5" />
     </svg>
   )
 }
@@ -72,9 +95,11 @@ export default function CuteBaras({ values }) {
       <div className="absolute -left-16 -top-12 h-64 w-64 rounded-full bg-[#bdebd6]/50 blur-3xl" />
       <div className="absolute -right-16 top-24 h-64 w-64 rounded-full bg-[#ffd9c2]/50 blur-3xl" />
       <div className="absolute -bottom-16 left-1/3 h-64 w-64 rounded-full bg-[#cfeef7]/50 blur-3xl" />
+      <div className="absolute left-1/2 top-1/2 h-60 w-60 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/40 blur-3xl" />
 
       {/* dashed nursery frame */}
       <div className="pointer-events-none absolute inset-5 rounded-[2.5rem] border-2 border-dashed border-[#bfe3d2]" />
+      <div className="pointer-events-none absolute inset-[26px] rounded-[2.2rem] border border-[#ffd0bd]/60" />
 
       {/* floating clouds & stars */}
       <Cloud className="absolute left-8 top-16 h-12 w-24 opacity-90 drop-shadow-sm" />
@@ -91,6 +116,8 @@ export default function CuteBaras({ values }) {
           <p className="text-[11px] font-semibold uppercase tracking-[0.42em] text-[#86c7a8]">
             {t('template.common.namingCeremony', 'Naming Ceremony')}
           </p>
+          {/* gentle hanging cradle below the title */}
+          <Cradle className="mt-4 h-16 w-28 drop-shadow-sm" />
           <div className="mt-3 flex items-center gap-2">
             <Star className="h-3 w-3" fill="#ffc8b0" />
             <span className="h-px w-10 bg-[#cfe9da]" />
@@ -103,7 +130,8 @@ export default function CuteBaras({ values }) {
         <main className="flex flex-col items-center">
           {/* teddy in a soft halo */}
           <div className="relative flex h-44 w-44 items-center justify-center">
-            <div className="absolute inset-0 rounded-full bg-white/70 shadow-[0_18px_50px_-22px_rgba(91,107,98,0.45)]" />
+            <div className="absolute inset-0 rounded-full bg-white/75 shadow-[0_18px_50px_-22px_rgba(91,107,98,0.45)]" />
+            <div className="absolute inset-2 rounded-full bg-[radial-gradient(circle,rgba(189,235,214,0.4)_0%,transparent_70%)]" />
             <div className="absolute inset-3 rounded-full border-2 border-dashed border-[#ffd0bd]" />
             <Teddy className="relative h-32 w-32 drop-shadow-sm" />
           </div>
@@ -114,19 +142,23 @@ export default function CuteBaras({ values }) {
           <h1 className="mt-2 font-display text-[56px] font-semibold leading-tight">
             <span
               data-pdf-color="#5aa583"
-              className="bg-gradient-to-r from-[#7ec8a4] via-[#f6a98a] to-[#7cc6dc] bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-[#5fb88f] via-[#f6a98a] to-[#5fb6d0] bg-clip-text text-transparent drop-shadow-[0_1px_0_rgba(255,255,255,0.5)]"
             >
               {baby}
             </span>
           </h1>
-          <p className="mt-3 text-[12px] uppercase tracking-[0.3em] text-[#86c7a8]">
-            {t('template.common.proudParents', 'Proud Parents')}
-          </p>
+          <div className="mt-3 flex items-center gap-2.5 text-[#86c7a8]">
+            <span className="h-px w-8 bg-[#cfe9da]" />
+            <span className="text-[12px] uppercase tracking-[0.3em]">
+              {t('template.common.proudParents', 'Proud Parents')}
+            </span>
+            <span className="h-px w-8 bg-[#cfe9da]" />
+          </div>
           <p className="mt-1 font-display text-2xl text-[#5b6b62]">{parents}</p>
         </main>
 
         <footer className="flex w-full flex-col items-center gap-3">
-          <div className="flex items-center gap-3 rounded-full bg-white/75 px-7 py-3 shadow-sm backdrop-blur-sm">
+          <div className="flex items-center gap-3 rounded-full bg-white/80 px-8 py-3 shadow-[0_12px_28px_-18px_rgba(91,107,98,0.5)] backdrop-blur-sm">
             <span aria-hidden className="text-lg">🗓️</span>
             <p className="font-display text-xl text-[#5b6b62]">{date}{time && ` · ${time}`}</p>
           </div>

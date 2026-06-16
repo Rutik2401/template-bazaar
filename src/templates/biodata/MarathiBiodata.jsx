@@ -20,13 +20,16 @@ function Kalash({ className = '' }) {
 function ToranBorder({ className = '' }) {
   return (
     <svg viewBox="0 0 794 40" preserveAspectRatio="none" className={className} fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M0 4h794" opacity="0.7" />
+      <path d="M0 3h794" opacity="0.7" />
+      <path d="M0 7h794" opacity="0.35" />
       {Array.from({ length: 22 }).map((_, i) => {
         const x = 18 + i * 36
         return (
           <g key={i}>
-            <path d={`M${x} 4c-6 7-6 19 0 26c6-7 6-19 0-26Z`} fill="currentColor" fillOpacity="0.18" />
-            <circle cx={x} cy="34" r="2.6" fill="currentColor" stroke="none" />
+            <path d={`M${x} 5c-7 8-7 20 0 28c7-8 7-20 0-28Z`} fill="currentColor" fillOpacity="0.2" />
+            <path d={`M${x} 11c-3 4-3 11 0 15c3-4 3-11 0-15Z`} fill="currentColor" fillOpacity="0.4" stroke="none" />
+            <circle cx={x} cy="35" r="2.8" fill="currentColor" stroke="none" />
+            <circle cx={x + 18} cy="6" r="1.6" fill="currentColor" stroke="none" opacity="0.6" />
           </g>
         )
       })}
@@ -49,9 +52,12 @@ function Swastik({ className = '' }) {
 
 function Row({ label, value }) {
   return (
-    <div className="flex items-baseline gap-4 border-b border-dashed border-[#1b6e3a]/25 py-[9px]">
-      <span className="w-44 shrink-0 text-[15px] font-semibold text-[#1b6e3a]">{label}</span>
-      <span className="text-[16px] leading-snug text-[#3a2a18]">{value}</span>
+    <div className="flex items-baseline gap-4 border-b border-dashed border-[#1b6e3a]/25 py-[9px] last:border-b-0">
+      <span className="flex w-44 shrink-0 items-baseline gap-2 text-[15px] font-semibold text-[#1b6e3a]">
+        <span className="h-1.5 w-1.5 shrink-0 translate-y-[-1px] rotate-45 bg-[#e07b1e]" />
+        {label}
+      </span>
+      <span className="text-[16.5px] leading-snug text-[#3a2a18]">{value}</span>
     </div>
   )
 }
@@ -75,37 +81,42 @@ export default function MarathiBiodata({ values }) {
       data-export-root
       className="relative h-[1123px] w-[794px] overflow-hidden bg-[#fff8ec] font-serif text-[#3a2a18]"
     >
+      {/* warm wash */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(224,123,30,0.07),_transparent_55%)]" />
+
       {/* saffron & green pallu bands */}
-      <div className="absolute inset-x-0 top-0 h-9 bg-gradient-to-r from-[#e07b1e] via-[#f59e0b] to-[#e07b1e]" />
+      <div className="absolute inset-x-0 top-0 h-9 bg-gradient-to-r from-[#c2641b] via-[#f59e0b] to-[#c2641b]" />
+      <div className="absolute inset-x-0 top-9 h-[2px] bg-[#1b6e3a]/30" />
       <div className="absolute inset-x-0 bottom-0 h-9 bg-gradient-to-r from-[#1b6e3a] via-[#2f9c54] to-[#1b6e3a]" />
+      <div className="absolute inset-x-0 bottom-9 h-[2px] bg-[#e07b1e]/30" />
       <ToranBorder className="absolute inset-x-0 top-9 h-9 text-[#c2641b]" />
 
       {/* saffron / green double frame */}
-      <div className="absolute inset-x-7 inset-y-[78px] rounded-sm border-2 border-[#e07b1e]/70" />
-      <div className="absolute inset-x-[42px] inset-y-[92px] rounded-sm border border-[#1b6e3a]/40" />
+      <div className="absolute inset-x-7 inset-y-[80px] rounded-sm border-2 border-[#e07b1e]/70" />
+      <div className="absolute inset-x-[42px] inset-y-[94px] rounded-sm border border-[#1b6e3a]/40" />
 
       {/* Content */}
-      <div className="relative flex h-full flex-col px-[72px] pb-20 pt-[92px]">
+      <div className="relative flex h-full flex-col px-[72px] pb-20 pt-[96px]">
         <header className="flex flex-col items-center text-center">
-          <Kalash className="h-16 w-14 text-[#c2641b]" />
-          <p className="mt-2 text-[22px] tracking-wide text-[#c2641b]">॥ श्री गणेशाय नमः ॥</p>
-          <p className="mt-1 font-display text-[20px] text-[#1b6e3a]">{t('template.common.ganpatiBappaMorya', 'Ganpati Bappa Morya')}</p>
-          <h1 className="mt-3 font-display text-[36px] font-semibold tracking-wide text-[#e07b1e]">
+          <Kalash className="h-[68px] w-[60px] text-[#c2641b]" />
+          <p className="mt-2 text-[23px] leading-none tracking-wide text-[#c2641b]">॥ श्री गणेशाय नमः ॥</p>
+          <p className="mt-2 font-display text-[21px] text-[#1b6e3a]">{t('template.common.ganpatiBappaMorya', 'Ganpati Bappa Morya')}</p>
+          <h1 className="mt-3 font-display text-[38px] font-semibold tracking-wide text-[#e07b1e]">
             <span data-pdf-color="#e07b1e">विवाह परिचय</span>
           </h1>
-          <div className="mt-2 flex items-center gap-3 text-[#1b6e3a]">
-            <span className="h-px w-16 bg-[#1b6e3a]/40" />
+          <div className="mt-3 flex items-center gap-3 text-[#1b6e3a]">
+            <span className="h-px w-16 bg-gradient-to-r from-transparent to-[#1b6e3a]/50" />
             <Swastik className="h-5 w-5" />
-            <span className="h-px w-16 bg-[#1b6e3a]/40" />
+            <span className="h-px w-16 bg-gradient-to-l from-transparent to-[#1b6e3a]/50" />
           </div>
         </header>
 
         <section className="mt-8">
-          <h2 className="flex items-center gap-2 text-[14px] font-bold uppercase tracking-[0.2em] text-[#e07b1e]">
+          <h2 className="flex items-center gap-2 border-b-2 border-[#e07b1e]/30 pb-1.5 text-[14px] font-bold uppercase tracking-[0.2em] text-[#e07b1e]">
             <span className="h-2.5 w-2.5 rotate-45 bg-[#e07b1e]" />
             {t('template.common.personalDetails', 'Personal Details')}
           </h2>
-          <div className="mt-2">
+          <div className="mt-3">
             <Row label={t('template.common.name', 'Name')} value={name} />
             <Row label={t('template.common.age', 'Age')} value={age} />
             <Row label={t('template.common.height', 'Height')} value={height} />
@@ -115,27 +126,32 @@ export default function MarathiBiodata({ values }) {
         </section>
 
         <section className="mt-7">
-          <h2 className="flex items-center gap-2 text-[14px] font-bold uppercase tracking-[0.2em] text-[#1b6e3a]">
+          <h2 className="flex items-center gap-2 border-b-2 border-[#1b6e3a]/30 pb-1.5 text-[14px] font-bold uppercase tracking-[0.2em] text-[#1b6e3a]">
             <span className="h-2.5 w-2.5 rotate-45 bg-[#1b6e3a]" />
             {t('template.common.familyDetails', 'Family Details')}
           </h2>
-          <div className="mt-2 rounded-md bg-[#1b6e3a]/[0.06] px-5 py-3">
+          <div className="mt-3 rounded-md border border-[#1b6e3a]/15 bg-[#1b6e3a]/[0.06] px-5 py-3">
             {family.map((f, i) => (
-              <p key={i} className="py-[5px] text-[16px] text-[#3a2a18]">{f}</p>
+              <p key={i} className="flex items-baseline gap-2.5 py-[5px] text-[16.5px] text-[#3a2a18]">
+                <span className="h-1.5 w-1.5 shrink-0 translate-y-[-1px] rotate-45 bg-[#1b6e3a]/60" />
+                <span>{f}</span>
+              </p>
             ))}
           </div>
         </section>
 
         <section className="mt-7">
-          <h2 className="flex items-center gap-2 text-[14px] font-bold uppercase tracking-[0.2em] text-[#e07b1e]">
+          <h2 className="flex items-center gap-2 border-b-2 border-[#e07b1e]/30 pb-1.5 text-[14px] font-bold uppercase tracking-[0.2em] text-[#e07b1e]">
             <span className="h-2.5 w-2.5 rotate-45 bg-[#e07b1e]" />
             {t('template.common.contact', 'Contact')}
           </h2>
-          <p className="mt-2 text-[17px] font-semibold text-[#1b6e3a]">{contact}</p>
+          <p className="mt-3 text-[18px] font-semibold tracking-wide text-[#1b6e3a]">{contact}</p>
         </section>
 
-        <footer className="mt-auto text-center text-[13px] italic tracking-wide text-[#c2641b]">
-          ॥ शुभं भवतु ॥
+        <footer className="mt-auto flex items-center justify-center gap-3 text-[#c2641b]">
+          <span className="h-px w-14 bg-gradient-to-r from-transparent to-[#c2641b]/40" />
+          <span className="text-[14px] italic tracking-wide">॥ शुभं भवतु ॥</span>
+          <span className="h-px w-14 bg-gradient-to-l from-transparent to-[#c2641b]/40" />
         </footer>
       </div>
     </div>

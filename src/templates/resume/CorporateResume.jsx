@@ -25,8 +25,9 @@ function parseExperience(raw) {
 
 function Heading({ children }) {
   return (
-    <h2 className="border-b border-slate-300 pb-1.5 font-serif text-[17px] font-bold tracking-wide text-slate-900">
-      {children}
+    <h2 className="flex items-center gap-3 font-serif text-[16px] font-bold uppercase tracking-[0.16em] text-slate-900">
+      <span>{children}</span>
+      <span className="h-px flex-1 bg-slate-200" />
     </h2>
   )
 }
@@ -51,78 +52,96 @@ export default function CorporateResume({ values }) {
       className="flex h-[1123px] w-[794px] flex-col overflow-hidden bg-white font-sans text-slate-700"
     >
       {/* Formal navy header band */}
-      <header className="bg-[#1e2a4a] px-16 py-10 text-white">
-        <h1 className="font-serif text-[42px] font-bold leading-tight tracking-wide">{fullName}</h1>
-        <div className="mt-1 h-[2px] w-20 bg-amber-400" />
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[13.5px] text-slate-300">
+      <header className="bg-[#1e2a4a] px-16 py-11 text-white">
+        <h1 className="font-serif text-[42px] font-bold leading-[1.08] tracking-wide">{fullName}</h1>
+        <div className="mt-3 h-[2px] w-20 bg-amber-400" />
+        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] tracking-wide text-slate-300">
           <span>{email}</span>
           <span className="text-slate-500">|</span>
           <span>{phone}</span>
         </div>
       </header>
 
-      <div className="flex flex-1 flex-col px-16 py-11">
+      <div className="flex flex-1 flex-col px-16 py-12">
         {/* Experience */}
         <section>
           <Heading>{t('template.common.experience', 'Experience')}</Heading>
-          <div className="mt-4 space-y-5">
-            {experience.map((job, i) => (
-              <div key={i}>
-                <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-serif text-[16.5px] font-bold text-slate-900">{job.title}</h3>
-                  {job.meta && (
-                    <span className="shrink-0 text-[12.5px] font-medium italic text-slate-500">
-                      {job.meta}
-                    </span>
+          <div className="mt-5 space-y-6">
+            {experience.length ? (
+              experience.map((job, i) => (
+                <div key={i}>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="font-serif text-[16.5px] font-bold text-slate-900">{job.title}</h3>
+                    {job.meta && (
+                      <span className="shrink-0 text-[12.5px] font-medium italic text-slate-500">
+                        {job.meta}
+                      </span>
+                    )}
+                  </div>
+                  {job.bullets.length > 0 && (
+                    <ul className="mt-2.5 space-y-1.5">
+                      {job.bullets.map((b, j) => (
+                        <li key={j} className="flex gap-3 text-[14px] leading-relaxed text-slate-600">
+                          <span className="mt-[8px] h-1 w-1 shrink-0 rounded-full bg-[#1e2a4a]" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
                   )}
                 </div>
-                {job.bullets.length > 0 && (
-                  <ul className="mt-2 space-y-1.5">
-                    {job.bullets.map((b, j) => (
-                      <li key={j} className="flex gap-2.5 text-[14px] leading-relaxed text-slate-600">
-                        <span className="mt-[8px] h-1 w-1 shrink-0 rounded-full bg-[#1e2a4a]" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
+              ))
+            ) : (
+              <p className="text-[13.5px] text-slate-400">
+                {t('template.resume.addExperience', 'Add your work experience…')}
+              </p>
+            )}
           </div>
         </section>
 
         {/* Education */}
-        <section className="mt-9">
+        <section className="mt-10">
           <Heading>{t('template.common.education', 'Education')}</Heading>
-          <div className="mt-4 space-y-2.5">
-            {education.map((line, i) => {
-              const [main, meta = ''] = line.split('|')
-              return (
-                <div key={i} className="flex items-baseline justify-between gap-4">
-                  <span className="text-[15px] font-semibold text-slate-800">{main.trim()}</span>
-                  {meta && (
-                    <span className="shrink-0 text-[12.5px] italic text-slate-500">{meta.trim()}</span>
-                  )}
-                </div>
-              )
-            })}
+          <div className="mt-5 space-y-3">
+            {education.length ? (
+              education.map((line, i) => {
+                const [main, meta = ''] = line.split('|')
+                return (
+                  <div key={i} className="flex items-baseline justify-between gap-4">
+                    <span className="text-[15px] font-semibold text-slate-800">{main.trim()}</span>
+                    {meta && (
+                      <span className="shrink-0 text-[12.5px] italic text-slate-500">{meta.trim()}</span>
+                    )}
+                  </div>
+                )
+              })
+            ) : (
+              <p className="text-[13.5px] text-slate-400">
+                {t('template.resume.addEducation', 'Add your education…')}
+              </p>
+            )}
           </div>
         </section>
 
         {/* Skills */}
-        <section className="mt-9">
+        <section className="mt-10">
           <Heading>{t('template.common.skills', 'Skills')}</Heading>
-          <div className="mt-4 grid grid-cols-2 gap-x-8 gap-y-2">
-            {skills.map((skill, i) => (
-              <div key={i} className="flex items-center gap-2.5 text-[14px] text-slate-700">
-                <span className="h-1.5 w-1.5 shrink-0 rotate-45 bg-amber-500" />
-                <span>{skill}</span>
-              </div>
-            ))}
-          </div>
+          {skills.length ? (
+            <div className="mt-5 grid grid-cols-2 gap-x-10 gap-y-2.5">
+              {skills.map((skill, i) => (
+                <div key={i} className="flex items-center gap-3 text-[14px] text-slate-700">
+                  <span className="h-1.5 w-1.5 shrink-0 rotate-45 bg-amber-500" />
+                  <span>{skill}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-5 text-[13.5px] text-slate-400">
+              {t('template.resume.addSkills', 'Add your key skills…')}
+            </p>
+          )}
         </section>
 
-        <div className="mt-auto border-t border-slate-200 pt-5 text-center font-serif text-[11px] uppercase tracking-[0.3em] text-slate-400">
+        <div className="mt-auto border-t border-slate-200 pt-6 text-center font-serif text-[10.5px] uppercase tracking-[0.34em] text-slate-400">
           {t('template.common.contact', 'Contact')}: {email}
         </div>
       </div>

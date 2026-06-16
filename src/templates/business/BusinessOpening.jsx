@@ -65,12 +65,12 @@ export default function BusinessOpening({ values }) {
           </svg>
         </div>
 
-        <p className="mt-8 font-sans text-[13px] font-bold uppercase tracking-[0.5em] text-amber-200">
+        <p className="mt-8 font-sans text-[13px] font-bold uppercase tracking-[0.5em] text-amber-200/90">
           {t('template.common.youAreInvited', 'You are cordially invited')}
         </p>
 
         {/* GRAND OPENING — gold foil */}
-        <h1 className="mt-6 font-display text-[68px] font-extrabold uppercase leading-[0.95] tracking-tight">
+        <h1 className="mt-6 font-display text-[68px] font-extrabold uppercase leading-[0.92] tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
           <span
             data-pdf-color="#fcd34d"
             className="bg-gradient-to-b from-amber-100 via-amber-300 to-amber-500 bg-clip-text text-transparent"
@@ -96,20 +96,20 @@ export default function BusinessOpening({ values }) {
         <p className="mt-2 text-[18px] italic text-amber-200/90">{owner}</p>
 
         {/* details card */}
-        <div className="mt-auto w-full rounded-2xl border border-amber-300/40 bg-black/20 px-8 py-7 backdrop-blur-sm">
+        <div className="mt-auto w-full rounded-2xl border border-amber-300/40 bg-black/25 px-8 py-7 shadow-[inset_0_1px_0_rgba(251,191,36,0.18)] backdrop-blur-sm">
           <div className="flex items-stretch justify-between gap-4 text-left">
             <div className="flex-1">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-amber-300">
+              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-amber-300">
                 {t('template.common.date', 'Date')}
               </p>
-              <p className="mt-1 font-display text-[22px] font-semibold text-amber-50">{date}</p>
+              <p className="mt-1.5 font-display text-[22px] font-semibold text-amber-50">{date}</p>
             </div>
             <span className="w-px self-stretch bg-amber-300/30" />
             <div className="flex-1">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-amber-300">
+              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-amber-300">
                 {t('template.common.time', 'Time')}
               </p>
-              <p className="mt-1 font-display text-[22px] font-semibold text-amber-50">{time}</p>
+              <p className="mt-1.5 font-display text-[22px] font-semibold text-amber-50">{time}</p>
             </div>
           </div>
           <div className="mt-5 border-t border-amber-300/25 pt-4 text-center">

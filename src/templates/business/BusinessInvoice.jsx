@@ -107,11 +107,11 @@ export default function BusinessInvoice({ values }) {
       </section>
 
       {/* ── Footer ──────────────────────────────────────────────────────── */}
-      <footer className="mt-auto border-t border-slate-100 px-14 py-8">
-        <p className="text-[13px] text-slate-400">
+      <footer className="mt-auto flex items-end justify-between gap-6 border-t border-slate-100 px-14 py-8">
+        <p className="max-w-md text-[13px] leading-relaxed text-slate-400">
           Thank you for your business. Payment is due within 15 days of the invoice date.
         </p>
-        <p className="mt-2 font-display text-lg font-semibold text-slate-800">{business}</p>
+        <p className="font-display text-lg font-semibold text-slate-800">{business}</p>
       </footer>
 
       {/* faint watermark */}

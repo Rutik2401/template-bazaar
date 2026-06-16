@@ -13,9 +13,14 @@ function Moon({ className = '' }) {
         d="M86 18c-26-8-54 9-58 36s14 52 41 56c14 2 28-3 38-13-30 6-56-14-58-42-1-18 9-32 37-37Z"
         fill="#fde68a"
       />
-      <path d="M58 60c4 4 11 4 15 0" stroke="#caa23a" strokeWidth="3" strokeLinecap="round" fill="none" />
-      <circle cx="56" cy="52" r="2.6" fill="#caa23a" />
-      <circle cx="46" cy="64" r="4" fill="#fcd9a0" />
+      <path
+        d="M86 18c-26-8-54 9-58 36s14 52 41 56c14 2 28-3 38-13-30 6-56-14-58-42-1-18 9-32 37-37Z"
+        fill="none" stroke="#f5c451" strokeWidth="1.5" strokeOpacity="0.7"
+      />
+      <path d="M52 58c5 5 13 5 18 0" stroke="#caa23a" strokeWidth="3" strokeLinecap="round" fill="none" />
+      <circle cx="50" cy="50" r="2.6" fill="#caa23a" />
+      <circle cx="62" cy="49" r="2.6" fill="#caa23a" />
+      <circle cx="42" cy="64" r="4" fill="#fcd9a0" />
     </svg>
   )
 }
@@ -44,15 +49,18 @@ function HotAirBalloon({ className = '' }) {
     <svg viewBox="0 0 90 130" className={className} fill="none">
       <defs>
         <linearGradient id="boyballoon" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#bfdbfe" />
-          <stop offset="1" stopColor="#60a5fa" />
+          <stop offset="0" stopColor="#dbeafe" />
+          <stop offset="0.55" stopColor="#93c5fd" />
+          <stop offset="1" stopColor="#3b82f6" />
         </linearGradient>
       </defs>
       <path d="M45 6C24 6 10 22 10 44c0 24 22 40 35 52 13-12 35-28 35-52C80 22 66 6 45 6Z" fill="url(#boyballoon)" />
-      <path d="M45 6v90" stroke="#3b82f6" strokeOpacity="0.4" strokeWidth="2" />
-      <path d="M27 10c-6 18-6 56 0 84M63 10c6 18 6 56 0 84" stroke="#3b82f6" strokeOpacity="0.35" strokeWidth="2" fill="none" />
-      <path d="M34 96h22l-3 10H37l-3-10Z" fill="#fcd34d" />
-      <path d="M36 96l4 10M54 96l-4 10" stroke="#9ca3af" strokeWidth="1.4" />
+      {/* highlight sheen */}
+      <path d="M30 14c-6 8-9 18-8 30" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.45" strokeLinecap="round" />
+      <path d="M45 6v90" stroke="#2563eb" strokeOpacity="0.4" strokeWidth="2" />
+      <path d="M27 10c-6 18-6 56 0 84M63 10c6 18 6 56 0 84" stroke="#2563eb" strokeOpacity="0.35" strokeWidth="2" fill="none" />
+      <path d="M45 96c-7 0-13 2-13 2l3 10h20l3-10s-6-2-13-2Z" fill="#fcd34d" stroke="#eab308" strokeWidth="0.8" />
+      <path d="M36 96l4 12M54 96l-4 12" stroke="#94a3b8" strokeWidth="1.4" />
     </svg>
   )
 }
@@ -84,6 +92,7 @@ export default function BoyBaras({ values }) {
       {/* sky glow */}
       <div className="absolute -left-16 top-8 h-72 w-72 rounded-full bg-[#bfdbfe]/55 blur-3xl" />
       <div className="absolute -right-16 bottom-16 h-72 w-72 rounded-full bg-[#93c5fd]/45 blur-3xl" />
+      <div className="absolute left-1/2 top-1/3 h-64 w-64 -translate-x-1/2 rounded-full bg-white/40 blur-3xl" />
 
       {/* star field */}
       {stars.map((p, i) => (
@@ -112,38 +121,45 @@ export default function BoyBaras({ values }) {
             {t('template.common.namingCeremony', 'Naming Ceremony')}
           </p>
           {/* It's a Boy ribbon */}
-          <div className="mt-5 rounded-full bg-gradient-to-r from-[#60a5fa] to-[#2563eb] px-7 py-2 shadow-[0_12px_30px_-14px_rgba(37,99,235,0.8)]">
-            <p className="font-display text-lg font-semibold tracking-wide text-white">
+          <div className="relative mt-5 rounded-full bg-gradient-to-r from-[#60a5fa] to-[#2563eb] px-8 py-2 shadow-[0_14px_34px_-14px_rgba(37,99,235,0.85)]">
+            <span className="pointer-events-none absolute inset-x-3 top-1 h-1/3 rounded-full bg-white/25" />
+            <p className="relative font-display text-lg font-semibold tracking-wide text-white">
               {t('template.common.itsABoy', "It's a Boy")}
             </p>
           </div>
         </header>
 
         <main className="flex flex-col items-center">
-          <Star className="h-10 w-10 drop-shadow-sm" fill="#fcd34d" />
+          <div className="flex items-center gap-2">
+            <Star className="h-4 w-4" fill="#a9cdfb" />
+            <Star className="h-10 w-10 drop-shadow-sm" fill="#fcd34d" />
+            <Star className="h-4 w-4" fill="#a9cdfb" />
+          </div>
           <p className="mt-3 text-[15px] italic text-[#5b8bd0]">
             {t('template.common.blessOurBaby', 'Come bless our little one')}
           </p>
           <h1 className="mt-2 font-display text-[60px] font-semibold leading-tight">
             <span
               data-pdf-color="#2563eb"
-              className="bg-gradient-to-br from-[#60a5fa] via-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent"
+              className="bg-gradient-to-br from-[#60a5fa] via-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent drop-shadow-[0_1px_0_rgba(255,255,255,0.5)]"
             >
               {baby}
             </span>
           </h1>
-          <div className="mt-4 flex items-center gap-2 text-[#5b8bd0]">
+          <div className="mt-4 flex items-center gap-2.5 text-[#5b8bd0]">
+            <span className="h-px w-8 bg-[#93c5fd]" />
             <Star className="h-3 w-3" fill="#3b82f6" />
             <span className="text-[11px] uppercase tracking-[0.32em]">
               {t('template.common.proudParents', 'Proud Parents')}
             </span>
             <Star className="h-3 w-3" fill="#3b82f6" />
+            <span className="h-px w-8 bg-[#93c5fd]" />
           </div>
           <p className="mt-2 font-display text-2xl text-[#3b5a86]">{parents}</p>
         </main>
 
         <footer className="flex w-full flex-col items-center gap-3">
-          <div className="rounded-2xl border border-[#93c5fd]/70 bg-white/70 px-9 py-3 shadow-sm backdrop-blur-sm">
+          <div className="rounded-2xl border border-[#93c5fd]/70 bg-white/75 px-10 py-3 shadow-[0_12px_28px_-18px_rgba(37,99,235,0.55)] backdrop-blur-sm">
             <p className="text-[11px] uppercase tracking-[0.34em] text-[#5b8bd0]">{t('template.common.saveTheDate', 'Save the Date')}</p>
             <p className="mt-1 font-display text-2xl text-[#1d4ed8]">{date}{time && ` · ${time}`}</p>
           </div>
