@@ -52,7 +52,7 @@ function MarigoldToran({ className = '' }) {
 function OmSymbol({ className = '' }) {
   return (
     <svg viewBox="0 0 64 64" className={className} fill="currentColor">
-      <text x="32" y="46" textAnchor="middle" fontSize="48" fontFamily="serif" fontWeight="700">ॐ</text>
+      <text x="32" y="46" textAnchor="middle" fontSize="48" fontFamily="'Noto Serif Devanagari', serif" fontWeight="700">ॐ</text>
     </svg>
   )
 }

@@ -4,11 +4,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['var(--font-playfair)', 'Georgia', 'serif'],
-        serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
-        party: ['var(--font-poppins)', 'Inter', 'sans-serif'],
-        script: ['var(--font-script)', 'Snell Roundhand', 'cursive'],
+        // 'Noto Sans/Serif Devanagari' are appended as per-glyph fallbacks so
+        // Marathi/Hindi text always has glyph coverage (incl. server-rendered
+        // PDF/PNG exports). unicode-range keeps them off Latin text.
+        sans: ['var(--font-inter)', 'Noto Sans Devanagari', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['var(--font-playfair)', 'Noto Serif Devanagari', 'Georgia', 'serif'],
+        serif: ['var(--font-cormorant)', 'Noto Serif Devanagari', 'Georgia', 'serif'],
+        party: ['var(--font-poppins)', 'Noto Sans Devanagari', 'Inter', 'sans-serif'],
+        script: ['var(--font-script)', 'Noto Serif Devanagari', 'Snell Roundhand', 'cursive'],
       },
       colors: {
         ink: {
