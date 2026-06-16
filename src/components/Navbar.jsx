@@ -2,31 +2,31 @@
 
 import Link from 'next/link'
 import Brand from './Brand.jsx'
+import CategorySearch from '@/components/CategorySearch.jsx'
 import LanguageSwitcher from '@/components/LanguageSwitcher.jsx'
 import AuthButton from '@/components/AuthButton.jsx'
 import { useI18n } from '@/i18n/I18nProvider'
 
 /**
- * Sticky frosted top bar. Brand on the left; on the right: nav links (revealed
- * progressively as the viewport widens), the language switcher, and a primary
- * CTA. Mobile stays intentionally minimal (brand + language) — the hero carries
- * the primary CTA there — so nothing crowds or overflows on small screens.
+ * Sticky frosted top bar. Brand on the left; a category search in the middle
+ * (live-filters all 25+ categories and jumps straight to one); on the right:
+ * nav links (revealed as the viewport widens), the language switcher and the
+ * auth control. The search replaces the old primary CTA in the header.
  */
 export default function Navbar() {
   const { t } = useI18n()
 
   return (
     <header className="glass-bar sticky top-0 z-40">
-      <div className="container-page flex h-16 items-center justify-between gap-2">
+      <div className="container-page flex h-16 items-center gap-3">
         <Brand />
 
-        <nav className="flex items-center gap-1 sm:gap-2">
-          <Link
-            href="/category/wedding"
-            className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-ink-soft transition-colors hover:bg-slate-100 hover:text-ink sm:inline-flex"
-          >
-            {t('nav.templates', 'Templates')}
-          </Link>
+        {/* Category search — present on every page; jumps to a category page. */}
+        <div className="min-w-0 flex-1">
+          <CategorySearch />
+        </div>
+
+        <nav className="flex shrink-0 items-center gap-1 sm:gap-2">
           <Link
             href="/#how-it-works"
             className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-ink-soft transition-colors hover:bg-slate-100 hover:text-ink md:inline-flex"
@@ -44,13 +44,6 @@ export default function Navbar() {
 
           <LanguageSwitcher />
           <AuthButton />
-
-          <Link
-            href="/category/wedding"
-            className="btn-gold hidden whitespace-nowrap rounded-full px-4 py-2 text-sm sm:inline-flex"
-          >
-            {t('home.ctaPrimary', 'Explore the bazaar')}
-          </Link>
         </nav>
       </div>
     </header>
