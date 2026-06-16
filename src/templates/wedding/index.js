@@ -18,12 +18,12 @@ import BohoPampasWedding from './BohoPampasWedding.jsx'
 /**
  * Boho Pampas wedding — warm beige card with an off-white arch, cream/white
  * florals and golden dried palm leaves, calligraphy names. Its own field set
- * seeds the sample couple (Lokesh & Sanika); field names match the shared
+ * seeds the sample couple (Aarav & Sanika); field names match the shared
  * wedding fields so their localised labels are reused.
  */
 const bohoFields = [
   { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Sanika', defaultValue: 'Sanika' },
-  { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Lokesh', defaultValue: 'Lokesh' },
+  { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Aarav', defaultValue: 'Aarav' },
   { name: 'weddingDate', label: 'Wedding Date', type: 'date', defaultValue: '2024-02-25' },
   { name: 'time', label: 'Time', type: 'time', defaultValue: '09:00' },
   {

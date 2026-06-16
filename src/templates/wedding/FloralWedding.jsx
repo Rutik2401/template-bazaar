@@ -48,7 +48,7 @@ function FloralSpray({ className = '' }) {
 export default function FloralWedding({ values }) {
   const { t } = useI18n()
   const bride = values.brideName?.trim() || 'Sanika'
-  const groom = values.groomName?.trim() || 'Lokesh'
+  const groom = values.groomName?.trim() || 'Aarav'
   const date = formatDate(values.weddingDate, 'Date to be announced')
   const time = formatTime(values.time, '')
   const venue = values.venue?.trim() || 'The Grand Palace, Jaipur'
