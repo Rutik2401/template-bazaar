@@ -188,6 +188,171 @@ export default function CategoryDecor({ id }) {
         </Layer>
       )
 
+    case 'anniversary':
+      return (
+        <Layer>
+          <Heart className="absolute right-8 top-7 h-6 w-6 animate-float" />
+          <Heart className="absolute right-12 top-10 h-4 w-4 animate-float" style={{ animationDelay: '0.5s' }} />
+          {[0, 0.7, 1.4].map((d, i) => (
+            <Heart key={i} className="absolute bottom-2 animate-rise" style={{ left: `${34 + i * 16}%`, animationDelay: `${d}s` }} />
+          ))}
+        </Layer>
+      )
+
+    case 'babyshower':
+      return (
+        <Layer>
+          <span className="absolute right-10 top-7 h-4 w-4 rounded-full bg-white/45 animate-float" />
+          <span className="absolute right-16 top-11 h-2.5 w-2.5 rounded-full bg-white/35 animate-float" style={{ animationDelay: '0.6s' }} />
+          <Spark className="absolute left-[26%] top-6 animate-twinkle" />
+          <Spark className="absolute right-[30%] top-9 animate-twinkle" style={{ animationDelay: '0.8s' }} />
+        </Layer>
+      )
+
+    case 'housewarming':
+      return (
+        <Layer>
+          <span className="absolute right-9 top-7 h-12 w-12 rounded-full bg-white/25 animate-pulse-glow" />
+          <span className="absolute right-7 top-5 h-16 w-16 rounded-full border border-white/30 animate-pulse-glow" style={{ animationDelay: '0.6s' }} />
+          <Spark className="absolute right-12 top-10 animate-twinkle" />
+        </Layer>
+      )
+
+    case 'farewell':
+      return (
+        <Layer>
+          {[
+            ['16%', '0s', 'bg-white/80'],
+            ['34%', '0.5s', 'bg-white/60'],
+            ['52%', '1s', 'bg-white/85'],
+            ['70%', '0.3s', 'bg-white/70'],
+            ['86%', '0.8s', 'bg-white/60'],
+          ].map(([left, delay, bg], i) => (
+            <span key={i} className={`absolute top-0 h-2 w-1.5 rounded-sm ${bg} animate-confetti`} style={{ left, animationDelay: delay }} />
+          ))}
+        </Layer>
+      )
+
+    case 'congratulations':
+      return (
+        <Layer>
+          {[
+            ['18%', '0.2s'],
+            ['38%', '0.7s'],
+            ['58%', '0s'],
+            ['78%', '0.5s'],
+          ].map(([left, delay], i) => (
+            <span key={i} className="absolute top-0 h-2.5 w-1.5 rounded-sm bg-white/75 animate-confetti" style={{ left, animationDelay: delay }} />
+          ))}
+          <Spark className="absolute right-9 top-6 animate-twinkle" />
+          <Spark className="absolute left-[30%] top-10 animate-twinkle" style={{ animationDelay: '0.7s' }} />
+        </Layer>
+      )
+
+    case 'political':
+      return (
+        <Layer>
+          <span className="absolute right-9 top-7 h-9 w-12 origin-left rounded-sm bg-white/55 animate-sway" />
+          <span className="absolute right-9 top-7 h-9 w-[3px] bg-white/70" />
+          <Spark className="absolute left-[30%] top-7 animate-twinkle" />
+        </Layer>
+      )
+
+    case 'shopopening':
+      return (
+        <Layer>
+          {[
+            ['20%', '0s'],
+            ['44%', '0.6s'],
+            ['68%', '0.3s'],
+            ['84%', '0.9s'],
+          ].map(([left, delay], i) => (
+            <span key={i} className="absolute top-0 h-2.5 w-1.5 rounded-sm bg-white/75 animate-confetti" style={{ left, animationDelay: delay }} />
+          ))}
+          <span className="absolute right-9 top-8 h-8 w-8 rounded-full border-2 border-white/45 animate-pulse-glow" />
+        </Layer>
+      )
+
+    case 'certificate':
+      return (
+        <Layer>
+          <span className="absolute right-9 top-7 h-12 w-12 rounded-full border-2 border-white/45 animate-pulse-glow" />
+          <span className="absolute right-[18%] top-[58%] h-5 w-2 rotate-[20deg] bg-white/40" />
+          <span className="absolute right-[24%] top-[58%] h-5 w-2 -rotate-[20deg] bg-white/40" />
+          <span className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-sweep" />
+        </Layer>
+      )
+
+    case 'jobapplication':
+      return (
+        <Layer>
+          <div className="absolute right-6 top-7 space-y-2">
+            <span className="block h-1.5 w-20 rounded-full bg-white/55" />
+            <span className="block h-1.5 w-14 rounded-full bg-white/40" />
+            <span className="block h-1.5 w-16 rounded-full bg-white/45" />
+          </div>
+          <span className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/18 to-transparent animate-sweep" />
+        </Layer>
+      )
+
+    case 'eventposter':
+      return (
+        <Layer>
+          <span className="absolute right-9 top-8 h-10 w-10 rounded-full bg-white/25 animate-pulse-glow" />
+          <span className="absolute right-7 top-6 h-14 w-14 rounded-full border border-white/30 animate-pulse-glow" style={{ animationDelay: '0.5s' }} />
+          <Spark className="absolute left-[28%] top-7 animate-twinkle" />
+        </Layer>
+      )
+
+    case 'restaurant':
+      return (
+        <Layer>
+          {[0, 0.6, 1.2].map((d, i) => (
+            <span key={i} className="absolute h-7 w-[3px] rounded-full bg-white/45 animate-rise" style={{ left: `${40 + i * 8}%`, bottom: '8px', animationDelay: `${d}s`, animationDuration: '3.4s' }} />
+          ))}
+          <Spark className="absolute right-9 top-7 animate-twinkle" />
+        </Layer>
+      )
+
+    case 'travel':
+      return (
+        <Layer>
+          <svg viewBox="0 0 24 24" className="absolute right-8 top-7 h-7 w-7 fill-white/75 animate-drift" aria-hidden>
+            <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L11 19v-5.5L21 16Z" />
+          </svg>
+          <span className="absolute left-[28%] top-9 h-3 w-7 rounded-full bg-white/35 animate-float" />
+          <span className="absolute left-[40%] top-6 h-2.5 w-6 rounded-full bg-white/25 animate-float" style={{ animationDelay: '0.6s' }} />
+        </Layer>
+      )
+
+    case 'education':
+      return (
+        <Layer>
+          {[0, 0.7, 1.4].map((d, i) => (
+            <span key={i} className="absolute bottom-2 h-3 w-3 rotate-45 bg-white/55 animate-rise" style={{ left: `${34 + i * 16}%`, animationDelay: `${d}s` }} />
+          ))}
+          <Spark className="absolute right-9 top-7 animate-twinkle" />
+        </Layer>
+      )
+
+    case 'socialmedia':
+      return (
+        <Layer>
+          {[0, 0.6, 1.2].map((d, i) => (
+            <Heart key={i} className="absolute bottom-2 animate-rise" style={{ left: `${30 + i * 18}%`, animationDelay: `${d}s` }} />
+          ))}
+          <Spark className="absolute right-9 top-6 animate-twinkle" />
+        </Layer>
+      )
+
+    case 'memorial':
+      return (
+        <Layer>
+          <span className="absolute right-[31%] top-4 h-8 w-[3px] rounded-full bg-white/20 animate-rise" style={{ animationDuration: '4.5s' }} />
+          <span className="absolute right-[31%] top-12 h-4 w-2.5 origin-bottom rounded-full bg-white/75 animate-flicker" />
+        </Layer>
+      )
+
     default:
       return null
   }

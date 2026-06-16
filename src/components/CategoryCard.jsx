@@ -24,6 +24,21 @@ const HOVER_FX = {
   biodata: 'hover:-translate-y-2 hover:scale-[1.015]',
   festival: 'hover:-translate-y-2.5 hover:rotate-[0.6deg]',
   business: 'hover:-translate-y-1.5 hover:scale-[1.01]',
+  anniversary: 'hover:-translate-y-2 hover:rotate-[0.5deg]',
+  babyshower: 'hover:-translate-y-2.5 hover:scale-[1.02]',
+  housewarming: 'hover:-translate-y-2',
+  farewell: 'hover:-translate-y-1.5 hover:-rotate-[0.5deg]',
+  congratulations: 'hover:-translate-y-2.5 hover:rotate-[0.6deg]',
+  political: 'hover:-translate-y-1.5 hover:scale-[1.015]',
+  shopopening: 'hover:-translate-y-2 hover:scale-[1.02]',
+  certificate: 'hover:-translate-y-1.5 hover:-rotate-[0.4deg]',
+  jobapplication: 'hover:-translate-y-1.5',
+  eventposter: 'hover:-translate-y-2 hover:rotate-[0.5deg]',
+  restaurant: 'hover:-translate-y-2 hover:scale-[1.015]',
+  travel: 'hover:-translate-y-2.5 hover:scale-[1.02]',
+  education: 'hover:-translate-y-2',
+  socialmedia: 'hover:-translate-y-2.5 hover:scale-[1.02]',
+  memorial: 'hover:-translate-y-1',
 }
 
 export default function CategoryCard({ category, index = 0 }) {

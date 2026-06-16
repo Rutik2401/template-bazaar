@@ -33,6 +33,21 @@ import { resumeTemplates } from './resume/index.js'
 import { biodataTemplates } from './biodata/index.js'
 import { festivalTemplates } from './festival/index.js'
 import { businessTemplates } from './business/index.js'
+import { anniversaryTemplates } from './anniversary/index.js'
+import { babyShowerTemplates } from './babyshower/index.js'
+import { housewarmingTemplates } from './housewarming/index.js'
+import { farewellTemplates } from './farewell/index.js'
+import { congratulationsTemplates } from './congratulations/index.js'
+import { politicalTemplates } from './political/index.js'
+import { shopOpeningTemplates } from './shopopening/index.js'
+import { certificateTemplates } from './certificate/index.js'
+import { jobApplicationTemplates } from './jobapplication/index.js'
+import { eventPosterTemplates } from './eventposter/index.js'
+import { restaurantTemplates } from './restaurant/index.js'
+import { travelTemplates } from './travel/index.js'
+import { educationTemplates } from './education/index.js'
+import { socialMediaTemplates } from './socialmedia/index.js'
+import { memorialTemplates } from './memorial/index.js'
 
 /**
  * Premium (paid) template ids — the initial premium catalog, kept in one place.
@@ -78,6 +93,21 @@ export const templateList = [
   ...biodataTemplates,
   ...festivalTemplates,
   ...businessTemplates,
+  ...anniversaryTemplates,
+  ...babyShowerTemplates,
+  ...housewarmingTemplates,
+  ...farewellTemplates,
+  ...congratulationsTemplates,
+  ...politicalTemplates,
+  ...shopOpeningTemplates,
+  ...certificateTemplates,
+  ...jobApplicationTemplates,
+  ...eventPosterTemplates,
+  ...restaurantTemplates,
+  ...travelTemplates,
+  ...educationTemplates,
+  ...socialMediaTemplates,
+  ...memorialTemplates,
 ].map((t) => ({ ...t, tier: resolveTier(t) }))
 
 /** @param {object} template @returns {boolean} True for paid (premium) designs. */

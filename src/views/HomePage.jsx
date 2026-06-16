@@ -22,8 +22,8 @@ const TRUST = [
 ]
 
 const STATS = [
-  { value: '50+', labelKey: 'home.statDesigns' },
-  { value: '10', labelKey: 'home.statCategories' },
+  { value: '95+', labelKey: 'home.statDesigns' },
+  { value: '25', labelKey: 'home.statCategories' },
   { value: '3', labelKey: 'home.statLanguages' },
   { value: '₹0', labelKey: 'home.statFree' },
 ]
