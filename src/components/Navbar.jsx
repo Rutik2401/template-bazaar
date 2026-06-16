@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Brand from './Brand.jsx'
 import LanguageSwitcher from '@/components/LanguageSwitcher.jsx'
+import AuthButton from '@/components/AuthButton.jsx'
 import { useI18n } from '@/i18n/I18nProvider'
 
 /**
@@ -42,6 +43,7 @@ export default function Navbar() {
           <span aria-hidden className="mx-1 hidden h-5 w-px bg-slate-200 sm:block" />
 
           <LanguageSwitcher />
+          <AuthButton />
 
           <Link
             href="/category/wedding"

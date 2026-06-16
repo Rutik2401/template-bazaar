@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter, Playfair_Display, Cormorant_Garamond, Poppins } from 'next/font/google'
 import { I18nProvider } from '@/i18n/I18nProvider'
+import AuthProvider from '@/components/AuthProvider.jsx'
 import JsonLd from '@/components/JsonLd.jsx'
 import { siteUrl, absoluteUrl } from '@/utils/siteUrl'
 
@@ -121,7 +122,9 @@ export default function RootLayout({ children }) {
       <body>
         <JsonLd data={ORGANIZATION_LD} />
         <JsonLd data={WEBSITE_LD} />
-        <I18nProvider>{children}</I18nProvider>
+        <AuthProvider>
+          <I18nProvider>{children}</I18nProvider>
+        </AuthProvider>
       </body>
     </html>
   )

@@ -123,6 +123,13 @@ export const mr = {
     comingSoon: 'लवकरच आणखी टेम्पलेट्स ✨',
     categoryNotFound: 'श्रेणी सापडली नाही',
     chooseTemplate: 'सुरू करण्यासाठी एक डिझाइन निवडा',
+    filterAll: 'सर्व',
+    filterFree: 'मोफत',
+  },
+
+  auth: {
+    signIn: 'साइन इन',
+    signOut: 'साइन आउट',
   },
 
   categories: {
@@ -163,6 +170,8 @@ export const mr = {
     pdfError: 'PDF तयार करता आले नाही. कृपया पुन्हा प्रयत्न करा.',
     linkCopied: 'लिंक कॉपी झाली!',
     shareSoon: 'शेअरिंग लवकरच उपलब्ध होईल ✨',
+    premiumNotice: 'प्रीमियम डिझाइन — डाउनलोडवर वॉटरमार्क असेल.',
+    premiumSignIn: 'काढण्यासाठी साइन इन करा',
   },
 
   notFound: {

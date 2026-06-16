@@ -24,9 +24,11 @@ import { getTemplateById } from '@/templates'
  */
 export default function PrintView({ templateId }) {
   const template = getTemplateById(templateId)
-  const [state, setState] = useState(null) // { values, locale } — resolved after mount
+  const [state, setState] = useState(null) // { values, locale, watermark } — resolved after mount
 
-  // Decode values from the hash + locale from the query (client-only).
+  // Decode values from the hash + locale/watermark from the query (client-only).
+  // `watermark` is set by the export API ONLY when an unentitled user downloads a
+  // premium design — the server is the single source of truth for it.
   useEffect(() => {
     let values = {}
     try {
@@ -35,8 +37,10 @@ export default function PrintView({ templateId }) {
     } catch {
       values = {}
     }
-    const locale = new URLSearchParams(window.location.search).get('locale') || 'en'
-    setState({ values, locale })
+    const params = new URLSearchParams(window.location.search)
+    const locale = params.get('locale') || 'en'
+    const watermark = params.get('watermark') === '1'
+    setState({ values, locale, watermark })
   }, [])
 
   // Signal "ready to capture" once values are applied AND web fonts have painted.
@@ -87,9 +91,41 @@ export default function PrintView({ templateId }) {
   return (
     <I18nProvider initialLocale={state.locale}>
       {reset}
-      <div data-export-capture style={{ width, height, background: '#fff', overflow: 'hidden' }}>
+      <div
+        data-export-capture
+        style={{ position: 'relative', width, height, background: '#fff', overflow: 'hidden' }}
+      >
         <Preview values={state.values} />
+        {state.watermark && <Watermark />}
       </div>
     </I18nProvider>
+  )
+}
+
+/**
+ * Tiled diagonal "Template Bazaar" watermark, painted over the whole capture
+ * area so it is baked into both the PDF and the PNG. Used only for unentitled
+ * downloads of premium designs (free templates never get this). Rendered as a
+ * repeating inline-SVG background so headless Chrome reproduces it exactly.
+ */
+function Watermark() {
+  const tile = encodeURIComponent(
+    "<svg xmlns='http://www.w3.org/2000/svg' width='320' height='200'>" +
+      "<text x='30' y='120' transform='rotate(-30 160 100)' " +
+      "font-family='Helvetica, Arial, sans-serif' font-size='26' font-weight='700' " +
+      "fill='rgba(15,23,42,0.12)' letter-spacing='2'>Template Bazaar</text></svg>",
+  )
+  return (
+    <div
+      aria-hidden
+      style={{
+        position: 'absolute',
+        inset: 0,
+        zIndex: 50,
+        pointerEvents: 'none',
+        backgroundImage: `url("data:image/svg+xml;utf8,${tile}")`,
+        backgroundRepeat: 'repeat',
+      }}
+    />
   )
 }

@@ -1,16 +1,23 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import Layout from '@/components/Layout.jsx'
 import TemplateCard from '@/components/TemplateCard.jsx'
 import { getCategoryById } from '@/data/categories'
-import { getTemplatesByCategory } from '@/templates'
+import { getTemplatesByCategory, isPremium } from '@/templates'
+import { cn } from '@/utils/cn'
 import { useI18n } from '@/i18n/I18nProvider'
 
 export default function TemplateSelectPage({ categoryId }) {
   const { t } = useI18n()
+  const [filter, setFilter] = useState('all') // 'all' | 'free' | 'premium'
   const category = getCategoryById(categoryId)
-  const templates = getTemplatesByCategory(categoryId)
+  const allTemplates = getTemplatesByCategory(categoryId)
+  const hasPremium = allTemplates.some(isPremium)
+  const templates = allTemplates.filter((tpl) =>
+    filter === 'free' ? !isPremium(tpl) : filter === 'premium' ? isPremium(tpl) : true,
+  )
 
   if (!category) {
     return (
@@ -50,7 +57,32 @@ export default function TemplateSelectPage({ categoryId }) {
           <p className="mt-2 text-lg text-ink-muted">{tagline}</p>
         </header>
 
-        <div className="mt-9 grid gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3">
+        {/* Free / Premium filter — only shown when the category actually has both. */}
+        {hasPremium && (
+          <div className="mt-7 inline-flex rounded-full border border-slate-200 bg-white p-1 shadow-sm">
+            {[
+              ['all', t('categoryPage.filterAll', 'All')],
+              ['free', t('categoryPage.filterFree', 'Free')],
+              ['premium', t('common.premium', 'Premium')],
+            ].map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setFilter(key)}
+                className={cn(
+                  'rounded-full px-4 py-1.5 text-sm font-semibold transition-colors',
+                  filter === key
+                    ? 'bg-ink text-white shadow-sm'
+                    : 'text-ink-muted hover:text-ink',
+                )}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div className="mt-7 grid gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3">
           {templates.map((template, i) => (
             <TemplateCard key={template.id} templateId={template.id} index={i} />
           ))}

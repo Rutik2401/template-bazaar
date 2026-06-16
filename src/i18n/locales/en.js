@@ -126,6 +126,13 @@ export const en = {
     comingSoon: 'More templates coming soon ✨',
     categoryNotFound: 'Category not found',
     chooseTemplate: 'Choose a design to get started',
+    filterAll: 'All',
+    filterFree: 'Free',
+  },
+
+  auth: {
+    signIn: 'Sign in',
+    signOut: 'Sign out',
   },
 
   categories: {
@@ -166,6 +173,8 @@ export const en = {
     pdfError: 'Could not generate PDF. Please try again.',
     linkCopied: 'Link copied to clipboard!',
     shareSoon: 'Sharing will be available soon ✨',
+    premiumNotice: 'Premium design — downloads include a watermark.',
+    premiumSignIn: 'Sign in to remove it',
   },
 
   notFound: {

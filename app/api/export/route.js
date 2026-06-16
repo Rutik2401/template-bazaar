@@ -8,6 +8,9 @@
  */
 import chromium from '@sparticuz/chromium'
 import puppeteer from 'puppeteer-core'
+import { auth } from '@/auth'
+import { getTemplateById } from '@/templates'
+import { isEntitled } from '@/lib/entitlements'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -56,13 +59,28 @@ export async function POST(request) {
 
     const isPng = format === 'png'
 
+    // ── Paywall (server-side, authoritative) ───────────────────────────────
+    // Resolve the template's tier from the registry (NOT the client payload),
+    // read the signed-in session, and decide entitlement in one place. Free
+    // designs are always clean; an unentitled premium download is watermarked.
+    // The client cannot bypass this by editing its request.
+    const template = getTemplateById(templateId)
+    const tier = template?.tier ?? 'free'
+    let session = null
+    try {
+      session = await auth()
+    } catch {
+      session = null // auth not configured / unavailable → treat as signed out
+    }
+    const watermark = !isEntitled({ tier, session })
+
     // Self-navigate to the headless render page on this same deployment.
     const proto = request.headers.get('x-forwarded-proto') || 'https'
     const host = request.headers.get('host')
     const hash = encodeURIComponent(JSON.stringify(values))
     const url =
       `${proto}://${host}/print/${encodeURIComponent(templateId)}` +
-      `?locale=${encodeURIComponent(locale)}#${hash}`
+      `?locale=${encodeURIComponent(locale)}${watermark ? '&watermark=1' : ''}#${hash}`
 
     browser = await launchBrowser({
       width,

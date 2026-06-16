@@ -123,6 +123,13 @@ export const hi = {
     comingSoon: 'जल्द ही और टेम्पलेट ✨',
     categoryNotFound: 'श्रेणी नहीं मिली',
     chooseTemplate: 'शुरू करने के लिए एक डिज़ाइन चुनें',
+    filterAll: 'सभी',
+    filterFree: 'मुफ़्त',
+  },
+
+  auth: {
+    signIn: 'साइन इन',
+    signOut: 'साइन आउट',
   },
 
   categories: {
@@ -163,6 +170,8 @@ export const hi = {
     pdfError: 'PDF नहीं बन सका. कृपया फिर से प्रयास करें.',
     linkCopied: 'लिंक कॉपी हो गई!',
     shareSoon: 'शेयरिंग जल्द ही उपलब्ध होगी ✨',
+    premiumNotice: 'प्रीमियम डिज़ाइन — डाउनलोड पर वॉटरमार्क रहेगा.',
+    premiumSignIn: 'हटाने के लिए साइन इन करें',
   },
 
   notFound: {

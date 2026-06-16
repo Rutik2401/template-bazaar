@@ -13,8 +13,15 @@
  *     fields,                   // from src/templates/_shared/fields.js
  *     Preview,                  // React component ({ values }) => JSX
  *     colors, fonts,            // theme metadata (for future theming)
+ *     tier,                     // 'free' | 'premium' (optional; defaults to 'free')
  *     i18n: { mr: { name, description }, hi: { name, description } }  // optional
  *   }
+ *
+ * Premium vs free: `tier` is the single gate for paid designs. A config may set
+ * `tier: 'premium'` directly, OR be listed in `PREMIUM_IDS` below (a convenience
+ * seed so the premium catalog lives in one place without editing every config).
+ * Free is the default. The paywall itself is enforced server-side in
+ * `app/api/export/route.js` — the client never decides entitlement.
  */
 import { weddingTemplates } from './wedding/index.js'
 import { engagementTemplates } from './engagement/index.js'
@@ -27,7 +34,39 @@ import { biodataTemplates } from './biodata/index.js'
 import { festivalTemplates } from './festival/index.js'
 import { businessTemplates } from './business/index.js'
 
-/** Flat list of every template config in the platform. */
+/**
+ * Premium (paid) template ids — the initial premium catalog, kept in one place.
+ * Editing this set is all it takes to mark a design premium; a config can also
+ * declare `tier: 'premium'` itself (that wins). Everything else is free, so the
+ * free funnel stays broad (e.g. Shradhanjali / funeral cards are intentionally
+ * all free). Pricing & unlock flow live in app/api/export + src/lib/entitlements.
+ */
+export const PREMIUM_IDS = new Set([
+  'wedding-royal',
+  'wedding-luxury',
+  'engagement-couple',
+  'birthday-luxury',
+  'baras-premium',
+  'religious-jagran',
+  'biodata-premium',
+  'resume-corporate',
+  'festival-newyear',
+  'business-invoice',
+])
+
+/**
+ * Resolve a template's tier: an explicit config `tier` wins, otherwise the
+ * PREMIUM_IDS seed decides, otherwise 'free'. Guarantees every template object
+ * in `templateList` carries a concrete `tier`.
+ * @param {object} t
+ * @returns {'free'|'premium'}
+ */
+function resolveTier(t) {
+  if (t.tier === 'premium' || t.tier === 'free') return t.tier
+  return PREMIUM_IDS.has(t.id) ? 'premium' : 'free'
+}
+
+/** Flat list of every template config in the platform (each with a resolved `tier`). */
 export const templateList = [
   ...weddingTemplates,
   ...engagementTemplates,
@@ -39,7 +78,12 @@ export const templateList = [
   ...biodataTemplates,
   ...festivalTemplates,
   ...businessTemplates,
-]
+].map((t) => ({ ...t, tier: resolveTier(t) }))
+
+/** @param {object} template @returns {boolean} True for paid (premium) designs. */
+export function isPremium(template) {
+  return template?.tier === 'premium'
+}
 
 /** Fast id → template lookup. */
 const templateById = Object.fromEntries(templateList.map((t) => [t.id, t]))

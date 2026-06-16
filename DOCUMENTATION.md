@@ -256,78 +256,67 @@ public/               favicon.svg, self-hosted fonts, static assets
 
 ---
 
-# Future Scope / Roadmap
+# Premium, login & the paywall
 
-The architecture was deliberately built to grow. The three near-term pillars the
-business wants next are **Premium Designs**, **Login**, and **Pricing for all** —
-they are one connected feature set (you log in → to buy → to unlock premium).
-Below is a concrete design for each, in build order, followed by the longer-term
-roadmap.
+The three near-term pillars are **Premium Designs**, **Login**, and **Pricing
+for all** — one connected feature set (log in → to buy → to unlock premium).
+**A and B are implemented; C (payments) is the remaining step.** They slot in
+cleanly because templates are config objects, every export funnels through one
+server endpoint (`/api/export`), and the API already serves template data as
+JSON — giving three natural gates: a `tier` flag, an auth check, and an export
+paywall.
 
-> **Why these slot in cleanly today:** templates are config objects, the editor
-> already funnels every export through one server endpoint (`/api/export`), and
-> the API already serves template data as JSON. That gives us exactly three
-> natural gates — a `tier` flag on the config, an auth check, and a paywall on
-> export.
+## A. Premium Designs — ✅ implemented
 
-## A. Premium Designs (free vs. paid templates)
+Free designs stay a broad funnel; the best designs are marked **Premium** and
+download clean only for entitled users.
 
-**Goal:** keep a strong free catalog as the funnel; mark the best designs as
-*Premium*, unlockable by purchase.
+- **`tier: 'free' | 'premium'` on every template.** `src/templates/index.js`
+  resolves it: an explicit config `tier` wins, else the `PREMIUM_IDS` seed set,
+  else `'free'`. `isPremium(template)` is the shared helper. Mark a design
+  premium by adding its id to `PREMIUM_IDS` (or setting `tier` on the config).
+- **Premium badge** on `TemplateCard` — shown only when `isPremium`; free cards
+  stay clean (no badge).
+- **Free / Premium filter** on the category page (`TemplateSelectPage`), shown
+  only for categories that actually have premium designs.
+- **Watermark** — `/print/[templateId]` overlays a tiled "Template Bazaar" mark
+  only when the URL carries `watermark=1`. **Free templates are never
+  watermarked.**
+- **Server-side paywall** — `app/api/export` resolves the tier *from the
+  registry* (not the client payload), reads the session, calls
+  `isEntitled({ tier, session })` (`src/lib/entitlements.js`), and appends
+  `&watermark=1` only for an unentitled premium download. **The client never
+  decides entitlement** — buttons are UX only; the export handler is the gate.
+- **Editor hint** — a premium design viewed while signed out shows a
+  "downloads include a watermark · sign in to remove it" bar above the export
+  buttons.
 
-**Data model** — add one field to the template config (§3.3):
+## B. Login / Authentication — ✅ implemented (Google live, OTP scaffolded)
 
-```js
-{
-  id, category, name, …,
-  tier: 'free' | 'premium',     // NEW — defaults to 'free'
-  price: 4900,                   // OPTIONAL — paise (₹49); falls back to plan default
-}
-```
+Identifies the user so premium unlocks persist — without adding any friction to
+the free funnel.
 
-**UI surface:**
-- A **"Premium" badge** on `TemplateCard` when `tier === 'premium'`.
-- A **"Premium" filter/sort** on category pages.
-- The live preview stays **fully visible** (premium designs sell themselves),
-  but a free user's *download* of a premium template is either blocked or
-  **watermarked** (see below).
+- **NextAuth (Auth.js v5)**, JWT sessions, **no database required** to sign in.
+  Split config: `src/auth.config.js` (edge-safe base, shared with middleware)
+  and `src/auth.js` (`handlers`, `auth`, `signIn`, `signOut`).
+- **Google** is the active provider (enabled when `AUTH_GOOGLE_ID/SECRET` are
+  set). **Email OTP** is scaffolded with a documented seam in `auth.config.js`
+  (needs an email sender + a short-lived code store to go live).
+- **Endpoints** at `app/api/auth/[...nextauth]`; client `SessionProvider` via
+  `src/components/AuthProvider.jsx`; navbar **Sign in / avatar** via
+  `AuthButton.jsx`.
+- **Middleware** (`middleware.js`) uses the edge-safe config and is scoped to
+  `/account/:path*` only — every public route (browse, preview, **download free
+  templates**) is untouched.
+- **Login unlocks premium (for now):** `isEntitled` treats any signed-in user as
+  entitled. Payments (C) become an extra check at that one line — nothing else
+  changes.
+- **Graceful when unconfigured:** with no `AUTH_*` env, the app still builds and
+  the free experience is unaffected; premium downloads simply stay watermarked.
+- **Principle:** login is required **only at the moment of unlocking premium** —
+  never to browse, preview, or use free templates.
 
-**Watermark strategy (the conversion lever):**
-- `/print/[templateId]` reads a `watermark=1` flag and overlays a tiled, low-
-  opacity "Template Bazaar" mark.
-- The export route sets that flag whenever the requester is unauthenticated /
-  unpaid for a premium template. Paid → clean output.
-- Free templates always export clean — no behaviour change for today's users.
-
-**Enforcement point:** all gating happens **server-side in `/api/export`**, never
-in the client. The client can hide buttons for UX, but the actual paywall is the
-export handler refusing (or watermarking) a premium render. This is the single
-most important security property of the whole premium system.
-
-## B. Login / Authentication
-
-**Goal:** identify the user so purchases and unlocks persist across devices —
-while keeping the no-sign-up experience for free templates.
-
-**Recommended approach:**
-- **NextAuth.js (Auth.js)** or **Clerk** — both integrate with App Router via a
-  route handler + middleware. Clerk is faster to ship; NextAuth is
-  dependency-light and free.
-- **Providers:** Google + Email OTP first (lowest friction in India), phone OTP
-  later.
-- **Session gate:** App Router **middleware** protects the *purchase* and
-  *account* routes; browsing and previewing stay public.
-
-**Where it plugs in:**
-- `app/middleware.js` — guards `/account/*` and the purchase API.
-- Navbar gains a sign-in / avatar slot (next to the language switcher).
-- A new `/account` view: purchases, downloads, plan status.
-
-**Principle:** **login is required only at the moment of unlocking a premium
-asset**, not to browse, preview, or download free templates. Sign-up must never
-become friction for the free funnel.
-
-## C. Pricing for all (plans & payments)
+## C. Pricing for all (plans & payments) — next
 
 **Goal:** monetise without killing the free funnel. Offer pricing that fits both
 one-off users and frequent creators.
@@ -370,12 +359,19 @@ User clicks Download on a PREMIUM template
         └─ entitled? ──► /api/export renders CLEAN (no watermark) ──► download
 ```
 
+**The one line that changes:** entitlement already has a single decision point —
+`isEntitled({ tier, session })` in `src/lib/entitlements.js`. Today it returns
+`true` for any signed-in user on a premium template. Payments just tighten that
+to `Boolean(session?.user) && hasActivePlan(session)`. Nothing in the UI or the
+export route changes.
+
 **Persistence:** introducing money means introducing a **database** (the current
 static `templateList` is fine for catalog, but users/purchases need storage).
 Recommended: **Vercel Postgres** (or Supabase) with tables `users`,
-`purchases`, `subscriptions`, `entitlements`. Because `/api/templates` already
-returns JSON, the catalog can stay static while only user/billing data goes to
-the DB — minimal blast radius.
+`purchases`, `subscriptions`, `entitlements`, plus the NextAuth Postgres/Prisma
+adapter (which also unlocks email-link/OTP login). Because `/api/templates`
+already returns JSON, the catalog stays static while only user/billing data goes
+to the DB — minimal blast radius.
 
 ## D. Longer-term roadmap
 
@@ -410,6 +406,11 @@ the DB — minimal blast radius.
 - Add `data-pdf-color="#hex"` to any new gradient-clipped text (html2canvas
   fallback only).
 - Always pass a fallback string to `t('key', 'English fallback')`.
-- When premium ships: **enforce the paywall in `/api/export`**, never the client.
+- The premium paywall is enforced in **`/api/export`** (server-side), never the
+  client — keep it that way. Tier is resolved from the registry, not the request.
+- Mark a design premium via `PREMIUM_IDS` (or `tier` on its config); change the
+  unlock rule only in `src/lib/entitlements.js`.
+- Auth uses the **split config** pattern: keep `src/auth.config.js` edge-safe
+  (no Node-only imports) since `middleware.js` shares it.
 </content>
 </invoke>

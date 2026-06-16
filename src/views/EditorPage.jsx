@@ -2,13 +2,14 @@
 
 import { useRef, useState } from 'react'
 import Link from 'next/link'
+import { useSession, signIn } from 'next-auth/react'
 import Layout from '@/components/Layout.jsx'
 import FormField from '@/components/FormField.jsx'
 import TemplateStage from '@/components/TemplateStage.jsx'
 import ExportBar from '@/components/ExportBar.jsx'
 import Toast from '@/components/Toast.jsx'
 import { useTemplateForm } from '@/hooks/useTemplateForm'
-import { getTemplateById, localizedTemplate } from '@/templates'
+import { getTemplateById, localizedTemplate, isPremium } from '@/templates'
 import { getCategoryById } from '@/data/categories'
 import { exportNodeToPdf } from '@/utils/exportPdf'
 import { exportViaServer } from '@/utils/exportRemote'
@@ -18,6 +19,7 @@ import { useI18n } from '@/i18n/I18nProvider'
 
 export default function EditorPage({ templateId }) {
   const { t, locale } = useI18n()
+  const { data: session } = useSession()
   const template = getTemplateById(templateId)
 
   // Hooks must run unconditionally — safe because `template` is stable per route.
@@ -41,6 +43,8 @@ export default function EditorPage({ templateId }) {
   }
 
   const category = getCategoryById(template.category)
+  // Premium + signed-out → downloads carry a watermark until the user logs in.
+  const showPremiumNotice = isPremium(template) && !session?.user
 
   // Print-quality export via headless Chrome on the server: vector PDF (selectable
   // text) or HD PNG. Falls back to the legacy client-side capture only if the
@@ -203,6 +207,24 @@ export default function EditorPage({ templateId }) {
             </div>
           </div>
         </div>
+
+        {showPremiumNotice && (
+          <div className="flex items-center justify-center gap-2 border-t border-gold-200 bg-gold-50 px-5 py-2 text-center text-sm text-ink-soft">
+            <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-gold-500" fill="currentColor" aria-hidden>
+              <path d="M3 7l4.5 3L12 4l4.5 6L21 7l-1.8 11H4.8L3 7z" />
+            </svg>
+            <span>
+              {t('editor.premiumNotice', 'Premium design — downloads include a watermark.')}{' '}
+              <button
+                type="button"
+                onClick={() => signIn('google')}
+                className="font-semibold text-gold-600 underline underline-offset-2 hover:text-gold-700"
+              >
+                {t('editor.premiumSignIn', 'Sign in to remove it')}
+              </button>
+            </span>
+          </div>
+        )}
 
         <ExportBar onExport={handleExport} onShare={handleShare} busyFormat={busyFormat} />
       </div>

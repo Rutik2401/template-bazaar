@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import TemplateStage from './TemplateStage.jsx'
-import { getTemplateById, getDefaultValues, localizedTemplate } from '@/templates'
+import { getTemplateById, getDefaultValues, localizedTemplate, isPremium } from '@/templates'
 import { useI18n } from '@/i18n/I18nProvider'
 
 /**
@@ -35,9 +35,15 @@ export default function TemplateCard({ templateId, index = 0 }) {
         <div className="pointer-events-none overflow-hidden rounded-xl shadow-card ring-1 ring-black/5 transition-transform duration-500 group-hover:scale-[1.02]">
           <TemplateStage template={template} values={previewValues} />
         </div>
-        <span className="absolute right-7 top-7 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-ink shadow-sm backdrop-blur">
-          {t('common.premium')}
-        </span>
+        {/* Badge only on paid designs — free templates stay clean (no badge). */}
+        {isPremium(template) && (
+          <span className="absolute right-7 top-7 inline-flex items-center gap-1 rounded-full bg-gradient-to-b from-gold-400 to-gold-500 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white shadow-sm">
+            <svg viewBox="0 0 24 24" className="h-3 w-3" fill="currentColor" aria-hidden>
+              <path d="M3 7l4.5 3L12 4l4.5 6L21 7l-1.8 11H4.8L3 7z" />
+            </svg>
+            {t('common.premium')}
+          </span>
+        )}
       </div>
 
       <div className="flex items-center justify-between gap-4 px-6 py-5">
