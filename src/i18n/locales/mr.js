@@ -174,6 +174,18 @@ export const mr = {
     premiumSignIn: 'काढण्यासाठी साइन इन करा',
   },
 
+  imageField: {
+    upload: 'फोटो अपलोड करा',
+    change: 'बदला',
+    adjust: 'समायोजित करा',
+    remove: 'काढा',
+    cropTitle: 'तुमचा फोटो समायोजित करा',
+    cropHint: 'हलवण्यासाठी ओढा • झूमसाठी पिंच करा किंवा स्लायडर वापरा',
+    zoom: 'झूम',
+    cancel: 'रद्द करा',
+    apply: 'लागू करा',
+  },
+
   notFound: {
     title: 'पृष्ठ सापडले नाही',
     desc: 'तुम्ही शोधत असलेले पृष्ठ अस्तित्वात नाही.',
@@ -182,6 +194,7 @@ export const mr = {
   fields: {
     brideName: { label: 'वधूचे नाव' },
     groomName: { label: 'वराचे नाव' },
+    photo: { label: 'फोटो' },
     weddingDate: { label: 'लग्नाची तारीख' },
     venue: { label: 'ठिकाण' },
     familyName: {

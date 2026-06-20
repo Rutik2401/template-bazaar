@@ -175,6 +175,7 @@ const weddingPortraitTemplate = {
   fields: [
     { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Sanika', defaultValue: 'Sanika' },
     { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Aarav', defaultValue: 'Aarav' },
+    { name: 'photo', label: 'Couple Photo', type: 'image', aspect: 348 / 372, outputWidth: 1400, hint: 'Optional — upload a photo to replace the illustration in the arch.' },
     { name: 'weddingDate', label: 'Wedding Date', type: 'date', defaultValue: '2025-12-15' },
     { name: 'time', label: 'Time', type: 'time', defaultValue: '11:00' },
     { name: 'venue', label: 'Venue', type: 'text', placeholder: 'The Grand Palace, Jaipur', defaultValue: 'The Grand Palace, Jaipur' },
@@ -235,6 +236,7 @@ const weddingPhotoFrameTemplate = {
   fields: [
     { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Sanika', defaultValue: 'Sanika' },
     { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Aarav', defaultValue: 'Aarav' },
+    { name: 'photo', label: 'Your Photo', type: 'image', aspect: 532 / 468, outputWidth: 1600, hint: 'Upload your photo — drag & zoom to fit the gold frame.' },
     { name: 'weddingDate', label: 'Wedding Date', type: 'date', defaultValue: '2025-12-15' },
     { name: 'venue', label: 'Venue', type: 'text', placeholder: 'The Grand Palace, Jaipur', defaultValue: 'The Grand Palace, Jaipur' },
     { name: 'photoCaption', label: 'Photo Caption', type: 'text', placeholder: 'The day we say forever', defaultValue: 'The day we say forever' },

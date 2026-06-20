@@ -159,6 +159,7 @@ export default function BrideGroomPortrait({ values }) {
   const weddingDate = formatDate(values.weddingDate, 'December 15, 2025')
   const time = formatTime(values.time, '')
   const venue = values.venue?.trim() || 'The Grand Palace, Jaipur'
+  const photo = (values.photo || '').trim()
 
   return (
     <div
@@ -189,12 +190,19 @@ export default function BrideGroomPortrait({ values }) {
 
         {/* ── Arched portrait window (upper half) ── */}
         <div className="relative mt-5 h-[372px] w-[348px]">
-          {/* arched inner mat */}
-          <div className="absolute inset-0 overflow-hidden rounded-t-[174px] rounded-b-[14px] bg-gradient-to-b from-[#fdf7ec] to-[#f4e3c2] shadow-[inset_0_0_0_2px_rgba(122,30,43,0.18)]" />
-          {/* portrait illustration */}
-          <div className="absolute inset-x-0 bottom-0 flex justify-center">
-            <CouplePortrait className="h-[326px] w-[300px]" />
+          {/* arched inner mat — also clips an uploaded photo to the arch shape */}
+          <div className="absolute inset-0 overflow-hidden rounded-t-[174px] rounded-b-[14px] bg-gradient-to-b from-[#fdf7ec] to-[#f4e3c2] shadow-[inset_0_0_0_2px_rgba(122,30,43,0.18)]">
+            {photo && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={photo} alt="" className="absolute inset-0 h-full w-full object-cover" />
+            )}
           </div>
+          {/* portrait illustration — shown only when no photo is uploaded */}
+          {!photo && (
+            <div className="absolute inset-x-0 bottom-0 flex justify-center">
+              <CouplePortrait className="h-[326px] w-[300px]" />
+            </div>
+          )}
           {/* gold arch keyline frame */}
           <div className="pointer-events-none absolute inset-0 rounded-t-[174px] rounded-b-[14px] border-[3px] border-[#d4a437]" />
           <div className="pointer-events-none absolute inset-[7px] rounded-t-[168px] rounded-b-[10px] border border-[#e8c75b]/55" />

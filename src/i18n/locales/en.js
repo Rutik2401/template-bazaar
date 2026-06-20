@@ -177,6 +177,18 @@ export const en = {
     premiumSignIn: 'Sign in to remove it',
   },
 
+  imageField: {
+    upload: 'Upload Photo',
+    change: 'Change',
+    adjust: 'Adjust',
+    remove: 'Remove',
+    cropTitle: 'Adjust your photo',
+    cropHint: 'Drag to reposition • Pinch or use the slider to zoom',
+    zoom: 'Zoom',
+    cancel: 'Cancel',
+    apply: 'Apply',
+  },
+
   notFound: {
     title: 'Page not found',
     desc: "The page you're looking for doesn't exist.",
@@ -185,6 +197,7 @@ export const en = {
   fields: {
     brideName: { label: 'Bride Name' },
     groomName: { label: 'Groom Name' },
+    photo: { label: 'Photo' },
     weddingDate: { label: 'Wedding Date' },
     venue: { label: 'Venue' },
     familyName: {

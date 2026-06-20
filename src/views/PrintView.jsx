@@ -43,21 +43,26 @@ export default function PrintView({ templateId }) {
     setState({ values, locale, watermark })
   }, [])
 
-  // Signal "ready to capture" once values are applied AND web fonts have painted.
+  // Signal "ready to capture" once values are applied AND web fonts + any
+  // uploaded photos have painted (so a data-URL image never captures half-decoded).
   useEffect(() => {
     if (!state || !template) return
     let cancelled = false
     const flag = () => {
       if (!cancelled) document.documentElement.setAttribute('data-print-ready', '1')
     }
-    if (document.fonts?.ready) {
-      // Two rAFs ensure layout/paint settled after fonts swap in.
-      document.fonts.ready.then(() =>
-        requestAnimationFrame(() => requestAnimationFrame(flag)),
-      )
-    } else {
-      requestAnimationFrame(flag)
+    const ready = async () => {
+      try {
+        if (document.fonts?.ready) await document.fonts.ready
+        const imgs = Array.from(document.querySelectorAll('[data-export-capture] img'))
+        await Promise.all(imgs.map((img) => (img.decode ? img.decode().catch(() => {}) : null)))
+      } catch {
+        /* best-effort — fall through to flag regardless */
+      }
+      // Two rAFs ensure layout/paint settled after fonts/images swap in.
+      requestAnimationFrame(() => requestAnimationFrame(flag))
     }
+    ready()
     return () => {
       cancelled = true
     }

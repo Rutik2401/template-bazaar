@@ -1,5 +1,6 @@
 'use client'
 
+import ImageField from './ImageField.jsx'
 import { useI18n } from '@/i18n/I18nProvider'
 
 /**
@@ -15,6 +16,12 @@ import { useI18n } from '@/i18n/I18nProvider'
 export default function FormField({ field, value, onChange }) {
   const { t } = useI18n()
   const { name, type = 'text', placeholder } = field
+
+  // Photo upload (with cropper) is its own self-contained control.
+  if (type === 'image') {
+    return <ImageField field={field} value={value} onChange={onChange} />
+  }
+
   const id = `field-${name}`
 
   const label = t(`fields.${name}.label`, field.label)

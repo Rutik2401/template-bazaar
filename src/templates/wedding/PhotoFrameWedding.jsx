@@ -87,6 +87,7 @@ export default function PhotoFrameWedding({ values }) {
   const weddingDate = formatDate(values.weddingDate, 'December 15, 2025')
   const venue = values.venue?.trim() || 'The Grand Palace, Jaipur'
   const photoCaption = values.photoCaption?.trim() || 'The day we say forever'
+  const photo = (values.photo || '').trim()
 
   return (
     <div
@@ -109,16 +110,22 @@ export default function PhotoFrameWedding({ values }) {
           <div className="absolute inset-0 rounded-[20px] bg-gradient-to-br from-[#e7c878] via-[#d4ad53] to-[#b98f2e] p-[10px] shadow-[0_18px_40px_-18px_rgba(120,86,18,0.45)]">
             {/* inner ivory plate */}
             <div className="relative h-full w-full overflow-hidden rounded-[12px] border border-[#e9d9a8] bg-gradient-to-br from-[#fdfaf2] to-[#f3e9d2]">
+              {/* uploaded photo — fills the plate, gold frame & corners overlay it */}
+              {photo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={photo} alt="" className="absolute inset-0 h-full w-full object-cover" />
+              ) : (
+                /* faint camera / heart watermark + placeholder label */
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 text-center">
+                  <PhotoWatermark className="h-24 w-28 text-[#caa64a]/30" />
+                  <p className="font-sans text-[12px] font-medium uppercase tracking-[0.46em] text-[#b58f3a]/70">
+                    {t('template.wedding.yourPhotoHere', 'Your Photo Here')}
+                  </p>
+                </div>
+              )}
+
               {/* hairline keyline inside the plate */}
               <div className="pointer-events-none absolute inset-[10px] rounded-[8px] border border-[#d9b65f]/45" />
-
-              {/* faint camera / heart watermark + placeholder label */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 text-center">
-                <PhotoWatermark className="h-24 w-28 text-[#caa64a]/30" />
-                <p className="font-sans text-[12px] font-medium uppercase tracking-[0.46em] text-[#b58f3a]/70">
-                  {t('template.wedding.yourPhotoHere', 'Your Photo Here')}
-                </p>
-              </div>
 
               {/* decorative gold corners on the frame */}
               <FrameCorner className="absolute left-2 top-2 h-14 w-14 text-[#b98f2e]" />

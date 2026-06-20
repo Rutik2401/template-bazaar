@@ -174,6 +174,18 @@ export const hi = {
     premiumSignIn: 'हटाने के लिए साइन इन करें',
   },
 
+  imageField: {
+    upload: 'फ़ोटो अपलोड करें',
+    change: 'बदलें',
+    adjust: 'समायोजित करें',
+    remove: 'हटाएँ',
+    cropTitle: 'अपनी फ़ोटो समायोजित करें',
+    cropHint: 'खिसकाने के लिए खींचें • ज़ूम के लिए पिंच करें या स्लाइडर चलाएँ',
+    zoom: 'ज़ूम',
+    cancel: 'रद्द करें',
+    apply: 'लागू करें',
+  },
+
   notFound: {
     title: 'पेज नहीं मिला',
     desc: 'आप जिस पेज को खोज रहे हैं वह मौजूद नहीं है.',
@@ -182,6 +194,7 @@ export const hi = {
   fields: {
     brideName: { label: 'वधू का नाम' },
     groomName: { label: 'वर का नाम' },
+    photo: { label: 'फ़ोटो' },
     weddingDate: { label: 'शादी की तारीख' },
     venue: { label: 'स्थान' },
     familyName: {
