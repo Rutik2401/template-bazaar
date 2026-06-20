@@ -79,9 +79,17 @@ export const metadata = {
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
+  // Google's search-result favicon wants a real square ICO/PNG (≥48px) at a
+  // stable URL — an SVG-only favicon is why results fell back to the generic
+  // globe. We expose .ico + PNGs (and keep the crisp SVG for modern browsers).
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
+    ],
+    shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
   manifest: '/manifest.webmanifest',
@@ -94,7 +102,8 @@ const ORGANIZATION_LD = {
   '@type': 'Organization',
   name: SITE_NAME,
   url: siteUrl(),
-  logo: absoluteUrl('/favicon.svg'),
+  // Raster logo (Google ignores SVG for the Organization logo / knowledge panel).
+  logo: absoluteUrl('/icon-512.png'),
   description: DEFAULT_DESCRIPTION,
 }
 

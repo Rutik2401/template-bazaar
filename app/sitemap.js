@@ -10,20 +10,26 @@ import { absoluteUrl } from '@/utils/siteUrl'
  * @returns {import('next').MetadataRoute.Sitemap}
  */
 export default function sitemap() {
+  // Stamped at build time so each deploy advertises fresh content to crawlers.
+  const lastModified = new Date()
+
   const home = {
     url: absoluteUrl('/'),
+    lastModified,
     changeFrequency: 'weekly',
     priority: 1,
   }
 
   const categoryUrls = categories.map((c) => ({
     url: absoluteUrl(`/category/${c.id}`),
+    lastModified,
     changeFrequency: 'weekly',
     priority: 0.8,
   }))
 
   const templateUrls = templateList.map((t) => ({
     url: absoluteUrl(`/editor/${t.id}`),
+    lastModified,
     changeFrequency: 'weekly',
     priority: 0.6,
   }))
