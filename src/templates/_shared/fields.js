@@ -88,6 +88,36 @@ export const biodataFields = [
   { name: 'contact', label: 'Contact', type: 'text', placeholder: '+91 98765 43210', defaultValue: '+91 98765 43210' },
 ]
 
+/**
+ * Rich marriage-biodata fields — a complete Indian matrimonial profile used by
+ * the premium biodata designs. Includes a `photo` upload (with cropper) plus the
+ * astrological & family details families expect (DOB, rashi, nakshatra, gotra,
+ * religion/caste, parents, …). Each design renders only the rows it needs and
+ * hides any field left empty, so the same form drives every layout cleanly.
+ */
+export const biodataDetailedFields = [
+  { name: 'fullName', label: 'Full Name', type: 'text', placeholder: 'Rohan Mehta', defaultValue: 'Rohan Mehta' },
+  { name: 'photo', label: 'Photo', type: 'image', aspect: 0.8, outputWidth: 1000, hint: 'Optional — upload a portrait photo; drag & zoom to crop.' },
+  { name: 'dateOfBirth', label: 'Date of Birth', type: 'date', defaultValue: '1997-08-15' },
+  { name: 'timeOfBirth', label: 'Time of Birth', type: 'text', placeholder: '07:45 AM', defaultValue: '07:45 AM' },
+  { name: 'birthPlace', label: 'Birth Place', type: 'text', placeholder: 'Pune, Maharashtra', defaultValue: 'Pune, Maharashtra' },
+  { name: 'height', label: 'Height', type: 'text', placeholder: `5' 10" (178 cm)`, defaultValue: `5' 10" (178 cm)` },
+  { name: 'complexion', label: 'Complexion', type: 'text', placeholder: 'Fair', defaultValue: 'Fair' },
+  { name: 'bloodGroup', label: 'Blood Group', type: 'text', placeholder: 'B+', defaultValue: 'B+' },
+  { name: 'rashi', label: 'Rashi (Moon Sign)', type: 'text', placeholder: 'Vrishabha (Taurus)', defaultValue: 'Vrishabha (Taurus)' },
+  { name: 'nakshatra', label: 'Nakshatra', type: 'text', placeholder: 'Rohini', defaultValue: 'Rohini' },
+  { name: 'gotra', label: 'Gotra', type: 'text', placeholder: 'Kashyap', defaultValue: 'Kashyap' },
+  { name: 'religionCaste', label: 'Religion / Caste', type: 'text', placeholder: 'Hindu, Maratha', defaultValue: 'Hindu, Maratha' },
+  { name: 'education', label: 'Education', type: 'text', placeholder: 'B.E. Computer Science', defaultValue: 'B.E. Computer Science' },
+  { name: 'occupation', label: 'Occupation', type: 'text', placeholder: 'Software Engineer, Infosys', defaultValue: 'Software Engineer at Infosys' },
+  { name: 'income', label: 'Annual Income', type: 'text', placeholder: '₹12 LPA', defaultValue: '₹12 LPA' },
+  { name: 'fatherName', label: "Father's Name", type: 'text', placeholder: 'Mr. Suresh Mehta (Business)', defaultValue: 'Mr. Suresh Mehta (Business)' },
+  { name: 'motherName', label: "Mother's Name", type: 'text', placeholder: 'Mrs. Anita Mehta (Homemaker)', defaultValue: 'Mrs. Anita Mehta (Homemaker)' },
+  { name: 'siblings', label: 'Siblings', type: 'text', placeholder: '1 Younger Sister', defaultValue: '1 Younger Sister' },
+  { name: 'contact', label: 'Contact Number', type: 'text', placeholder: '+91 98765 43210', defaultValue: '+91 98765 43210' },
+  { name: 'address', label: 'Address', type: 'textarea', rows: 2, placeholder: '12, Shanti Nagar, Pune', defaultValue: '12, Shanti Nagar, Pune, Maharashtra 411001' },
+]
+
 export const festivalFields = [
   { name: 'personName', label: 'Name', type: 'text', placeholder: 'The Sharma Family', defaultValue: 'The Sharma Family' },
   { name: 'message', label: 'Message', type: 'textarea', hint: 'Your warm wishes.', defaultValue: 'Wishing you and your family health, happiness and prosperity on this auspicious occasion.' },
