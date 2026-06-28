@@ -2,11 +2,9 @@
 
 import Link from 'next/link'
 import Layout from '@/components/Layout.jsx'
-import CategoryCard from '@/components/CategoryCard.jsx'
 import PremiumCollection from '@/components/PremiumCollection.jsx'
 import FeatureShowcase from '@/components/FeatureShowcase.jsx'
 import Faq from '@/components/Faq.jsx'
-import { categories } from '@/data/categories'
 import { useI18n } from '@/i18n/I18nProvider'
 
 const STEPS = [
@@ -108,15 +106,48 @@ export default function HomePage() {
       {/* Premium Collection — flagship Wedding & Engagement showcase */}
       <PremiumCollection />
 
-      {/* Category cards */}
+      {/* Explore Categories — SaaS-style CTA card */}
       <section className="container-page mt-16 sm:mt-20">
-        <h2 className="text-center font-display text-2xl font-bold text-ink sm:text-3xl">
-          {t('home.allCategories', 'Browse all categories')}
-        </h2>
-        <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category, i) => (
-            <CategoryCard key={category.id} category={category} index={i} />
-          ))}
+        <div className="relative overflow-hidden rounded-3xl border border-gold-200/60 bg-gradient-to-br from-white via-gold-50/40 to-amber-50/30 px-6 py-12 text-center shadow-soft sm:px-16 sm:py-16">
+          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+            <div className="absolute left-[-3rem] top-[-3rem] h-48 w-48 rounded-full bg-gold-200/30 blur-[80px]" />
+            <div className="absolute right-[-2rem] bottom-[-2rem] h-40 w-40 rounded-full bg-amber-200/25 blur-[70px]" />
+          </div>
+
+          <span className="chip bg-gradient-to-r from-gold-100 to-amber-100 text-gold-700">
+            {t('home.exploreBadge', '✦ Explore')}
+          </span>
+          <h2 className="mx-auto mt-4 max-w-2xl text-balance font-display text-2xl font-bold text-ink sm:text-3xl">
+            {t('home.exploreTitle', 'Find the perfect template for every occasion')}
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-balance text-sm leading-relaxed text-ink-muted sm:text-base">
+            {t('home.exploreText', 'From wedding invites and festival greetings to resumes and business cards — 25+ categories, 95+ premium designs, all free to use.')}
+          </p>
+
+          <div className="mx-auto mt-8 grid max-w-lg grid-cols-3 gap-4 text-center sm:max-w-xl">
+            <div>
+              <p className="font-display text-2xl font-bold text-gold-600">25+</p>
+              <p className="mt-0.5 text-xs text-ink-muted">{t('home.exploreStat1', 'Categories')}</p>
+            </div>
+            <div>
+              <p className="font-display text-2xl font-bold text-gold-600">95+</p>
+              <p className="mt-0.5 text-xs text-ink-muted">{t('home.exploreStat2', 'Templates')}</p>
+            </div>
+            <div>
+              <p className="font-display text-2xl font-bold text-gold-600">3</p>
+              <p className="mt-0.5 text-xs text-ink-muted">{t('home.exploreStat3', 'Languages')}</p>
+            </div>
+          </div>
+
+          <Link
+            href="/categories"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold-500 to-amber-500 px-7 py-3.5 text-base font-bold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift active:translate-y-0"
+          >
+            {t('home.browseAll', 'Browse all categories')}
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2">
+              <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
         </div>
       </section>
 

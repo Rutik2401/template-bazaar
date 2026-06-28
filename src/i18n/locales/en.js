@@ -57,6 +57,15 @@ export const en = {
     finalTitle: 'Your celebration is one template away',
     finalText:
       'Pick a stall, fill in your details, and download a print-ready PDF or HD image in minutes — no design skills, no sign-up.',
+    findCategory: 'Find your perfect template',
+    findCategorySub: 'Search by category name or browse the full collection',
+    browseAll: 'Browse all categories',
+    exploreBadge: '✦ Explore',
+    exploreTitle: 'Find the perfect template for every occasion',
+    exploreText: 'From wedding invites and festival greetings to resumes and business cards — 25+ categories, 95+ premium designs, all free to use.',
+    exploreStat1: 'Categories',
+    exploreStat2: 'Templates',
+    exploreStat3: 'Languages',
     footer: 'Made with ❤️ in India · Template Bazaar',
   },
 
@@ -136,6 +145,12 @@ export const en = {
   },
 
   categories: {
+    pageTitle: 'All Categories',
+    pageSubtitle: 'Browse our full collection of template categories',
+    searchPlaceholder: 'Search categories…',
+    noResults: 'No categories found',
+    showing: { one: 'Showing 1 category', other: 'Showing {{count}} categories' },
+    emptyState: 'Try a different search term',
     wedding: { name: 'Wedding Invitation', tagline: 'Royal invites for your big day' },
     engagement: { name: 'Engagement Invitation', tagline: 'Celebrate the ring ceremony' },
     birthday: { name: 'Birthday Invitation', tagline: 'Fun, colourful party cards' },
