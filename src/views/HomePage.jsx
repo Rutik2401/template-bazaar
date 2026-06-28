@@ -88,7 +88,7 @@ export default function HomePage() {
 
           {/* Quick stats */}
           <dl
-            className="mx-auto mt-12 grid max-w-md grid-cols-2 gap-x-6 gap-y-7 animate-fade-up sm:flex sm:max-w-none sm:justify-center sm:gap-x-14"
+            className="mx-auto mt-10 grid max-w-sm grid-cols-2 gap-x-4 gap-y-5 animate-fade-up sm:mt-12 sm:max-w-none sm:grid-cols-4 sm:gap-x-14 sm:gap-y-7"
             style={{ animationDelay: '220ms' }}
           >
             {STATS.map((s) => (

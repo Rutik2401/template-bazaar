@@ -28,6 +28,15 @@ Thumbs.db
 next-env.d.ts
 .vercel
 
+# env files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+
 # local scratch / dev tooling (screenshots etc.)
 _shot.mjs
 _shots/
+
+# debug / profiling
+*.tsbuildinfo

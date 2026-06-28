@@ -19,7 +19,7 @@ export default function AuthButton() {
     const name = session.user.name || session.user.email || 'Account'
     const initial = name.trim().charAt(0).toUpperCase() || 'U'
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5">
         {session.user.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -36,9 +36,16 @@ export default function AuthButton() {
         <button
           type="button"
           onClick={() => signOut()}
-          className="hidden rounded-lg px-2.5 py-2 text-sm font-semibold text-ink-soft transition-colors hover:bg-slate-100 hover:text-ink sm:inline-flex"
+          className="rounded-lg p-2 text-ink-soft transition-colors hover:bg-slate-100 hover:text-ink sm:px-2.5 sm:py-2 sm:text-sm sm:font-semibold"
+          title={t('auth.signOut', 'Sign out')}
         >
-          {t('auth.signOut', 'Sign out')}
+          {/* Logout icon — visible on mobile, labeled on desktop */}
+          <svg viewBox="0 0 24 24" className="h-4 w-4 sm:hidden" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
+          <span className="hidden sm:inline">{t('auth.signOut', 'Sign out')}</span>
         </button>
       </div>
     )
