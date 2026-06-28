@@ -17,7 +17,7 @@ const COLLECTIONS = [
     titleFallback: 'Premium Wedding Collection',
     blurbKey: 'home.premiumWeddingBlurb',
     blurbFallback: '20+ designer wedding invitations — royal, floral, illustrated, regional & more.',
-    ids: ['wedding-royal', 'wedding-palace', 'wedding-cartoon-couple', 'wedding-watercolor'],
+    ids: ['wedding-royal', 'wedding-palace', 'wedding-watercolor'],
   },
   {
     categoryId: 'engagement',
@@ -25,7 +25,7 @@ const COLLECTIONS = [
     titleFallback: 'Premium Engagement Collection',
     blurbKey: 'home.premiumEngagementBlurb',
     blurbFallback: '20+ premium engagement cards — ring, diamond, royal, pastel & illustrated.',
-    ids: ['engagement-diamond', 'engagement-pink', 'engagement-royal', 'engagement-cartoon'],
+    ids: ['engagement-diamond', 'engagement-pink', 'engagement-royal'],
   },
 ]
 

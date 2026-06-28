@@ -16,13 +16,11 @@ import LuxuryWedding from './LuxuryWedding.jsx'
 import BohoPampasWedding from './BohoPampasWedding.jsx'
 
 // ── Premium Collection (new) ────────────────────────────────────────────────
-import CartoonCoupleWedding from './CartoonCoupleWedding.jsx'
-import BrideGroomPortrait from './BrideGroomPortrait.jsx'
 import SouthIndianWedding from './SouthIndianWedding.jsx'
 import NikahWedding from './NikahWedding.jsx'
 import PhotoFrameWedding from './PhotoFrameWedding.jsx'
 import WhatsappWedding from './WhatsappWedding.jsx'
-import DestinationWedding from './DestinationWedding.jsx'
+
 import RoyalPalaceWedding from './RoyalPalaceWedding.jsx'
 import VintageWedding from './VintageWedding.jsx'
 import WatercolorWedding from './WatercolorWedding.jsx'
@@ -146,45 +144,6 @@ const weddingLuxuryTemplate = {
 // custom field set (dynamic fields differ per template — not a shared form).
 // ─────────────────────────────────────────────────────────────────────────────
 
-const weddingCartoonCoupleTemplate = {
-  id: 'wedding-cartoon-couple',
-  category: 'wedding',
-  name: 'Cartoon Couple Wedding',
-  description: 'Illustrated bride & groom under a floral arch — playful, modern and premium.',
-  width: 640,
-  height: 900,
-  fields: [
-    { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Sanika', defaultValue: 'Sanika' },
-    { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Aarav', defaultValue: 'Aarav' },
-    { name: 'weddingDate', label: 'Wedding Date', type: 'date', defaultValue: '2025-12-15' },
-    { name: 'venue', label: 'Venue', type: 'text', placeholder: 'The Grand Palace, Jaipur', defaultValue: 'The Grand Palace, Jaipur' },
-    { name: 'tagline', label: 'Tagline', type: 'text', placeholder: 'Two souls, one journey', defaultValue: 'Two souls, one beautiful journey' },
-  ],
-  Preview: CartoonCoupleWedding,
-  colors: { primary: '#be4a6f', secondary: '#d99a4e', bg: '#fff5f0', accent: '#e8a0b8' },
-  fonts: { heading: 'script', body: 'sans' },
-}
-
-const weddingPortraitTemplate = {
-  id: 'wedding-portrait',
-  category: 'wedding',
-  name: 'Bride & Groom Portrait',
-  description: 'Ornate gold-framed arch with an illustrated couple portrait and an engraved name banner.',
-  width: 640,
-  height: 900,
-  fields: [
-    { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Sanika', defaultValue: 'Sanika' },
-    { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Aarav', defaultValue: 'Aarav' },
-    { name: 'photo', label: 'Couple Photo', type: 'image', aspect: 348 / 372, outputWidth: 1400, hint: 'Optional — upload a photo to replace the illustration in the arch.' },
-    { name: 'weddingDate', label: 'Wedding Date', type: 'date', defaultValue: '2025-12-15' },
-    { name: 'time', label: 'Time', type: 'time', defaultValue: '11:00' },
-    { name: 'venue', label: 'Venue', type: 'text', placeholder: 'The Grand Palace, Jaipur', defaultValue: 'The Grand Palace, Jaipur' },
-  ],
-  Preview: BrideGroomPortrait,
-  colors: { primary: '#5e1822', secondary: '#0f3d2e', bg: '#3a0f17', accent: '#d4a437' },
-  fonts: { heading: 'display', body: 'serif' },
-}
-
 const weddingSouthIndianTemplate = {
   id: 'wedding-south-indian',
   category: 'wedding',
@@ -263,26 +222,6 @@ const weddingWhatsappTemplate = {
   Preview: WhatsappWedding,
   colors: { primary: '#5e1822', secondary: '#7e3aa8', bg: '#3a0f17', accent: '#d4a437' },
   fonts: { heading: 'script', body: 'serif' },
-}
-
-const weddingDestinationTemplate = {
-  id: 'wedding-destination',
-  category: 'wedding',
-  name: 'Destination Wedding',
-  description: 'Breezy beach-resort scene with sea, sunset and palms — luxury getaway vibe.',
-  width: 640,
-  height: 900,
-  fields: [
-    { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Sanika', defaultValue: 'Sanika' },
-    { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Aarav', defaultValue: 'Aarav' },
-    { name: 'weddingDate', label: 'Wedding Date', type: 'date', defaultValue: '2025-12-15' },
-    { name: 'location', label: 'Location', type: 'text', placeholder: 'Goa, India', defaultValue: 'Goa, India' },
-    { name: 'resortName', label: 'Resort', type: 'text', placeholder: 'Taj Exotica Resort', defaultValue: 'Taj Exotica Resort' },
-    { name: 'rsvpContact', label: 'RSVP Contact', type: 'text', placeholder: '+91 98765 43210', defaultValue: '+91 98765 43210' },
-  ],
-  Preview: DestinationWedding,
-  colors: { primary: '#0e7490', secondary: '#f97362', bg: '#e8f6f7', accent: '#f3b760' },
-  fonts: { heading: 'script', body: 'sans' },
 }
 
 const weddingPalaceTemplate = {
@@ -447,13 +386,10 @@ export const weddingTemplates = [
   weddingMinimalTemplate,
   weddingLuxuryTemplate,
   // ── Premium Collection ──
-  weddingCartoonCoupleTemplate,
-  weddingPortraitTemplate,
   weddingSouthIndianTemplate,
   weddingNikahTemplate,
   weddingPhotoFrameTemplate,
   weddingWhatsappTemplate,
-  weddingDestinationTemplate,
   weddingPalaceTemplate,
   weddingVintageTemplate,
   weddingWatercolorTemplate,

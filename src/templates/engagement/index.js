@@ -17,9 +17,7 @@ import CoupleEngagement from './CoupleEngagement.jsx'
 import ModernEngagement from './ModernEngagement.jsx'
 
 // ── Premium Collection (new) ────────────────────────────────────────────────
-import CartoonCoupleEngagement from './CartoonCoupleEngagement.jsx'
 import LuxuryGoldEngagement from './LuxuryGoldEngagement.jsx'
-import CouplePortraitEngagement from './CouplePortraitEngagement.jsx'
 import RomanticEngagement from './RomanticEngagement.jsx'
 import SaveTheDateEngagement from './SaveTheDateEngagement.jsx'
 import FamilyEngagement from './FamilyEngagement.jsx'
@@ -31,7 +29,6 @@ import WhatsappEngagement from './WhatsappEngagement.jsx'
 import RoyalCoupleEngagement from './RoyalCoupleEngagement.jsx'
 import DiamondRingEngagement from './DiamondRingEngagement.jsx'
 import PastelEngagement from './PastelEngagement.jsx'
-import CoupleFrameEngagement from './CoupleFrameEngagement.jsx'
 
 export const engagementTemplates = [
   {
@@ -120,23 +117,6 @@ export const engagementTemplates = [
   // custom field set (dynamic fields differ per template).
   // ───────────────────────────────────────────────────────────────────────────
   {
-    id: 'engagement-cartoon',
-    category: 'engagement',
-    name: 'Cartoon Couple Engagement',
-    description: 'Cute illustrated couple sharing a ring moment — playful pastel & rose-gold charm.',
-    width: 640,
-    height: 900,
-    fields: [
-      { name: 'coupleName', label: 'Couple Name', type: 'text', placeholder: 'Aarav & Sanika', defaultValue: 'Aarav & Sanika' },
-      { name: 'date', label: 'Date', type: 'date', defaultValue: '2025-11-20' },
-      { name: 'venue', label: 'Venue', type: 'text', placeholder: 'Hotel Grand, Pune', defaultValue: 'Hotel Grand, Pune' },
-      { name: 'tagline', label: 'Tagline', type: 'text', placeholder: 'The beginning of forever', defaultValue: 'The beginning of forever' },
-    ],
-    Preview: CartoonCoupleEngagement,
-    colors: { primary: '#be4a6f', secondary: '#d99a4e', bg: '#fff5f0', accent: '#e8a0b8' },
-    fonts: { heading: 'script', body: 'sans' },
-  },
-  {
     id: 'engagement-gold',
     category: 'engagement',
     name: 'Luxury Gold Engagement',
@@ -152,24 +132,6 @@ export const engagementTemplates = [
     Preview: LuxuryGoldEngagement,
     colors: { primary: '#8a6d1f', secondary: '#d4a437', bg: '#fbf6e9', accent: '#b8860b' },
     fonts: { heading: 'script', body: 'serif' },
-  },
-  {
-    id: 'engagement-portrait',
-    category: 'engagement',
-    name: 'Couple Portrait',
-    description: 'Illustrated couple portrait in an ornate arched frame with a ring crest.',
-    width: 640,
-    height: 900,
-    fields: [
-      { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Sanika', defaultValue: 'Sanika' },
-      { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Aarav', defaultValue: 'Aarav' },
-      { name: 'date', label: 'Date', type: 'date', defaultValue: '2025-11-20' },
-      { name: 'time', label: 'Time', type: 'time', defaultValue: '18:00' },
-      { name: 'venue', label: 'Venue', type: 'text', placeholder: 'Hotel Grand, Pune', defaultValue: 'Hotel Grand, Pune' },
-    ],
-    Preview: CouplePortraitEngagement,
-    colors: { primary: '#6b2440', secondary: '#b87a59', bg: '#fdeef0', accent: '#d4607c' },
-    fonts: { heading: 'display', body: 'serif' },
   },
   {
     id: 'engagement-romantic',
@@ -364,22 +326,5 @@ export const engagementTemplates = [
     Preview: PastelEngagement,
     colors: { primary: '#8b7fc7', secondary: '#7e9069', bg: '#fbf7ff', accent: '#e2a78d' },
     fonts: { heading: 'display', body: 'sans' },
-  },
-  {
-    id: 'engagement-couple-frame',
-    category: 'engagement',
-    name: 'Luxury Couple Frame',
-    description: 'A full-length illustrated couple inside an ornate baroque gold picture frame.',
-    width: 640,
-    height: 900,
-    fields: [
-      { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Sanika', defaultValue: 'Sanika' },
-      { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Aarav', defaultValue: 'Aarav' },
-      { name: 'date', label: 'Date', type: 'date', defaultValue: '2025-11-20' },
-      { name: 'venue', label: 'Venue', type: 'text', placeholder: 'Hotel Grand, Pune', defaultValue: 'Hotel Grand, Pune' },
-    ],
-    Preview: CoupleFrameEngagement,
-    colors: { primary: '#5e1822', secondary: '#d4a437', bg: '#f6ead0', accent: '#b8860b' },
-    fonts: { heading: 'display', body: 'serif' },
   },
 ]
