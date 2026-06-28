@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Layout from '@/components/Layout.jsx'
+import Reveal from '@/components/Reveal.jsx'
 import PremiumCollection from '@/components/PremiumCollection.jsx'
 import FeatureShowcase from '@/components/FeatureShowcase.jsx'
 import Faq from '@/components/Faq.jsx'
@@ -104,10 +105,13 @@ export default function HomePage() {
       </section>
 
       {/* Premium Collection — flagship Wedding & Engagement showcase */}
-      <PremiumCollection />
+      <Reveal>
+        <PremiumCollection />
+      </Reveal>
 
       {/* Explore Categories — SaaS-style CTA card */}
-      <section className="container-page mt-16 sm:mt-20">
+      <Reveal>
+        <section className="container-page mt-16 sm:mt-20">
         <div className="relative overflow-hidden rounded-3xl border border-gold-200/60 bg-gradient-to-br from-white via-gold-50/40 to-amber-50/30 px-6 py-12 text-center shadow-soft sm:px-16 sm:py-16">
           <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute left-[-3rem] top-[-3rem] h-48 w-48 rounded-full bg-gold-200/30 blur-[80px]" />
@@ -150,51 +154,65 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+      </Reveal>
 
       {/* Feature showcase — how the editor feels */}
-      <FeatureShowcase />
+      <Reveal>
+        <FeatureShowcase />
+      </Reveal>
 
       {/* How it works */}
       <section id="how-it-works" className="container-page mt-24 scroll-mt-24">
-        <h2 className="text-center font-display text-2xl font-bold text-ink sm:text-3xl">
-          {t('home.howItWorks')}
-        </h2>
+        <Reveal>
+          <h2 className="text-center font-display text-2xl font-bold text-ink sm:text-3xl">
+            {t('home.howItWorks')}
+          </h2>
+        </Reveal>
         <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-3">
-          {STEPS.map((s) => (
-            <div key={s.n} className="card p-7 text-center">
-              <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-maroon-500 text-base font-bold text-white shadow-soft">
-                {s.n}
-              </span>
-              <h3 className="mt-5 text-lg font-semibold text-ink">{t(s.titleKey)}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{t(s.textKey)}</p>
-            </div>
+          {STEPS.map((s, i) => (
+            <Reveal key={s.n} delay={i * 100}>
+              <div className="card p-7 text-center">
+                <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-maroon-500 text-base font-bold text-white shadow-soft">
+                  {s.n}
+                </span>
+                <h3 className="mt-5 text-lg font-semibold text-ink">{t(s.titleKey)}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{t(s.textKey)}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* Why choose us — trust strip */}
       <section className="container-page mt-24">
-        <h2 className="text-center font-display text-2xl font-bold text-ink sm:text-3xl">
-          {t('home.trustTitle', 'Why families and professionals choose us')}
-        </h2>
+        <Reveal>
+          <h2 className="text-center font-display text-2xl font-bold text-ink sm:text-3xl">
+            {t('home.trustTitle', 'Why families and professionals choose us')}
+          </h2>
+        </Reveal>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {TRUST.map((f) => (
-            <div key={f.titleKey} className="card p-6">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-gold-100 to-gold-200 text-2xl">
-                {f.icon}
-              </span>
-              <h3 className="mt-4 text-base font-semibold text-ink">{t(f.titleKey)}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{t(f.textKey)}</p>
-            </div>
+          {TRUST.map((f, i) => (
+            <Reveal key={f.titleKey} delay={i * 80}>
+              <div className="card p-6">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-gold-100 to-gold-200 text-2xl">
+                  {f.icon}
+                </span>
+                <h3 className="mt-4 text-base font-semibold text-ink">{t(f.titleKey)}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{t(f.textKey)}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* FAQ */}
-      <Faq />
+      <Reveal>
+        <Faq />
+      </Reveal>
 
       {/* Closing call-to-action */}
-      <section className="container-page mt-24">
+      <Reveal>
+        <section className="container-page mt-24">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-maroon-500 via-maroon-500 to-gold-500 px-6 py-14 text-center shadow-lift sm:px-16 sm:py-20">
           <div
             aria-hidden
@@ -217,6 +235,7 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+      </Reveal>
     </Layout>
   )
 }
