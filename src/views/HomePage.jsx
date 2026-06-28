@@ -48,10 +48,10 @@ export default function HomePage() {
           <div className="absolute left-[-5rem] top-24 h-56 w-56 rounded-full bg-rose-300/20 blur-[120px]" />
         </div>
 
-        <div className="container-page pt-2 text-center sm:pt-6">
+        <div className="container-page pt-1 text-center sm:pt-6">
           <span className="chip animate-fade-in">{t('home.badge')}</span>
 
-          <h1 className="mx-auto mt-7 max-w-3xl text-balance font-display text-[2.1rem] font-bold leading-[1.1] text-ink sm:text-6xl animate-fade-up">
+          <h1 className="mx-auto mt-5 max-w-3xl text-balance font-display text-[1.85rem] font-bold leading-[1.1] text-ink sm:mt-7 sm:text-6xl animate-fade-up">
             {heroHead}
             {heroAccent && (
               <>
@@ -62,14 +62,14 @@ export default function HomePage() {
           </h1>
 
           <p
-            className="mx-auto mt-5 max-w-xl text-balance text-base text-ink-muted sm:text-lg animate-fade-up"
+            className="mx-auto mt-4 max-w-xl text-balance text-[15px] text-ink-muted sm:mt-5 sm:text-lg animate-fade-up"
             style={{ animationDelay: '80ms' }}
           >
             {t('home.heroSubtitle')}
           </p>
 
           <div
-            className="mx-auto mt-9 flex max-w-md flex-col items-center justify-center gap-3 animate-fade-up sm:max-w-none sm:flex-row"
+            className="mx-auto mt-7 flex max-w-md flex-col items-center justify-center gap-2.5 animate-fade-up sm:mt-9 sm:max-w-none sm:flex-row sm:gap-3"
             style={{ animationDelay: '140ms' }}
           >
             <Link
@@ -88,13 +88,13 @@ export default function HomePage() {
 
           {/* Quick stats */}
           <dl
-            className="mx-auto mt-10 grid max-w-sm grid-cols-2 gap-x-4 gap-y-5 animate-fade-up sm:mt-12 sm:max-w-none sm:grid-cols-4 sm:gap-x-14 sm:gap-y-7"
+            className="mx-auto mt-8 grid max-w-xs grid-cols-2 gap-x-6 gap-y-4 animate-fade-up sm:mt-12 sm:max-w-none sm:grid-cols-4 sm:gap-x-14 sm:gap-y-7"
             style={{ animationDelay: '220ms' }}
           >
             {STATS.map((s) => (
               <div key={s.labelKey} className="text-center">
-                <dt className="gradient-text font-display text-3xl font-bold sm:text-4xl">{s.value}</dt>
-                <dd className="mt-1 text-xs font-semibold uppercase tracking-wide text-ink-muted">
+                <dt className="gradient-text font-display text-2xl font-bold sm:text-4xl">{s.value}</dt>
+                <dd className="mt-0.5 text-[10px] font-semibold uppercase tracking-wide text-ink-muted sm:text-xs">
                   {t(s.labelKey)}
                 </dd>
               </div>

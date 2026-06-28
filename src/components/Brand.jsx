@@ -10,7 +10,7 @@ export default function Brand({ className = '' }) {
     <Link
       href="/"
       aria-label="Template Bazaar — home"
-      className={`group inline-flex items-center gap-2.5 ${className}`}
+      className={`group inline-flex items-center gap-2 shrink-0 ${className}`}
     >
       <span className="relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-gold-400 to-maroon-500 shadow-soft transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-2">
         {/* subtle top sheen */}
@@ -36,8 +36,11 @@ export default function Brand({ className = '' }) {
           <path d="M8.4 13.2h7.2M9.2 16h5.6" strokeWidth="1.6" />
         </svg>
       </span>
-      <span className="text-xl font-extrabold tracking-tight text-ink">
+      <span className="hidden text-xl font-extrabold tracking-tight text-ink sm:inline">
         Template <span className="gradient-text">Bazaar</span>
+      </span>
+      <span className="text-lg font-extrabold tracking-tight text-ink sm:hidden">
+        TB
       </span>
     </Link>
   )
