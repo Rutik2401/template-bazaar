@@ -323,6 +323,7 @@ export const mr = {
       withDivineBlessings: 'ईश्वराच्या कृपेने',
       cordiallyInvite: 'आपणास सहपरिवार सादर आमंत्रित करतो',
       mahaprasad: 'महाप्रसाद व भोजनाची व्यवस्था',
+      weddingParty: 'स्वागत सोहळा',
       om: 'ॐ',
       ganpatiBappaMorya: 'गणपती बाप्पा मोरया',
       inLovingMemory: 'भावपूर्ण श्रद्धांजली',

@@ -29,6 +29,7 @@ import ChristianWedding from './ChristianWedding.jsx'
 import LuxuryReception from './LuxuryReception.jsx'
 import HaldiCeremony from './HaldiCeremony.jsx'
 import MehendiCeremony from './MehendiCeremony.jsx'
+import RoyalScrollWedding from './RoyalScrollWedding.jsx'
 
 /**
  * Boho Pampas wedding — warm beige card with an off-white arch, cream/white
@@ -378,6 +379,30 @@ const weddingMehendiTemplate = {
   fonts: { heading: 'display', body: 'serif' },
 }
 
+const weddingRoyalScrollTemplate = {
+  id: 'wedding-royal-scroll',
+  category: 'wedding',
+  name: 'Royal Scroll Wedding',
+  description: 'Deep maroon parchment with gold filigree borders, Ganesha motif, scroll rods and rich ornamental details.',
+  i18n: {
+    mr: { name: 'रॉयल स्क्रोल लग्न', description: 'गडद मॅरून पांडुरिमावर सोनेरी कोरीव काम, गणपती प्रतीक, स्क्रोल रॉड्स आणि समृद्ध भिंतीपत्रिका.' },
+    hi: { name: 'रॉयल स्क्रोल विवाह', description: 'गहरे मैरून कागज़ पर सोने की की नक्काशी, गणेश प्रतीक, स्क्रोल रॉड्स और समृद्ध सजावट।' },
+  },
+  width: 640,
+  height: 900,
+  fields: [
+    { name: 'brideName', label: 'Bride Name', type: 'text', placeholder: 'Trinkle', defaultValue: 'Trinkle' },
+    { name: 'groomName', label: 'Groom Name', type: 'text', placeholder: 'Bhavik', defaultValue: 'Bhavik' },
+    { name: 'weddingDate', label: 'Wedding Date', type: 'date', defaultValue: '2025-12-15' },
+    { name: 'time', label: 'Time', type: 'time', defaultValue: '19:30' },
+    { name: 'venue', label: 'Venue', type: 'text', placeholder: 'ATLANTIS, The Palm, Dubai', defaultValue: 'ATLANTIS, The Palm, Dubai' },
+    { name: 'familyName', label: 'Family Name', type: 'text', placeholder: 'Jain Family & Friends', defaultValue: 'Jain Family & Friends' },
+  ],
+  Preview: RoyalScrollWedding,
+  colors: { primary: '#2a0a12', secondary: '#d4a437', bg: '#1a0610', accent: '#f4e2a8' },
+  fonts: { heading: 'script', body: 'serif' },
+}
+
 export const weddingTemplates = [
   weddingRoyalTemplate,
   weddingBohoTemplate,
@@ -398,4 +423,5 @@ export const weddingTemplates = [
   weddingReceptionTemplate,
   weddingHaldiTemplate,
   weddingMehendiTemplate,
+  weddingRoyalScrollTemplate,
 ]

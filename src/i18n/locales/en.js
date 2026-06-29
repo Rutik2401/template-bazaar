@@ -328,6 +328,7 @@ export const en = {
       withDivineBlessings: 'With the divine blessings of the Almighty',
       cordiallyInvite: 'cordially invite you with family to',
       mahaprasad: 'Mahaprasad & Bhojan to follow',
+      weddingParty: 'Reception Ceremony',
       om: 'ॐ',
       ganpatiBappaMorya: 'Ganpati Bappa Morya',
       inLovingMemory: 'In Loving Memory',
