@@ -71,13 +71,41 @@ export function I18nProvider({ children, initialLocale }) {
   const t = useCallback(
     (path, fallback) => {
       const active = dictionaries[locale] || dictionaries[DEFAULT_LOCALE]
-      const value = resolve(active, path)
-      if (typeof value === 'string') return value
+      const isPluralOptions = typeof fallback === 'object' && fallback !== null && 'count' in fallback
 
-      const fallbackValue = resolve(dictionaries[DEFAULT_LOCALE], path)
-      if (typeof fallbackValue === 'string') return fallbackValue
+      let value = resolve(active, path)
+      if (isPluralOptions && typeof value === 'object' && value !== null) {
+        value = fallback.count === 1 ? value.one : value.other
+      }
 
-      return fallback !== undefined ? fallback : path
+      if (typeof value === 'string') {
+        if (isPluralOptions) {
+          return value.replace(/\{\{count\}\}/g, String(fallback.count))
+        }
+        return value
+      }
+
+      let fallbackValue = resolve(dictionaries[DEFAULT_LOCALE], path)
+      if (isPluralOptions && typeof fallbackValue === 'object' && fallbackValue !== null) {
+        fallbackValue = fallback.count === 1 ? fallbackValue.one : fallbackValue.other
+      }
+
+      if (typeof fallbackValue === 'string') {
+        if (isPluralOptions) {
+          return fallbackValue.replace(/\{\{count\}\}/g, String(fallback.count))
+        }
+        return fallbackValue
+      }
+
+      if (fallback !== undefined) {
+        if (isPluralOptions) {
+          const defaultVal = fallback.defaultValue || path
+          return defaultVal.replace(/\{\{count\}\}/g, String(fallback.count))
+        }
+        return fallback
+      }
+
+      return path
     },
     [locale],
   )

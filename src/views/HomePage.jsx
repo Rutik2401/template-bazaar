@@ -74,7 +74,7 @@ export default function HomePage() {
             style={{ animationDelay: '140ms' }}
           >
             <Link
-              href="/category/wedding"
+              href="/categories"
               className="btn-gold btn-lg w-full rounded-full sm:w-auto"
             >
               {t('home.ctaPrimary')}
@@ -225,7 +225,7 @@ export default function HomePage() {
             {t('home.finalText')}
           </p>
           <Link
-            href="/category/wedding"
+            href="/categories"
             className="relative mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-lg font-bold text-maroon-600 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift active:translate-y-0"
           >
             {t('home.ctaPrimary')}
