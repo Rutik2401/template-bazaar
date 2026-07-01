@@ -111,7 +111,7 @@ export default function RoyalCoupleEngagement({ values }) {
   return (
     <div
       data-export-root
-      className="relative h-[900px] w-[640px] overflow-hidden bg-[#5a0f1c] font-serif text-[#f3e3bd]"
+      className="relative h-[960px] w-[640px] overflow-hidden bg-[#5a0f1c] font-serif text-[#f3e3bd]"
     >
       {/* Deep royal-red base shading into emerald shadow */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#6e1322] via-[#530f1d] to-[#0c2a1f]" />
@@ -136,8 +136,8 @@ export default function RoyalCoupleEngagement({ values }) {
       <div className="absolute inset-[34px] rounded-[3px] border border-[#e7c75f]/55" />
 
       {/* Damask-pattern feature panel behind the names */}
-      <div className="pointer-events-none absolute inset-x-[64px] top-[300px] h-[230px] rounded-[10px] border border-[#d6a83a]/45 bg-[#0c2a1f]/35" />
-      <div className="pointer-events-none absolute inset-x-[72px] top-[308px] h-[214px] rounded-[8px] border border-[#e7c75f]/25" />
+      <div className="pointer-events-none absolute inset-x-[64px] top-[250px] h-[320px] rounded-[10px] border border-[#d6a83a]/45 bg-[#0c2a1f]/35" />
+      <div className="pointer-events-none absolute inset-x-[72px] top-[258px] h-[304px] rounded-[8px] border border-[#e7c75f]/25" />
 
       {/* Baroque corner filigree */}
       <BaroqueCorner className="absolute left-7 top-7 h-24 w-24 text-[#e7c75f]" />
@@ -146,66 +146,66 @@ export default function RoyalCoupleEngagement({ values }) {
       <BaroqueCorner className="absolute bottom-7 right-7 h-24 w-24 text-[#e7c75f] [transform:scale(-1)]" />
 
       {/* Content */}
-      <div className="relative flex h-full flex-col items-center justify-between px-[68px] py-[64px] text-center">
-        <header className="flex flex-col items-center gap-4">
-          <RoyalCrest className="h-[78px] w-[86px] text-[#e7c75f] drop-shadow-[0_3px_8px_rgba(214,168,58,0.35)]" />
-          <p className="text-[12px] font-semibold uppercase tracking-[0.6em] text-[#d6a83a]">
+      <div className="relative flex h-full flex-col items-center justify-between px-[68px] py-[48px] text-center">
+        <header className="flex flex-col items-center gap-2">
+          <RoyalCrest className="h-[68px] w-[76px] text-[#e7c75f] drop-shadow-[0_3px_8px_rgba(214,168,58,0.35)]" />
+          <p className="text-[11px] font-semibold uppercase tracking-[0.6em] text-[#d6a83a]">
             {t('template.common.saveTheDate', 'Save the Date')}
           </p>
-          <p className="max-w-[20rem] text-[15px] italic leading-relaxed text-[#e4d5ab]/90">
+          <p className="max-w-[20rem] text-[14px] italic leading-relaxed text-[#e4d5ab]/90">
             {t('template.common.engagementOf', 'at the engagement of')}
           </p>
         </header>
 
-        <main className="flex flex-col items-center gap-3">
-          <h1 className="font-script text-[68px] font-medium leading-[0.9]">
+        <main className="flex flex-1 flex-col items-center justify-center gap-1 overflow-visible">
+          <h1 className="w-full overflow-visible text-center font-script text-[50px] font-medium leading-[1.3] pt-4 md:text-[64px]">
             <span
               data-pdf-color="#e7c75f"
-              className="bg-gradient-to-br from-[#f7ecbf] via-[#e2c265] to-[#b8860b] bg-clip-text text-transparent"
+              className="inline-block overflow-visible bg-gradient-to-br from-[#f7ecbf] via-[#e2c265] to-[#b8860b] bg-clip-text text-transparent"
             >
               {brideName}
             </span>
           </h1>
 
           <div className="flex items-center gap-3 text-[#d6a83a]">
-            <span className="h-px w-16 bg-gradient-to-r from-transparent to-[#d6a83a]" />
-            <span className="font-display text-[20px] italic tracking-wide text-[#e4d5ab]">
+            <span className="h-px w-14 bg-gradient-to-r from-transparent to-[#d6a83a]" />
+            <span className="font-display text-[18px] italic tracking-wide text-[#e4d5ab]">
               {t('template.common.and', '&')}
             </span>
-            <span className="h-px w-16 bg-gradient-to-l from-transparent to-[#d6a83a]" />
+            <span className="h-px w-14 bg-gradient-to-l from-transparent to-[#d6a83a]" />
           </div>
 
-          <h1 className="font-script text-[68px] font-medium leading-[0.9]">
+          <h1 className="w-full overflow-visible text-center font-script text-[50px] font-medium leading-[1.3] pb-2 md:text-[64px]">
             <span
               data-pdf-color="#e7c75f"
-              className="bg-gradient-to-bl from-[#f7ecbf] via-[#e2c265] to-[#b8860b] bg-clip-text text-transparent"
+              className="inline-block overflow-visible bg-gradient-to-bl from-[#f7ecbf] via-[#e2c265] to-[#b8860b] bg-clip-text text-transparent"
             >
               {groomName}
             </span>
           </h1>
 
-          <EngagementDivider className="mt-3 h-8 w-64 text-[#e7c75f]" />
+          <EngagementDivider className="mt-3 mb-2 h-7 w-60 text-[#e7c75f]" />
         </main>
 
-        <footer className="flex w-full flex-col items-center gap-4">
-          <p className="font-display text-[28px] leading-tight tracking-wide text-[#f3e3bd]">
+        <footer className="flex w-full flex-col items-center gap-3">
+          <p className="font-display text-[26px] leading-tight tracking-wide text-[#f3e3bd]">
             {date}
             {time && <span className="text-[#d6a83a]"> · {time}</span>}
           </p>
 
-          <div className="rounded-[4px] border border-[#d6a83a]/55 bg-[#0c2a1f]/30 px-9 py-3">
-            <p className="text-[11px] uppercase tracking-[0.42em] text-[#d6a83a]">
+          <div className="rounded-[4px] border border-[#d6a83a]/55 bg-[#0c2a1f]/30 px-8 py-2">
+            <p className="text-[10px] uppercase tracking-[0.42em] text-[#d6a83a]">
               {t('template.common.venue', 'Venue')}
             </p>
-            <p className="mt-1 text-[17px] leading-snug text-[#f3e3bd]">{venue}</p>
+            <p className="mt-1 text-[16px] leading-snug text-[#f3e3bd]">{venue}</p>
           </div>
 
           <div className="relative mt-1 flex flex-col items-center">
-            <WaxSeal className="h-12 w-12 text-[#e7c75f]" />
-            <p className="mt-2 text-[14px] italic leading-relaxed text-[#d8c79c]">
+            <WaxSeal className="h-10 w-10 text-[#e7c75f]" />
+            <p className="mt-1 text-[13px] italic leading-relaxed text-[#d8c79c]">
               {t('template.common.hostedBy', 'Hosted by')}
               <br />
-              <span className="font-display text-[21px] not-italic tracking-wide text-[#f3e3bd]">{hostFamily}</span>
+              <span className="font-display text-[19px] not-italic tracking-wide text-[#f3e3bd]">{hostFamily}</span>
             </p>
           </div>
         </footer>
